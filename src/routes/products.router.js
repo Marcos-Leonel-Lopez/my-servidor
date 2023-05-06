@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
                 productslimit
             });
         }
-        await accessManager.createRecords("Get fallido - id menor a 0");
+        await accessManager.createRecords("Get fallido - limit menor a 0");
         return res.status(400).send({
             status: "error",
             error: `Limite debe ser mayor a 0(cero)`,

@@ -1,0 +1,28 @@
+
+    {{#if error}}
+        <h1>Error</h1>
+        <p>El limit debe ser mayor a 0</p>
+    {{else}}
+        <table >
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+    {{#each products}}
+                <tr>
+                    <td>{{this._id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.stock}}</td>
+                </tr>
+    {{/each}}
+            </tbody>
+        </table>
+    {{/if}}

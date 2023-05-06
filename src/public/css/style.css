@@ -1,4 +1,4 @@
-/* * {
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -43,16 +43,16 @@ tbody tr:hover {
     box-shadow: 0 3px 6px none;
     background-color: rgba(0, 0, 0, 0.089);
 
-} */
+}
 
 /* #chat-container{
 
 } */
 
-/* #chatbox{
+#chatbox{
     border: 0.1rem solid black;
 }
 
 #messageLogs{
     color: black;
-} */
+}
