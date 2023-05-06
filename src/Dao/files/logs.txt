@@ -1,18 +1,25 @@
-
-Fecha: 5/6/2023 - Hora: 1:52:05 PM - Accion: POST de api - se agrego Milanesa 
-Fecha: 5/6/2023 - Hora: 1:52:35 PM - Accion: POST de api - se agrego Pizza 
-Fecha: 5/6/2023 - Hora: 1:52:46 PM - Accion: POST de api - se agrego Pasta 
-Fecha: 5/6/2023 - Hora: 1:52:50 PM - Accion: Consulta todos los productos 
-Fecha: 5/6/2023 - Hora: 1:52:57 PM - Accion: Consulta el producto id: 645685dea77044c88de16ed3 
-Fecha: 5/6/2023 - Hora: 1:53:19 PM - Accion: Post failure - faltan datos 
-Fecha: 5/6/2023 - Hora: 1:53:29 PM - Accion: POST de api - se agrego Empanadas 
-Fecha: 5/6/2023 - Hora: 1:53:35 PM - Accion: Consulta todos los productos 
-Fecha: 5/6/2023 - Hora: 1:53:51 PM - Accion: POST de api - se agrego Paella 
-Fecha: 5/6/2023 - Hora: 1:54:00 PM - Accion: POST de api - se agrego Pollo frito 
-Fecha: 5/6/2023 - Hora: 1:54:08 PM - Accion: POST de api - se agrego Gaseosa 
-Fecha: 5/6/2023 - Hora: 1:54:18 PM - Accion: POST de api - se agrego Agua 
-Fecha: 5/6/2023 - Hora: 1:54:49 PM - Accion: POST de api - se agrego Flan 
-Fecha: 5/6/2023 - Hora: 1:55:31 PM - Accion: POST de api - se agrego Flan 
-Fecha: 5/6/2023 - Hora: 1:55:48 PM - Accion: POST de api - se agrego Brownie 
-Fecha: 5/6/2023 - Hora: 1:55:53 PM - Accion: Consulta todos los productos 
-Fecha: 5/6/2023 - Hora: 2:00:56 PM - Accion: Post failure - faltan code 
+Fecha: 5/6/2023 - Hora: 2:55:43 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:55:58 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:56:22 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:56:29 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:56:35 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:56:44 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:57:12 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:57:16 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 2:57:20 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:04:35 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:04:51 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:05:08 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:08:09 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:08:16 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:08:21 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:08:33 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:09:10 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:10:10 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:10:17 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:10:22 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:11:11 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:11:16 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:11:22 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:11:25 PM - Accion: Consulta los productos 
+Fecha: 5/6/2023 - Hora: 3:11:50 PM - Accion: Consulta los productos 

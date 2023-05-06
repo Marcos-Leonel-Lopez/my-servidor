@@ -13,8 +13,6 @@ export default class ValidationManager{
     correctData = async (product) => {
         let mData = [];
         let obj = Object.entries(product);
-       
-        
          obj.forEach((el) => {
              if (el[1] == "") {
                  if(el[0] != 'thumbnail'){

@@ -8,70 +8,101 @@ const validationManager = new ValidationManager();
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-    await accessManager.createRecords('Consulta todos los productos');
-    const result = await productModel.find();
-    res.send({ result });
-})
+router.get("/", async (req, res) => {
+    const { limit } = req.query;
+    await accessManager.createRecords("Consulta los productos");
+    if (limit) {
+        if (limit > 0) {
+            const productslimit = await productModel.find().limit(limit)
+            return res.status(200).send({
+                status: "success",
+                productslimit
+            });
+        } 
+            return res.status(400).send({
+                status: "error",
+                error: `Limite debe ser mayor a 0(cero)`,
+            });
+    } else {
+        const result = await productModel.find();
+        return res.status(200).send({
+            status: "success",
+            result
+        });
+    }
+});
 
-router.get('/:pid', async (req, res) => {
-    const id = req.params.pid
+router.get("/:pid", async (req, res) => {
+    const id = req.params.pid;
     await accessManager.createRecords(`Consulta el producto id: ${id}`);
     const result = await productModel.find({ _id: id });
     if (result.length > 0) {
-        return res.send({ result });
+        return res.status(200).send({ status: "success", result });
     }
     await accessManager.createRecords(`Consulta id inexistente`);
     res.status(400).send({
-        status: 'Error',
-        error: `El producto con id:${id} no existe`
-    })
-    return
+        status: "error",
+        error: `El producto con id:${id} no existe`,
+    });
+    return;
+});
 
-})
+router.delete("/:pid", async (req, res) => {
+    const id = req.params.pid;
+    await accessManager.createRecords(`Elimina el producto id: ${id}`);
+    const result = await productModel.deleteOne({ _id: id });
+    if (result.deletedCount == 1) {
+        return res.status(200).send({
+            status: "success",
+            result,
+        });
+    }
+    await accessManager.createRecords(`Consulta id inexistente`);
+    res.status(400).send({
+        status: "error",
+        error: `El producto con id:${id} no existe`,
+        result,
+    });
+    return;
+});
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
     const newProduct = req.body;
-    const { code } = newProduct
+    const { code } = newProduct;
     const data = await validationManager.correctData(newProduct);
-    if(data != 'success'){
-        await accessManager.createRecords(`Post failure - falta: ${data.join(', ')}`);
+    if (data != "success") {
+        await accessManager.createRecords(
+            `Post failure - falta: ${data.join(", ")}`
+        );
         return res.status(400).send({
-            status: 'error',
-            error: `falta: ${data.join(', ')}`
-        })
+            status: "error",
+            error: `falta: ${data.join(", ")}`,
+        });
     }
     const repeat = await validationManager.codeRepeat(code);
     if (repeat) {
         await accessManager.createRecords(`Post failure - codigo se repite`);
         return res.status(400).send({
-            msg: 'error',
-            error: 'El codigo se repite'
-        })
+            status: "error",
+            error: "El codigo se repite",
+        });
     }
-    await accessManager.createRecords(`POST de api - se agrego ${newProduct.title}`);
-   
+    await accessManager.createRecords(
+        `POST de api - se agrego ${newProduct.title}`
+    );
+    const result = await productModel.create(newProduct);
+    return res.status(200).send({
+        status: "success",
+        result,
+    });
+});
 
-    const result = await productModel.create(newProduct)
-    res.send({ newProduct })
-})
-
-router.delete('/:pid', async (req, res) => {
-    const id = req.params.pid
-    await accessManager.createRecords(`Elimina el producto id: ${id}`)
-    const result = await productModel.deleteOne({ _id: id })
-    res.send({ result })
-})
-
-router.put('/:pid', async (req, res) => {
-    const id = req.params.pid
+router.put("/:pid", async (req, res) => {
+    const id = req.params.pid;
     const newData = req.body;
-    await accessManager.createRecords(`Modifica el producto id: ${id}`)
-    const result = await productModel.updateOne({ _id: id }, { $set: newData })
-    res.send({ result })
-})
-
-
-
+    await accessManager.createRecords(`Modifica el producto id: ${id}`);
+    const result = await productModel.updateOne({ _id: id }, { $set: newData });
+    res.send({ result });
+});
 
 export default router;
