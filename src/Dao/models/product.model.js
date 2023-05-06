@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const productCollection = 'products'
+const productCollection = 'products' // el nombre de la coleccion
 
 const productSchema = new mongoose.Schema({
     title: {
@@ -15,24 +15,27 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    thumbnail: String,
-    status: {
-        type: Boolean,
-        default: true,
-    },
-    code: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    stock: {
-        type: Number,
-        required: true
-    },
-    category: {
-        type: String,
-        required: true
-    }
+     thumbnail: {
+         type: String,
+     },
+     status: {
+         type: Boolean,
+         default: true,
+     },
+     code: {
+         type: String,
+         required: true,
+         unique: true
+     },
+     stock: {
+         type: Number,
+         required: true
+     },
+     category: {
+         type: String,
+         required: true
+     }
 })
 
-export const productModel = mongoose.model(productCollection, productSchema);
+const productModel = mongoose.model(productCollection, productSchema);
+export default productModel;

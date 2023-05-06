@@ -1,0 +1,58 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+}
+
+.formulario {
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: azure;
+    border: 0.1em solid black;
+    width: 80%;
+    padding: 1em;
+}
+
+.formulario input,
+textarea, select {
+    border: 0.1em solid black;
+    display: flex;
+    justify-content: start;
+}
+
+table {
+    margin: 10em auto;
+    border: 0.1em solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td,
+th {
+    border: 0.1em solid black;
+    padding: 8px;
+
+}
+
+tbody tr:hover {
+
+    transform: translate(6px, 0px);
+    box-shadow: 0 3px 6px none;
+    background-color: rgba(0, 0, 0, 0.089);
+
+} */
+
+/* #chat-container{
+
+} */
+
+/* #chatbox{
+    border: 0.1rem solid black;
+}
+
+#messageLogs{
+    color: black;
+} */

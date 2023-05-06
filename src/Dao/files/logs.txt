@@ -1,0 +1,18 @@
+
+Fecha: 5/6/2023 - Hora: 1:52:05 PM - Accion: POST de api - se agrego Milanesa 
+Fecha: 5/6/2023 - Hora: 1:52:35 PM - Accion: POST de api - se agrego Pizza 
+Fecha: 5/6/2023 - Hora: 1:52:46 PM - Accion: POST de api - se agrego Pasta 
+Fecha: 5/6/2023 - Hora: 1:52:50 PM - Accion: Consulta todos los productos 
+Fecha: 5/6/2023 - Hora: 1:52:57 PM - Accion: Consulta el producto id: 645685dea77044c88de16ed3 
+Fecha: 5/6/2023 - Hora: 1:53:19 PM - Accion: Post failure - faltan datos 
+Fecha: 5/6/2023 - Hora: 1:53:29 PM - Accion: POST de api - se agrego Empanadas 
+Fecha: 5/6/2023 - Hora: 1:53:35 PM - Accion: Consulta todos los productos 
+Fecha: 5/6/2023 - Hora: 1:53:51 PM - Accion: POST de api - se agrego Paella 
+Fecha: 5/6/2023 - Hora: 1:54:00 PM - Accion: POST de api - se agrego Pollo frito 
+Fecha: 5/6/2023 - Hora: 1:54:08 PM - Accion: POST de api - se agrego Gaseosa 
+Fecha: 5/6/2023 - Hora: 1:54:18 PM - Accion: POST de api - se agrego Agua 
+Fecha: 5/6/2023 - Hora: 1:54:49 PM - Accion: POST de api - se agrego Flan 
+Fecha: 5/6/2023 - Hora: 1:55:31 PM - Accion: POST de api - se agrego Flan 
+Fecha: 5/6/2023 - Hora: 1:55:48 PM - Accion: POST de api - se agrego Brownie 
+Fecha: 5/6/2023 - Hora: 1:55:53 PM - Accion: Consulta todos los productos 
+Fecha: 5/6/2023 - Hora: 2:00:56 PM - Accion: Post failure - faltan code 
