@@ -5,7 +5,10 @@ export default class ValidationManager{
     codeRepeat = async (code) =>{
         let result = await productModel.find({code: code});
         if(result.length > 0){
-            return true;
+            return {
+                status: "error",
+                error: "El codigo se repite",
+            };
         }
         return false;
     };
@@ -24,6 +27,17 @@ export default class ValidationManager{
             return mData
          }
          return 'success'
+    }
+
+    conditionData = async (newData) =>{
+        let editValues = {};
+        for (let [key, value] of Object.entries(newData)) {
+            value = value === "" ? undefined : value;
+            if (value !== undefined) {
+                editValues[key] = value;
+            }
+        };
+        return editValues;
     }
 
 
