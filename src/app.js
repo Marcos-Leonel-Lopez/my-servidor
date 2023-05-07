@@ -4,10 +4,12 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 
 import productModel from './Dao/models/product.model.js';
+import messagesModel from './Dao/models/message.model.js';
 import productsRouter from './routes/products.router.js';
 import viewsRouter from './routes/views.router.js'
 import __dirname from './utils.js';
 import ValidationManager from './Dao/managers/ValidationManager.js';
+import MessageManager from './Dao/managers/MessaggeManager.js';
 
 
 const PORT = process.env.PORT || 8080;
@@ -29,47 +31,46 @@ const server = app.listen(PORT, () => {
 });
 //servidor
 const validationManager = new ValidationManager();
-const io = new Server(server); 
+const messageManager = new MessageManager();
+const io = new Server(server);
 
 const messages = [];
 
- io.on('connection', async client => {
- 
+io.on('connection', async client => {
+
     const result = await validationManager.getProducts();
-    const products = result.smg.payload.map(item=>item.toObject())
+    const products = result.smg.payload.map(item => item.toObject())
     io.emit('productList', products);
-  
 
     client.on('newProduct', async (data, callback) => {
         console.log('Datos recibidos en el back:', data);
         await validationManager.addProduct(data); //debe ir el model
         const result = await validationManager.getProducts();
-        const products = result.smg.payload.map(item=>item.toObject())
+        const products = result.smg.payload.map(item => item.toObject())
         io.emit('productList', products);
         callback();
     })
-    
-    client.on('delete', async data =>{
-        console.log('Se eliminara id: '+data);
+
+    client.on('delete', async data => {
+        console.log('Se eliminara id: ' + data);
         await validationManager.deleteProduct(data);
         const result = await validationManager.getProducts();
-        const products = result.smg.payload.map(item=>item.toObject())
+        const products = result.smg.payload.map(item => item.toObject())
         io.emit('productList', products);
     })
+    //chat
+    client.on('message', async data => {
+        await messageManager.newMessage(data);
+        const messagesBefore = await messageManager.getMessages()
+        const messages = messagesBefore.map(item => item.toObject())
+        io.emit('messageLogs', messages)
+    })
 
-    // //chat
+    client.on('authenticated', data => {
+        client.broadcast.emit('newUserConnected', data);
+    })
 
-     client.on('message', async data =>{
-         messages.push(data);
-         console.log(data, messages);
-         io.emit('messageLogs', messages)
-     })
-
-     client.on('authenticated', data =>{
-         client.broadcast.emit('newUserConnected', data);
-     })
-
- })
+})
 
 
 
