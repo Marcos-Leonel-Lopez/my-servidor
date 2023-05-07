@@ -9,31 +9,29 @@ const validationManager = new ValidationManager();
 
 const router = Router();
 
-router.get('/products', async (req,res)=>{
-    const { limit } = req.query;
-    if (limit) {
-        if (limit > 0) {
-            const productslimit = await productModel.find().limit(limit);
-            const products = productslimit.map(item=>item.toObject())
-            return res.render('home', { products, title:'Productos', style: 'style.css', error: false })
-        }
-        await accessManager.createRecords("Get fallido - limit menor a 0");
-        return res.render('home', { title:'Productos', style: 'style.css', error: true })
-    } else {
-        await accessManager.createRecords("Consulta los productos");
-        const result = await productModel.find();
-        const products = result.map(item=>item.toObject())
-        return res.render('home', { products, title:'Productos', style: 'style.css', error: false })
-    }
-
-
-
-    
+router.get('/registerProduct', (req, res) => {
+    res.render('registerProduct' , { title:'Registro de productos',style: 'style.css'});
 })
 
-router.post('/', async (req,res)=>{
-    await accessManager.createRecords('POST de view')
-    res.send({msg:'POST'})
+router.get('/products', async (req,res)=>{
+    const { limit } = req.query;
+    const result = await validationManager.getProducts(limit);
+    const {status, smg} = result;
+    if(status == 200){
+        await accessManager.createRecords("Consulta los productos");
+        const products = smg.payload.map(item=>item.toObject())
+        return res.render('home', { products, title:'Productos', style: 'style.css', error: false })
+    }
+    await accessManager.createRecords("Get fallido - limit menor a 0");
+    return res.render('home', { title:'Productos', style: 'style.css', error: true })
+})
+
+router.get('/realtimeproducts', async (req,res)=>{
+    return res.render('realTimeProducts', { title:'Productos en tiempo real', style: 'style.css', error: false })
+})
+
+router.get('/chat', (req, res)=>{
+    res.render('chat',{ title:'Chat', style: 'style.css', error: false })
 })
 
 export default router;

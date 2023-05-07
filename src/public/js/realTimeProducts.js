@@ -1,11 +1,11 @@
-// const socket = io();
+const socket = io();
 
-// socket.on('productList', data => {
+socket.on('productList', data => {
+    console.log('se deberian enviar los datos');
+    const tabla = document.querySelector('#my-container');
+    var filas = data.map(function (item) {
+        return "<tr><td>" + item._id + "</td><td>" + item.title + "</td><td>" + item.price + "</td><td>" + item.category + "</td><td>" + item.stock + "</td><td>" + item.code + "</td></tr>";
+    });
 
-//     const tabla = document.querySelector('#my-container');
-//     var filas = data.map(function (item) {
-//         return "<tr><td>" + item.id + "</td><td>" + item.title + "</td><td>" + item.price + "</td><td>" + item.stock + "</td></tr>";
-//     });
-
-//     tabla.innerHTML = filas.join("");
-// })
+    tabla.innerHTML = filas.join("");
+})
