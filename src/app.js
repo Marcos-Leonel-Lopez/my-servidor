@@ -34,8 +34,6 @@ const validationManager = new ValidationManager();
 const messageManager = new MessageManager();
 const io = new Server(server);
 
-const messages = [];
-
 io.on('connection', async client => {
 
     const result = await validationManager.getProducts();
@@ -69,6 +67,20 @@ io.on('connection', async client => {
     client.on('authenticated', data => {
         client.broadcast.emit('newUserConnected', data);
     })
+
+    client.on('takeProduct', async data_id =>{
+        const result = await validationManager.getProductById(data_id);
+        const product = result.smg.payload.map(item => item.toObject());
+        client.emit('productDetails',product);
+    })
+
+    client.on('editProduct', async (data,id) =>{
+        await validationManager.updateProduct(id, data);
+        const result = await validationManager.getProducts();
+        const products = result.smg.payload.map(item => item.toObject())
+        io.emit('productList', products);
+    })
+
 
 })
 
