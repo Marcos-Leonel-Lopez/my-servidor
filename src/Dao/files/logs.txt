@@ -70,3 +70,8 @@ Fecha: 5/9/2023 - Hora: 4:41:07 PM - Accion: Consulta el producto id: 645685b5a7
 Fecha: 5/9/2023 - Hora: 4:41:13 PM - Accion: Consulta los carritos 
 Fecha: 5/9/2023 - Hora: 4:42:48 PM - Accion: Consulta el producto id: 6456861fa77044c88de16edc 
 Fecha: 5/9/2023 - Hora: 4:42:55 PM - Accion: Consulta los carritos 
+Fecha: 5/9/2023 - Hora: 4:47:08 PM - Accion: Consulta los carritos 
+Fecha: 5/9/2023 - Hora: 4:48:04 PM - Accion: Consulta los carritos 
+Fecha: 5/9/2023 - Hora: 4:48:51 PM - Accion: Consulta los carritos 
+Fecha: 5/9/2023 - Hora: 4:49:03 PM - Accion: Consulta los carritos 
+Fecha: 5/9/2023 - Hora: 4:49:13 PM - Accion: Consulta los carritos 

@@ -18,6 +18,7 @@ router.get('/:cid', async (req, res) => {
     const cid = req.params.cid;
     const result = await cartManager.getCartById(cid);
     const {status, smg} = result;
+    console.log(JSON.stringify(smg.cart , null,"\t"));
     return res.status(status).send(smg);
 })
 
