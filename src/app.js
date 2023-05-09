@@ -6,10 +6,12 @@ import mongoose from 'mongoose';
 import productModel from './Dao/models/product.model.js';
 import messagesModel from './Dao/models/message.model.js';
 import productsRouter from './routes/products.router.js';
+import cartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js'
 import __dirname from './utils.js';
 import ValidationManager from './Dao/managers/ValidationManager.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
+import cartManager from './Dao/managers/CartManager.js';
 
 
 const PORT = process.env.PORT || 8080;
@@ -93,3 +95,4 @@ io.on('connection', async client => {
 //rutas
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
+app.use('/api/carts',cartsRouter);
