@@ -14,13 +14,18 @@ router.get('/registerProduct', (req, res) => {
 })
 
 router.get('/products', async (req,res)=>{
-    const { limit } = req.query;
-    const result = await validationManager.getProducts(limit);
+    const { limit, page = 1} = req.query;
+    let limite = 10;
+    if(limit){
+        limite = limit;
+    }
+    const result = await validationManager.getProducts(limite, page);
     const {status, smg} = result;
     if(status == 200){
+        const {payload, hasPrevPage, hasNextPage, nextPage, prevPage} = smg
         await accessManager.createRecords("Consulta los productos");
-        const products = smg.payload.map(item=>item.toObject())
-        return res.render('home', { products, title:'Productos', style: 'style.css', error: false })
+        const products = payload.map(item=>item.toObject())     
+        return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, limite,title:'Productos', style: 'style.css', error: false })
     }
     await accessManager.createRecords("Get fallido - limit menor a 0");
     return res.render('home', { title:'Productos', style: 'style.css', error: true })

@@ -27,4 +27,12 @@
     {{/each}}
             </tbody>
         </table>
+        <section>
+            {{#if hasPrevPage}}
+                <a href="/products?page={{prevPage}}&limit={{limite}}"><button>Anterior</button></a>
+            {{/if}}
+            {{#if hasNextPage}}
+                <a href="/products?page={{nextPage}}&limit={{limite}}"><button>Siguiente</button></a>
+            {{/if}}
+        </section>
     {{/if}}

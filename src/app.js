@@ -19,6 +19,14 @@ const app = express();
 //database
 const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/ecommerce?retryWrites=true&w=majority'
 const connection = mongoose.connect(MONGO);
+
+const products = [{}]
+
+
+
+
+
+
 //servicio
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());

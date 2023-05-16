@@ -5,16 +5,23 @@ const accessManager = new AccessManager();
 
 export default class ValidationManager {
 
-    getProducts = async (limit) => {
+    getProducts = async (limit, page) => {
         if (limit) {
             if (limit > 0) {
+                console.log(`hay limite ${limit}`);
                 await accessManager.createRecords(`Consulta los productos los primeros ${limit} productos`);
-                const payload = await productModel.find().limit(limit)
+                const data = await productModel.paginate({},{limit:limit, page:page}) // ({filtro},{opciones})
+                // const prueba = await productModel.aggregate([{$group: {_id:'$category', productForCategory:{ $push: "$$ROOT"}}}]);
+                // console.log(JSON.stringify(prueba, null, '\t'));
                 return {
                     status: 200,
                     smg: {
                         status: "success",
-                        payload
+                        payload:data.docs,
+                        hasPrevPage:data.hasPrevPage, 
+                        hasNextPage:data.hasNextPage, 
+                        nextPage:data.nextPage, 
+                        prevPage:data.prevPage
                     }
                 }
             }
@@ -28,12 +35,16 @@ export default class ValidationManager {
             }
         } else {
             await accessManager.createRecords("Consulta los productos");
-            const payload = await productModel.find();
+             const data = await productModel.paginate({},{limit:10, page:page})
             return {
                 status: 200,
                 smg: {
                     status: "success",
-                    payload
+                    payload:data.docs,
+                    hasPrevPage:data.hasPrevPage, 
+                    hasNextPage:data.hasNextPage, 
+                    nextPage:data.nextPage, 
+                    prevPage:data.prevPage
                 }
             }
         }
