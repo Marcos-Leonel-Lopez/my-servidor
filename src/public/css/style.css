@@ -23,8 +23,34 @@ textarea, select {
     justify-content: start;
 }
 
+#categorias{
+    display: flex;
+    list-style: none;
+    margin: 1rem;
+}
+
+#categorias li{
+    padding: 1rem;
+}
+#categorias li a , .btn-page{
+   text-decoration: none;
+   border: 0.1rem solid black;
+   border-radius: 0.5rem;
+   padding: 0.5rem;
+   color: black;
+}
+#categorias li a:hover , .btn-page:hover{
+    background-color: rgb(234, 234, 234);
+    border:  double black;
+}
+
+.btn-page{
+    margin: 1rem;
+    color: black;
+}
+
 table {
-    margin: 10em auto;
+    margin: 4em auto;
     border: 0.1em solid black;
     border-collapse: collapse;
     text-align: center;

@@ -3,6 +3,13 @@
         <h1>Error</h1>
         <p>El limit debe ser mayor a 0</p>
     {{else}}
+    <ul id="categorias">
+        <li><a href="/products?page={{page}}&limit={{limit}}&category=Entrada">Entradas</a></li>
+        <li><a href="/products?page={{page}}&limit={{limit}}&category=Principal">Platos Principales</a></li>
+        <li><a href="/products?page={{page}}&limit={{limit}}&category=Postre">Postres</a></li>
+        <li><a href="/products?page={{page}}&limit={{limit}}&category=Bebida">Bebidas</a></li>
+        <li><a href="/products">Reset</a></li>
+    </ul>
         <table >
             <thead>
                 <tr>
@@ -29,10 +36,10 @@
         </table>
         <section>
             {{#if hasPrevPage}}
-                <a href="/products?page={{prevPage}}&limit={{limite}}"><button>Anterior</button></a>
+                <a class="btn-page" href="/products?page={{prevPage}}&limit={{limit}}&category={{category}}">Anterior</a>
             {{/if}}
             {{#if hasNextPage}}
-                <a href="/products?page={{nextPage}}&limit={{limite}}"><button>Siguiente</button></a>
+                <a class="btn-page" href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
             {{/if}}
         </section>
     {{/if}}
