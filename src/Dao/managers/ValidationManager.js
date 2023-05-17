@@ -4,7 +4,7 @@ import productModel from "../models/product.model.js";
 const accessManager = new AccessManager();
 
 export default class ValidationManager {
-    getProducts = async (limit, page, category, stock, sort) => {
+    getProductsPage = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
           await accessManager.createRecords("Get fallido - limit menor a 0");
           return {
@@ -55,136 +55,39 @@ export default class ValidationManager {
       };
       
 
-
-
-
-
-    // getProducts = async (limit, page, category, stock) => {
-    //     if (limit <= 0) {
-    //       await accessManager.createRecords("Get fallido - limit menor a 0");
-    //       return {
-    //         status: 400,
-    //         smg: {
-    //           status: "error",
-    //           error: `Limite debe ser mayor a 0(cero)`
-    //         }
-    //       };
-    //     }
-      
-    //     await accessManager.createRecords(`Consulta los productos`);
-      
-    //     let filter = {};
-    //     let sort = {};
-    //     if (category != 'all') {
-    //       filter.category = category;
-    //       sort.price = -1;
-    //     }
-      
-    //     if (stock != 'all') {
-    //       filter.status = stock;
-    //       sort.price = 1;
-    //     }
-    //     const data = await productModel.paginate(filter, { limit, page, sort });
-    //     const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
-    //     const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
-    //     return {
-    //       status: 200,
-    //       smg: {
-    //         status: "success",
-    //         payload: data.docs,
-    //         totalPages: data.totalPages,
-    //         prevPage: data.prevPage,
-    //         nextPage: data.nextPage,
-    //         hasPrevPage: data.hasPrevPage,
-    //         hasNextPage: data.hasNextPage,
-    //         prevLink,
-    //         nextLink
-    //       }
-    //     };
-    //   };
-      
-      
-      
-      
-      
-      
-
-    // getProducts = async (limit, page, category, stock) => {
-    //     console.log(stock);
-        
-    //     let data = undefined;
-    //     let prevLink='';
-    //     let nextLink='';
-    //         if (limit > 0) {
-    //             await accessManager.createRecords(`Consulta los productos`);
-    //             if(category != 'all' && stock == 'all'){    
-    //                 data = await productModel.paginate({category:category},{limit:limit, page:page, sort:{price:-1}})
-    //                 prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}` : null;
-    //                 nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}` : null;
-    //             }else if(category == 'all' && stock != 'all'){
-    //                 data = await productModel.paginate({status:stock},{limit:limit, page:page})
-    //                 prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&stock=${stock}` : null;
-    //                 nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&stock=${stock}` : null;
-    //             }else{
-    //                 data = await productModel.paginate({},{limit:limit, page:page});
-    //                 prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}` : null;
-    //                 nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}` : null
-    //             }
-    //             // ({filtro},{opciones})
-    //             // const prueba = await productModel.aggregate([{$group: {_id:'$category', productForCategory:{ $push: "$$ROOT"}}}]);
-    //             // console.log(JSON.stringify(prueba, null, '\t'));
-    //             return {
-    //                 status: 200,
-    //                 smg: {
-    //                     status: "success",
-    //                     payload:data.docs,
-    //                     totalPages:data.totalPages,
-    //                     prevPage:data.prevPage,
-    //                     nextPage:data.nextPage, 
-    //                     hasPrevPage:data.hasPrevPage, 
-    //                     hasNextPage:data.hasNextPage,
-    //                     prevLink,
-    //                     nextLink
-                        
-                        
-    //                 }
-    //             }
-    //         }
-    //         await accessManager.createRecords("Get fallido - limit menor a 0");
-    //         return {
-    //             status: 400,
-    //             smg: {
-    //                 status: "error",
-    //                 error: `Limite debe ser mayor a 0(cero)`
-    //             }
-    //         }
-    //     // } 
-    //     // else {
-    //     //     await accessManager.createRecords("Consulta los productos");
-    //     //     console.log('pasa por el 2do');
-            
-    //     //     //  const data = await productModel.paginate({category:category},{limit:10, page:page})
-    //     //      if(category != 'all'){
-    //     //         data = await productModel.paginate({category:category},{limit:10, page:page})
-    //     //     }
-    //     //     else{
-    //     //         data = await productModel.paginate({},{limit:10, page:page})
-    //     //     }
-    //     //     return {
-    //     //         status: 200,
-    //     //         smg: {
-    //     //             status: "success",
-    //     //             payload:data.docs,
-    //     //             hasPrevPage:data.hasPrevPage, 
-    //     //             hasNextPage:data.hasNextPage, 
-    //     //             nextPage:data.nextPage, 
-    //     //             prevPage:data.prevPage
-    //     //         }
-    //     //     }
-    //     // }
-    // };
-
-
+    getProducts = async (limit) => {
+        if (limit) {
+            if (limit > 0) {
+                await accessManager.createRecords(`Consulta los productos los primeros ${limit} productos`);
+                const payload = await productModel.find().limit(limit)
+                return {
+                    status: 200,
+                    smg: {
+                        status: "success",
+                        payload
+                    }
+                }
+            }
+            await accessManager.createRecords("Get fallido - limit menor a 0");
+            return {
+                status: 400,
+                smg: {
+                    status: "error",
+                    error: `Limite debe ser mayor a 0(cero)`
+                }
+            }
+        } else {
+            await accessManager.createRecords("Consulta los productos");
+            const payload = await productModel.find();
+            return {
+                status: 200,
+                smg: {
+                    status: "success",
+                    payload
+                }
+            }
+        }
+    };
     getProductById = async (id) => {
         const payload = await productModel.find({ _id: id });
         if (payload.length > 0) {

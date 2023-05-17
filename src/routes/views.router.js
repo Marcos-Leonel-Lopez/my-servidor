@@ -15,7 +15,7 @@ router.get('/registerProduct', (req, res) => {
 
 router.get('/products', async (req,res)=>{
     const { limit = 10, page = 1, category = 'all', stock = 'all', sort = 'none'} = req.query;
-    const result = await validationManager.getProducts(limit, page, category, stock, sort);
+    const result = await validationManager.getProductsPage(limit, page, category, stock, sort);
     const {status, smg} = result;
     if(status == 200){
         const {payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink} = smg;
