@@ -23,23 +23,44 @@ textarea, select {
     justify-content: start;
 }
 
-#categorias{
+#limitForm{
     display: flex;
-    list-style: none;
-    margin: 1rem;
+    align-items: baseline;
+    margin: 1.5rem 0 0 1.5rem;
+    padding: 0.5rem;
+    
+}
+#limitForm section{
+    border: 0.1rem solid black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 }
 
-#categorias li{
+
+
+.categorias{
+    display: flex;
+    list-style: none;
+    margin: 0 1rem;
+}
+
+.categorias li{
     padding: 1rem;
 }
-#categorias li a , .btn-page{
+.categorias li a , .btn-page{
    text-decoration: none;
    border: 0.1rem solid black;
    border-radius: 0.5rem;
    padding: 0.5rem;
    color: black;
 }
-#categorias li a:hover , .btn-page:hover{
+
+.btn-add{
+    border: 0.1rem solid black;
+   border-radius: 0.5rem;
+   padding: 0.5rem;
+}
+.categorias li a:hover , .btn-page:hover{
     background-color: rgb(234, 234, 234);
     border:  double black;
 }
@@ -50,15 +71,15 @@ textarea, select {
 }
 
 table {
-    margin: 4em auto;
-    border: 0.1em solid black;
+    margin: 1rem auto;
+    border: 0.1rem solid black;
     border-collapse: collapse;
     text-align: center;
 }
 
 td,
 th {
-    border: 0.1em solid black;
+    border: 0.1rem solid black;
     padding: 8px;
 
 }
