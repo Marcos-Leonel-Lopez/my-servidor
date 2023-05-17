@@ -221,12 +221,4 @@ export default class cartManager {
       };
       
 
-
-
-
-
-
-
-
-
 }
