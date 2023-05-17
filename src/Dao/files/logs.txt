@@ -194,3 +194,6 @@ Fecha: 5/17/2023 - Hora: 7:58:49 PM - Accion: Consulta los productos
 Fecha: 5/17/2023 - Hora: 7:58:50 PM - Accion: Consulta los productos 
 Fecha: 5/17/2023 - Hora: 7:58:55 PM - Accion: Consulta los productos 
 Fecha: 5/17/2023 - Hora: 7:58:55 PM - Accion: Consulta los productos 
+Fecha: 5/17/2023 - Hora: 8:11:18 PM - Accion: Consulta los carritos 
+Fecha: 5/17/2023 - Hora: 8:34:50 PM - Accion: Consulta los productos 
+Fecha: 5/17/2023 - Hora: 8:34:50 PM - Accion: Consulta los productos 

@@ -73,12 +73,13 @@ textarea, select {
     color: black;
 }
 
-table {
+table{
     margin: 1rem auto;
     border: 0.1rem solid black;
     border-collapse: collapse;
     text-align: center;
 }
+
 
 td,
 th {
@@ -106,3 +107,4 @@ tbody tr:hover {
 #messageLogs{
     color: black;
 }
+

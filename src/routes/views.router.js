@@ -2,9 +2,11 @@ import { Router } from "express";
 import AccessManager from "../Dao/managers/AccessManager.js";
 import productModel from "../Dao/models/product.model.js";
 import ValidationManager from "../Dao/managers/ValidationManager.js";
+import CartManager from "../Dao/managers/CartManager.js";
 
 const accessManager = new AccessManager();
 const validationManager = new ValidationManager();
+const cartManager = new CartManager();
 
 
 const router = Router();
@@ -32,7 +34,17 @@ router.get('/realtimeproducts', async (req,res)=>{
 })
 
 router.get('/chat', (req, res)=>{
-    res.render('chat',{ title:'Chat', style: 'style.css', error: false })
+    return res.render('chat',{ title:'Chat', style: 'style.css', error: false })
+})
+
+router.get('/carts/:cid', async (req, res)=>{
+        const cid = req.params.cid;
+        const result = await cartManager.getCartById(cid);
+        const { status, smg } = result;
+        const theCart = smg.cart.products.map(item=>item.toObject())
+        theCart.map(el => console.log(el.productId.title, el.quantity));
+        return res.render('cart', {cid, theCart, title:'Carrito', style: 'style.css'})
+
 })
 
 export default router;

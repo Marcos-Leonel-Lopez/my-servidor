@@ -92,7 +92,7 @@ export default class cartManager {
             );
 
             if (cart) {
-                // Stock validation and update
+               
                 const stockUpdate = await validationManager.updateStock(pid, 1);
                 if (stockUpdate.status !== 200) {
                     return stockUpdate;
