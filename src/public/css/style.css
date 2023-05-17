@@ -73,7 +73,7 @@ textarea, select {
     color: black;
 }
 
-table{
+table, #tablaCarrito{
     margin: 1rem auto;
     border: 0.1rem solid black;
     border-collapse: collapse;
