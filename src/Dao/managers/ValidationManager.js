@@ -4,8 +4,7 @@ import productModel from "../models/product.model.js";
 const accessManager = new AccessManager();
 
 export default class ValidationManager {
-
-    getProducts = async (limit, page, category, stock) => {
+    getProducts = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
           await accessManager.createRecords("Get fallido - limit menor a 0");
           return {
@@ -20,19 +19,25 @@ export default class ValidationManager {
         await accessManager.createRecords(`Consulta los productos`);
       
         let filter = {};
-        let sort = {};
-        if (category != 'all') {
+        let sortOrder = sort === '-1' ? -1 : 1;
+        let sortOption = {};
+      
+        if (category !== 'all') {
           filter.category = category;
-          sort.price = -1;
+          sortOption.price = sortOrder;
         }
       
-        if (stock != 'all') {
+        if (stock !== 'all') {
           filter.status = stock;
-          sort.price = 1;
+          sortOption.price = sortOrder;
         }
-        const data = await productModel.paginate(filter, { limit, page, sort });
-        const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
-        const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
+
+        if(sort !== 'none'){
+            sortOption.price = sortOrder;
+        }
+        const data = await productModel.paginate(filter, { limit, page, sort: sortOption });
+        const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
+        const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
         return {
           status: 200,
           smg: {
@@ -48,6 +53,55 @@ export default class ValidationManager {
           }
         };
       };
+      
+
+
+
+
+
+    // getProducts = async (limit, page, category, stock) => {
+    //     if (limit <= 0) {
+    //       await accessManager.createRecords("Get fallido - limit menor a 0");
+    //       return {
+    //         status: 400,
+    //         smg: {
+    //           status: "error",
+    //           error: `Limite debe ser mayor a 0(cero)`
+    //         }
+    //       };
+    //     }
+      
+    //     await accessManager.createRecords(`Consulta los productos`);
+      
+    //     let filter = {};
+    //     let sort = {};
+    //     if (category != 'all') {
+    //       filter.category = category;
+    //       sort.price = -1;
+    //     }
+      
+    //     if (stock != 'all') {
+    //       filter.status = stock;
+    //       sort.price = 1;
+    //     }
+    //     const data = await productModel.paginate(filter, { limit, page, sort });
+    //     const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
+    //     const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}` : null;
+    //     return {
+    //       status: 200,
+    //       smg: {
+    //         status: "success",
+    //         payload: data.docs,
+    //         totalPages: data.totalPages,
+    //         prevPage: data.prevPage,
+    //         nextPage: data.nextPage,
+    //         hasPrevPage: data.hasPrevPage,
+    //         hasNextPage: data.hasNextPage,
+    //         prevLink,
+    //         nextLink
+    //       }
+    //     };
+    //   };
       
       
       

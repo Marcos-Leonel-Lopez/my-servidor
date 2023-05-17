@@ -37,7 +37,10 @@ textarea, select {
 }
 
 
-
+.title{
+    display: flex;
+    align-items: baseline;
+}
 .categorias{
     display: flex;
     list-style: none;

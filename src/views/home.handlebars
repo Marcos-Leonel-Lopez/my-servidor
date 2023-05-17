@@ -21,9 +21,19 @@
   <li><a href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=true">Disponibles</a></li>
   <li><a href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=false">No Disponibles</a></li>
 </ul>
-<ul class="categorias">
+<ul class="categorias title">
   <li><a href="/products">Reset</a></li>
+  <li><h2>{{totalPages}}</h2></li>
 </ul>
+<ul class="categorias">
+    <li>
+       <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=-1">Ordenar Descendente</a> 
+    </li>
+    <li>
+        <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=1">Ordenar Ascendente</a>
+    </li>
+</ul>
+
 
 
 
