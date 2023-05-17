@@ -92,7 +92,11 @@ export default class cartManager {
             );
 
             if (cart) {
-                console.log('se actualizó');
+                // Stock validation and update
+                const stockUpdate = await validationManager.updateStock(pid, 1);
+                if (stockUpdate.status !== 200) {
+                    return stockUpdate;
+                }
                 return {
                     status: 200,
                     smg: {
@@ -101,11 +105,18 @@ export default class cartManager {
                     }
                 };
             }
+
             const updatedCart = await cartModel.findByIdAndUpdate(
                 cid,
                 { $push: { products: { productId: pid, quantity: 1 } } },
                 { new: true }
             );
+
+            // Stock validation and update
+            const stockUpdate = await validationManager.updateStock(pid, 1);
+            if (stockUpdate.status !== 200) {
+                return stockUpdate;
+            }
 
             return {
                 status: 200,
@@ -149,76 +160,94 @@ export default class cartManager {
 
     }
 
-    updateProductQuantity = async (cid, pid, quantity) => {
+    updateProductQuantity = async (cid, pid, cantidad) => {
         try {
-            if (typeof quantity !== 'number' || quantity <= 0) {
+            if (typeof cantidad !== 'number' || cantidad <= 0) {
                 return {
                     status: 400,
                     smg: {
-                      status: "error",
-                      error: "La cantidad debe ser un número positivo"
+                        status: "error",
+                        error: "La cantidad debe ser un número positivo"
                     }
-                  }
-              }
-          const updatedCart = await cartModel.findOneAndUpdate(
-            { _id: cid, "products.productId": pid },
-            { $set: { "products.$.quantity": quantity } },
-            { new: true }
-          );
-          if (updatedCart) {
+                };
+            }
+            const stockUpdate = await validationManager.updateStock(pid, cantidad);
+            if (stockUpdate.status !== 200) {
+                return stockUpdate;
+            }
+            const cart = await cartModel.findOne({ _id: cid });
+            if (!cart) {
+                return {
+                    status: 400,
+                    smg: {
+                        status: "error",
+                        error: `El carrito con id:${cid} no existe`
+                    }
+                };
+            }
+            const productIndex = cart.products.findIndex(product => product.productId == pid);
+            if (productIndex === -1) {
+                return {
+                    status: 400,
+                    smg: {
+                        status: "error",
+                        error: `El producto con id:${pid} no se encontró en el carrito con id:${cid}`
+                    }
+                };
+            }
+            const product = cart.products[productIndex];
+            const updatedQuantity = product.quantity + cantidad;
+            product.quantity = updatedQuantity;
+            await cart.save();
             return {
-              status: 200,
-              smg: {
-                status: "success",
-                result: updatedCart
-              }
+                status: 200,
+                smg: {
+                    status: "success",
+                    result: cart
+                }
             };
-          }
-          return {
-            status: 400,
-            smg: {
-              status: "error",
-              error: `El producto con id:${pid} no se encontró en el carrito con id:${cid}`
-            }
-          };
         } catch (error) {
-          return {
-            status: 500,
-            smg: {
-              status: "error",
-              error: error.message
-            }
-          };
+            return {
+                status: 500,
+                smg: {
+                    status: "error",
+                    error: error.message
+                }
+            };
         }
-      };
-      
+    };
 
 
-      deleteAllProductsFromCart = async (cid) => {
+
+
+
+
+
+    deleteAllProductsFromCart = async (cid) => {
         try {
-          const updatedCart = await cartModel.findByIdAndUpdate(
-            cid,
-            { $set: { products: [] } },
-            { new: true }
-          );
-      
-          return {
-            status: 200,
-            smg: {
-              status: "success",
-              result: updatedCart
-            }
-          };
+            const updatedCart = await cartModel.findByIdAndUpdate(
+                cid,
+                { $set: { products: [] } },
+                { new: true }
+            );
+
+            return {
+                status: 200,
+                smg: {
+                    status: "success",
+                    result: updatedCart
+                }
+            };
         } catch (error) {
-          return {
-            status: 500,
-            smg: {
-              status: "error",
-              error: error.message
-            }
-          };
+            return {
+                status: 500,
+                smg: {
+                    status: "error",
+                    error: error.message
+                }
+            };
         }
-      };
-      
+    };
+
 
 }

@@ -6,54 +6,54 @@ const accessManager = new AccessManager();
 export default class ValidationManager {
     getProductsPage = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
-          await accessManager.createRecords("Get fallido - limit menor a 0");
-          return {
-            status: 400,
-            smg: {
-              status: "error",
-              error: `Limite debe ser mayor a 0(cero)`
-            }
-          };
+            await accessManager.createRecords("Get fallido - limit menor a 0");
+            return {
+                status: 400,
+                smg: {
+                    status: "error",
+                    error: `Limite debe ser mayor a 0(cero)`
+                }
+            };
         }
-      
+
         await accessManager.createRecords(`Consulta los productos`);
-      
+
         let filter = {};
         let sortOrder = sort === '-1' ? -1 : 1;
         let sortOption = {};
-      
+
         if (category !== 'all') {
-          filter.category = category;
-          sortOption.price = sortOrder;
-        }
-      
-        if (stock !== 'all') {
-          filter.status = stock;
-          sortOption.price = sortOrder;
+            filter.category = category;
+            sortOption.price = sortOrder;
         }
 
-        if(sort !== 'none'){
+        if (stock !== 'all') {
+            filter.status = stock;
+            sortOption.price = sortOrder;
+        }
+
+        if (sort !== 'none') {
             sortOption.price = sortOrder;
         }
         const data = await productModel.paginate(filter, { limit, page, sort: sortOption });
         const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
         const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
         return {
-          status: 200,
-          smg: {
-            status: "success",
-            payload: data.docs,
-            totalPages: data.totalPages,
-            prevPage: data.prevPage,
-            nextPage: data.nextPage,
-            hasPrevPage: data.hasPrevPage,
-            hasNextPage: data.hasNextPage,
-            prevLink,
-            nextLink
-          }
+            status: 200,
+            smg: {
+                status: "success",
+                payload: data.docs,
+                totalPages: data.totalPages,
+                prevPage: data.prevPage,
+                nextPage: data.nextPage,
+                hasPrevPage: data.hasPrevPage,
+                hasNextPage: data.hasNextPage,
+                prevLink,
+                nextLink
+            }
         };
-      };
-      
+    };
+
 
     getProducts = async (limit) => {
         if (limit) {
@@ -201,14 +201,6 @@ export default class ValidationManager {
     }
 
 
-
-
-
-
-
-
-
-
     codeRepeat = async (code) => {
         let result = await productModel.find({ code: code });
         if (result.length > 0) {
@@ -246,6 +238,53 @@ export default class ValidationManager {
         };
         return editValues;
     }
+
+    updateStock = async (productId, quantity) => {
+        try {
+          const product = await productModel.findById(productId);
+          if (!product) {
+            return {
+              status: 400,
+              smg: {
+                status: "error",
+                error: `El producto con id:${productId} no existe`,
+              },
+            };
+          }
+          const updatedStock = product.stock - quantity;
+          if (updatedStock < 0) {
+            return {
+              status: 400,
+              smg: {
+                status: "error",
+                error: `No hay suficiente stock disponible para agregar ${quantity} productos`,
+              },
+            };
+          }
+      
+          product.stock = updatedStock;
+          product.status = updatedStock > 0;
+      
+          await product.save();
+      
+          return {
+            status: 200,
+            smg: {
+              status: "success",
+              message: `Se actualizó el stock del producto con id:${productId}`,
+            },
+          };
+        } catch (error) {
+          return {
+            status: 500,
+            smg: {
+              status: "error",
+              error: error.message,
+            },
+          };
+        }
+      };
+      
 
 
 }
