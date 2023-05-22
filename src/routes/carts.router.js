@@ -28,50 +28,6 @@ router.post('/', async (req, res)=>{
      return res.status(status).send(smg);
 })
 
-
-// router.post('/:cid/product/:pid', async (req, res) => {
-//     const cid = req.params.cid;
-//     const pid = req.params.pid;
-//     const cart = await cartManager.getCartById(cid);
-//     if (cart.status !== 200){
-//         return res.status(cart.status).send(cart.smg);  
-//     }else{
-//         const product = await validationManager.getProductById(pid);
-//         if(product.status !== 200){
-//             return res.status(product.status).send(product.smg);
-//         }else{
-//             const add = await cartManager.addProductToCart(cid, pid);
-//             const {status, smg} = add;
-//             return res.status(status).send(smg);
-//         }
-//     }
-// })
-
-
-
-
-// router.post('/:cid/product/:pid', async (req, res) => {
-//     try {
-//       const cid = req.params.cid;
-//       const pid = req.params.pid;
-  
-//       const cart = await cartManager.getCartById(cid);
-//       if (cart.status !== 200) {
-//         throw new Error(cart.smg.error);
-//       }
-  
-//       const product = await validationManager.getProductById(pid);
-//       if (product.status !== 200) {
-//         throw new Error(product.smg.error);
-//       }
-      
-//       const add = await cartManager.addProductToCart(cid, pid);
-//       return res.status(add.status).send(add.smg);
-//     } catch (error) {
-//       return res.status(500).send(error.message);
-//     }
-//   });
-
 router.post('/:cid/product/:pid', async (req, res) => {
     try {
       const cid = req.params.cid;
@@ -97,32 +53,6 @@ router.put('/:cid/product/:pid', async (req, res) =>{
         return res.status(500).send(error.message);
       }
 })
-  
-
-
-
-
-
-
-
-// router.delete('/:cid/product/:pid', async (req, res) => {
-//     const cid = req.params.cid;
-//     const pid = req.params.pid;
-//     const cart = await cartManager.getCartById(cid);
-//     if (cart.status !== 200){
-//         return res.status(cart.status).send(cart.smg);  
-//     }else{
-//         const product = await validationManager.getProductById(pid);
-//         if(product.status !== 200){
-//             return res.status(product.status).send(product.smg);
-//         }else{
-//             // producto y carrito existente
-//             // porducto dentro del carrito?
-//             const newCart = await cartManager.deleteProductOnCart(cid,pid)
-//             return res.status(newCart.status).send(newCart.smg);
-//         }
-//     }
-// })
 
 router.delete('/:cid/product/:pid', async (req, res) => {
     try {
@@ -135,7 +65,6 @@ router.delete('/:cid/product/:pid', async (req, res) => {
       return res.status(500).send(error.message);
     }
 });
-
 
 router.delete('/:cid', async (req, res) =>{
     try{
