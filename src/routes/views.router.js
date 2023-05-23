@@ -43,8 +43,8 @@ router.get('/carts/:cid', async (req, res)=>{
         const { status, smg } = result;
         const theCart = smg.cart.products.map(item=>item.toObject())
         theCart.map(el => console.log(el.productId.title, el.quantity));
-        return res.render('cart', {cid, theCart, title:'Carrito', style: 'style.css'})
-
+        return res.render('cart',{cid, theCart, title:'Carrito', style: 'style.css' })
 })
+
 
 export default router;

@@ -2,20 +2,29 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import MongoStore from 'connect-mongo';
 
+
+import __dirname from './utils.js';
 import productModel from './Dao/models/product.model.js';
 import messagesModel from './Dao/models/message.model.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js'
-import __dirname from './utils.js';
+import cookieRouter from './routes/cookie.router.js'
 import ValidationManager from './Dao/managers/ValidationManager.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import cartManager from './Dao/managers/CartManager.js';
 
 
+
+
 const PORT = process.env.PORT || 8080;
+
 const app = express();
+
 //database
 const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/ecommerce?retryWrites=true&w=majority'
 const connection = mongoose.connect(MONGO);
@@ -28,9 +37,16 @@ const products = [{}]
 
 
 //servicio
-app.use(express.static(__dirname + '/public'));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+app.use(session({
+    
+    secret:'SecretCode',
+    resave:true,
+    saveUninitialized:true
+}))
 //vistas
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
@@ -104,3 +120,27 @@ io.on('connection', async client => {
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
+
+
+//crea la cookie
+// app.get('/',(req,res)=>{
+//     res.render('cookies')
+// })
+// app.post('/cookie',(req,res)=>{
+//     const data = req.body;
+//     res.cookie('CoderCookie', data, {maxAge:10000}).send({status:'success',msg:'cookie set'})
+// })
+
+
+//abre una session
+// let contador = 1;
+// app.get('/',(req,res)=>{
+//     const nombre = req.query.name;
+//     if(!req.session.user){
+//         req.session.user = {nombre};
+//         return res.send(`Bienvenido ${req.session.user.nombre}`)
+//     }
+//     else{
+//         return res.send(`Hola ${req.session.user.nombre}. Visitaste la ruta ${++contador} veces`)
+//     }
+// })
