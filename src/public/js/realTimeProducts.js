@@ -1,7 +1,6 @@
 const socket = io();
 
 socket.on('productList', data => {
-    console.log('se deberian enviar los datos');
     const tabla = document.querySelector('#my-container');
     var filas = data.map(function (item) {
         return "<tr><td>" + item._id + "</td><td>" + item.title + "</td><td>" + item.price + "</td><td>" + item.category + "</td><td>" + item.stock + "</td><td>" + item.code + "</td></tr>";

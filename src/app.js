@@ -12,8 +12,9 @@ import productModel from './Dao/models/product.model.js';
 import messagesModel from './Dao/models/message.model.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
-import viewsRouter from './routes/views.router.js'
-import cookieRouter from './routes/cookie.router.js'
+import sessionsRouter from './routes/sessions.router.js';
+import viewsRouter from './routes/views.router.js';
+import cookieRouter from './routes/cookie.router.js';
 import ValidationManager from './Dao/managers/ValidationManager.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import cartManager from './Dao/managers/CartManager.js';
@@ -26,7 +27,8 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 //database
-const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/ecommerce?retryWrites=true&w=majority'
+const DB = 'ecommerce'
+const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/'+DB;
 const connection = mongoose.connect(MONGO);
 
 const products = [{}]
@@ -42,10 +44,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
-    
+    store: new MongoStore({
+        mongoUrl:MONGO,
+        ttl:360
+    }),
     secret:'SecretCode',
-    resave:true,
-    saveUninitialized:true
+    resave:true, // true or false?
+    saveUninitialized:true // true or false? 
 }))
 //vistas
 app.engine('handlebars', handlebars.engine());
@@ -60,6 +65,8 @@ const validationManager = new ValidationManager();
 const messageManager = new MessageManager();
 const io = new Server(server);
 
+
+// productos en tiempo real
 io.on('connection', async client => {
 
     const result = await validationManager.getProducts();
@@ -120,6 +127,7 @@ io.on('connection', async client => {
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
+app.use('/api/sessions',sessionsRouter);
 
 
 //crea la cookie
@@ -143,4 +151,14 @@ app.use('/api/carts',cartsRouter);
 //     else{
 //         return res.send(`Hola ${req.session.user.nombre}. Visitaste la ruta ${++contador} veces`)
 //     }
+// })
+
+//persistencia de session en Mongo
+// app.get('/',(req,res)=>{
+//     req.session.user = 'Active Session';
+//     res.send('Session Set');
+// })
+
+// app.get('/test',(req,res)=>{
+//     res.send(req.session.user)
 // })

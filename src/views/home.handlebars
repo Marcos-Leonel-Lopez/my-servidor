@@ -1,38 +1,86 @@
-{{#if error}}
-<h1>Error</h1>
-<p>El limit debe ser mayor a 0</p>
-{{else}}
-<form id="limitForm" method="get" action="/products">
-<section>
-    <label for="limitInput">Limit:</label>
-    <input type="number" id="limitInput" name="limit" value="{{limit}}" min="1">
-</section>
-    
-    <input class="btn-add" type="submit" value="Submit">
-</form>
+<section id="panel">
+    <section>
+        {{#if error}}
+        <h1>Error</h1>
+        <p>El limit debe ser mayor a 0</p>
+        {{else}}
+        <form id="limitForm" method="get" action="/products">
+            <section>
+                <label for="limitInput">Limit:</label>
+                <input type="number" id="limitInput" name="limit" value="{{limit}}" min="1">
+            </section>
 
-<ul class="categorias">
-  <li><a href="/products?page={{page}}&limit={{limit}}&category=Entrada{{#if stock}}&stock={{stock}}{{/if}}">Entradas</a></li>
-  <li><a href="/products?page={{page}}&limit={{limit}}&category=Principal{{#if stock}}&stock={{stock}}{{/if}}">Platos Principales</a></li>
-  <li><a href="/products?page={{page}}&limit={{limit}}&category=Postre{{#if stock}}&stock={{stock}}{{/if}}">Postres</a></li>
-  <li><a href="/products?page={{page}}&limit={{limit}}&category=Bebida{{#if stock}}&stock={{stock}}{{/if}}">Bebidas</a></li>
-</ul>
-<ul class="categorias">
-  <li><a href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=true">Disponibles</a></li>
-  <li><a href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=false">No Disponibles</a></li>
-</ul>
-<ul class="categorias title">
-  <li><a href="/products">Reset</a></li>
-  <li><h4>Paginas totales: {{totalPages}}</h4></li>
-</ul>
-<ul class="categorias">
-    <li>
-       <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=-1">Ordenar Descendente</a> 
-    </li>
-    <li>
-        <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=1">Ordenar Ascendente</a>
-    </li>
-</ul>
+            <input class="btn-add" type="submit" value="Submit">
+        </form>
+
+        <ul class="categorias">
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&category=Entrada{{#if stock}}&stock={{stock}}{{/if}}">Entradas</a>
+            </li>
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&category=Principal{{#if stock}}&stock={{stock}}{{/if}}">Platos
+                    Principales</a></li>
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&category=Postre{{#if stock}}&stock={{stock}}{{/if}}">Postres</a>
+            </li>
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&category=Bebida{{#if stock}}&stock={{stock}}{{/if}}">Bebidas</a>
+            </li>
+        </ul>
+        <ul class="categorias">
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=true">Disponibles</a>
+            </li>
+            <li><a
+                    href="/products?page={{page}}&limit={{limit}}&{{#if category}}category={{category}}{{/if}}&stock=false">No
+                    Disponibles</a></li>
+        </ul>
+        <ul class="categorias title">
+            <li><a href="/products">Reset</a></li>
+            <li>
+                <h4>Paginas totales: {{totalPages}}</h4>
+            </li>
+        </ul>
+        <ul class="categorias">
+            <li>
+                <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=-1">Ordenar
+                    Descendente</a>
+            </li>
+            <li>
+                <a href="/products?page={{page}}&limit={{limit}}&category={{category}}&stock={{stock}}&sort=1">Ordenar
+                    Ascendente</a>
+            </li>
+        </ul>
+        {{/if}}
+    </section>
+    <section>
+        {{#if userName}}
+        <section id="bienvenida">
+            <h2>Bienvenido <a href="/profile">{{userName}}</a></h2>
+            <ul class="categorias">
+                <li>
+                    <a class="btn-page" href="/api/sessions/logout">Salir</a>
+                </li>
+                {{#if userRole }}
+                <li>
+                    <a id="admin" href="">ADMIN</a>
+                </li>
+                {{/if}}
+            </ul>
+        </section>
+
+        {{else}}
+        <ul class="categorias">
+            <li>
+                <a href="/login">Entrar</a>
+            </li>
+            <li>
+                <a href="/register">Registrarme</a>
+            </li>
+        </ul>
+        {{/if}}
+    </section>
+</section>
 
 <table>
     <thead>
@@ -46,6 +94,7 @@
         </tr>
     </thead>
     <tbody>
+        {{#if products}}
         {{#each products}}
         <tr>
             <td>{{this._id}}</td>
@@ -57,6 +106,17 @@
             <th><button class="btn-add" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add Cart</button></th>
         </tr>
         {{/each}}
+        {{else}}
+        <tr>
+            <td> -- </td>
+            <td> -- </td>
+            <td> -- </td>
+            <td> -- </td>
+            <td> -- </td>
+            <td> -- </td>
+            <th> -- </th>
+        </tr>
+        {{/if}}
     </tbody>
 </table>
 <section>
@@ -69,4 +129,3 @@
     --}}
     {{/if}}
 </section>
-{{/if}}
