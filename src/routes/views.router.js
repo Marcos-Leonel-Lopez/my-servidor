@@ -38,14 +38,14 @@ router.get('/products', async (req,res)=>{
     const userName = req.session.user?.name;
     let userRole = false;
     // verificando por role
-    // if(req.session.user?.role == 'admin'){
-    //     userRole = true;
-    // }
-
-    // verificando por mail
-    if(req.session.user?.mail == 'adminCoder@coder.com'){
+    if(req.session.user?.role == 'admin'){
         userRole = true;
     }
+
+    // verificando por mail
+    // if(req.session.user?.mail == 'adminCoder@coder.com'){
+    //     userRole = true;
+    // }
     
 
     const {status, smg} = result;

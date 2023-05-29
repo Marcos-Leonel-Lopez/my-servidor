@@ -1,5 +1,6 @@
 import { Router } from "express";
 import userModel from "../Dao/models/user.model.js";
+import {createHash, validatePass} from '../utils.js';
 
 const router = Router();
 
@@ -13,7 +14,7 @@ router.post('/register', async (req, res) => {
             error: 'Usuario existente'
         })
     }
-    const user = {first_name, last_name, mail, age, password};
+    const user = {first_name, last_name, mail, age, password: createHash(password)};
     const result = await userModel.create(user);
     return res.status(200).send({
         status: 'success',
@@ -25,13 +26,25 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const {mail, password}=req.body;
-    const user = await userModel.findOne({mail, password});
+
+    const user = await userModel.findOne({mail});
     if(!user){
         return res.status(400).send({
             status: 'error',
             error: 'Datos incorrectos'
         })
     }
+
+    const isValidPass = validatePass(password, user);
+    if(!isValidPass){
+        return res.status(401).send({
+            status: 'error',
+            error: 'Datos incorrectos'
+        })
+    }
+
+
+
     req.session.user = {
         name: `${user.first_name} ${user.last_name}`,
         mail: `${user.mail}`,
