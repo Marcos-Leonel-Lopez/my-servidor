@@ -88,5 +88,9 @@ router.get('/profile', privateAccess, (req,res)=>{
     res.render('profile',{user: req.session.user , title:'Mi Perfil', style: 'style.css'})
 })
 
+router.get('/resetPassword', (req,res)=>{
+    res.render('resetPassword', {title:'Reestablecer contraseña', style: 'style.css'})
+})
+
 
 export default router;

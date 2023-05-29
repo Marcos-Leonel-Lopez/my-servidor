@@ -11,7 +11,7 @@ router.post('/register', async (req, res) => {
     if (exist) {
         return res.status(400).send({
             status: 'error',
-            error: 'Usuario existente'
+            smg: 'Usuario existente'
         })
     }
     const user = {first_name, last_name, mail, age, password: createHash(password)};
@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     if(!user){
         return res.status(400).send({
             status: 'error',
-            error: 'Datos incorrectos'
+            smg: 'Datos incorrectos'
         })
     }
 
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
     if(!isValidPass){
         return res.status(401).send({
             status: 'error',
-            error: 'Datos incorrectos'
+            smg: 'Datos incorrectos'
         })
     }
 
@@ -65,6 +65,30 @@ router.get('/logout', (req,res)=>{
             smg: 'No se pudo cerrar sesion'
         })
         res.redirect('/login')
+    })
+});
+
+router.post('/restartPassword', async (req, res)=>{
+    const {mail, password} = req.body;
+    if(!mail || !password){
+        return res.status(400).send({
+            stauts: 'error',
+            smg: 'datos incorrectos'
+        })
+    }
+    const user = await userModel.findOne({mail});
+    if(!user){
+        return res.status(400).send({
+            stauts: 'error',
+            smg: 'datos incorrectos'
+        })
+    }
+
+    const newHashedPass = createHash(password);
+    await userModel.updateOne({_id:user._id},{$set:{password:newHashedPass}});
+    res.status(200).send({
+        stauts: 'success',
+        smg: 'contraseña actualizado'
     })
 })
 
