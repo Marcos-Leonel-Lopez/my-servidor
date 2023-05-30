@@ -3,25 +3,20 @@ const userCollection = 'users' // el nombre de la coleccion
 
 const userSchema = new mongoose.Schema({
     first_name: {
-        type: String,
-        required: true
+        type: String
     },
     last_name: {
-        type: String,
-        required: true
+        type: String
     },
     mail: {
         type: String,
-        required: true,
         unique: true
     },
     age: {
-        type: Number,
-        required: true
+        type: Number
     },
      password: {
-         type: String,
-         required: true
+         type: String
     },
     role: {
         type: String,

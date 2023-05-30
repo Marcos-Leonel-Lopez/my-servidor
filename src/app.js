@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import passport from 'passport';
 
 
 import __dirname from './utils.js';
@@ -18,6 +19,7 @@ import cookieRouter from './routes/cookie.router.js';
 import ValidationManager from './Dao/managers/ValidationManager.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import cartManager from './Dao/managers/CartManager.js';
+import iniitializePassport from './config/passport.config.js';
 
 
 
@@ -51,7 +53,10 @@ app.use(session({
     secret:'SecretCode',
     resave:true, // true or false?
     saveUninitialized:true // true or false? 
-}))
+}));
+iniitializePassport();
+app.use(passport.initialize());
+app.use(passport.session())
 //vistas
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
