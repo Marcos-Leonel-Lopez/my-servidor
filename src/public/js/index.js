@@ -1,4 +1,4 @@
- 
+
 
 // const form = document.querySelector('#myForm')
 // form.addEventListener('submit', e => {
@@ -24,4 +24,13 @@
 //     socket.emit('delete', id)
 //     formDelete.reset();
 // });
+
+
+let addCartButtons = document.querySelectorAll('.btn-add');
+addCartButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        let id = button.id;
+        console.log('Clicked on button with _id:', id);
+    });
+});
 
