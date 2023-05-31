@@ -62,6 +62,7 @@ const iniitializePassport = () =>{
             // console.log(profile); //para ver como llega
             const exist = await userModel.findOne({ mail:profile._json.email });
             if(!exist){
+                console.log('Usuario creado con github');
                 const user = {
                     first_name:profile._json.name,
                     last_name:'',

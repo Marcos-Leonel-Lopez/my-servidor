@@ -40,7 +40,6 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/faillo
         age: `${req.user.age}`,
         role: `${req.user.role}`
     };
-    console.log(req.session.user);
     
     return res.status(200).send({
         status: 'success',
@@ -85,8 +84,6 @@ router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: 
         age: `${req.user.age}`,
         role: `${req.user.role}`
     };
-    console.log(req.user);
-    
     res.redirect('/profile')
 })
 
