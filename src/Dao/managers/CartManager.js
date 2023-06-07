@@ -218,11 +218,6 @@ export default class cartManager {
     };
 
 
-
-
-
-
-
     deleteAllProductsFromCart = async (cid) => {
         try {
             const updatedCart = await cartModel.findByIdAndUpdate(

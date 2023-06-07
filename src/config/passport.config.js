@@ -2,8 +2,10 @@ import passport from "passport";
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import userModel from "../Dao/models/user.model.js";
+import CartManager from "../Dao/managers/CartManager.js";
 import {createHash, validatePass} from '../utils.js';
 
+const cartManager = new CartManager();
 const LocalStrategy = local.Strategy;
 
 const iniitializePassport = () =>{
@@ -19,6 +21,7 @@ const iniitializePassport = () =>{
     passport.use('register', new LocalStrategy(
         {passReqToCallback:true,usernameField:'mail'},
         async (req, username, password, done)=>{
+            const newCart = await cartManager.addCart();            
             const {first_name, last_name, mail, age} = req.body;
             try{
                 const exist = await userModel.findOne({ mail:username });
@@ -26,7 +29,9 @@ const iniitializePassport = () =>{
                     console.log('Usuario existente');
                     return done(null, false)
                 }
-                const user = {first_name, last_name, mail, age, password:createHash(password)};
+                const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.smg.payload._id };
+                console.log(user);
+                
                 const result = await userModel.create(user);
                 return done(null, result)
             }catch(err){
@@ -59,18 +64,26 @@ const iniitializePassport = () =>{
         callbackURL:'http://localhost:8080/api/sessions/githubcallback'
     } , async (accessToken, refreshTocken, profile, done) =>{
         try{
+            let email = profile._json.email;
+            if(!email){
+                email = profile._json.login
+            }
             // console.log(profile); //para ver como llega
-            const exist = await userModel.findOne({ mail:profile._json.email });
+            const exist = await userModel.findOne({ mail:email });
             if(!exist){
                 console.log('Usuario creado con github');
+                const newCart = await cartManager.addCart(); 
                 const user = {
                     first_name:profile._json.name,
                     last_name:'',
-                    mail:profile._json.email ,
+                    mail:email ,
                     age: 18,
-                    password:''
+                    password:'',
+                    cart:newCart.smg.payload._id,
                 };
                 const result = await userModel.create(user);
+                console.log(result);
+                
                 return done(null, result)
             }else{
                 console.log('Usuario existente con github');

@@ -37,7 +37,8 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/faillo
         name: `${req.user.first_name} ${req.user.last_name}`,
         mail: `${req.user.mail}`,
         age: `${req.user.age}`,
-        role: `${req.user.role}`
+        role: `${req.user.role}`,
+        cart: `${req.user.cart}`,
     };
     
     return res.status(200).send({
@@ -81,8 +82,11 @@ router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: 
         name: `${req.user.first_name}`,
         mail: `${req.user.mail}`,
         age: `${req.user.age}`,
-        role: `${req.user.role}`
+        role: `${req.user.role}`,
+        cart: `${req.user.cart}`
     };
+    console.log(req.session.user);
+    
     res.redirect('/profile')
 })
 
