@@ -29,8 +29,6 @@ const PORT = config.port || 8080;
 const app = express();
 
 //database
-// const DB = 'ecommerce'
-// const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/'+DB;
 const MONGO = config.url;
 const connection = mongoose.connect(MONGO);
 console.log(config);
