@@ -7,7 +7,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 
-
+import { config } from './config/config.js';
 import __dirname from './utils.js';
 import productModel from './Dao/models/product.model.js';
 import messagesModel from './Dao/models/message.model.js';
@@ -24,14 +24,16 @@ import iniitializePassport from './config/passport.config.js';
 
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.port || 8080;
 
 const app = express();
 
 //database
-const DB = 'ecommerce'
-const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/'+DB;
+// const DB = 'ecommerce'
+// const MONGO = 'mongodb+srv://marcoslopez:tcWJGd05WNJu4ztm0SLYw2eiZGpA5@marcosapp.4nigp8k.mongodb.net/'+DB;
+const MONGO = config.url;
 const connection = mongoose.connect(MONGO);
+console.log(config);
 
 const products = [{}]
 

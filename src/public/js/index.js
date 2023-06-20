@@ -25,7 +25,6 @@
 //     formDelete.reset();
 // });
 
-
 let addCartButtons = document.querySelectorAll('.btn-add');
 addCartButtons.forEach(function (button) {
     button.addEventListener('click', function () {

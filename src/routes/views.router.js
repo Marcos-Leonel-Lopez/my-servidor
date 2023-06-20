@@ -2,6 +2,7 @@ import { Router } from "express";
 import AccessManager from "../Dao/managers/AccessManager.js";
 import ValidationManager from "../Dao/managers/ValidationManager.js";
 import CartManager from "../Dao/managers/CartManager.js";
+import userModel from "../Dao/models/user.model.js";
 
 const accessManager = new AccessManager();
 const validationManager = new ValidationManager();
@@ -43,7 +44,9 @@ router.get('/products', async (req,res)=>{
     if(req.session.user?.role == 'admin'){
         userRole = true;
     }
-
+    // let persona = await userModel.findOne({ mail:req.session.user.mail });
+    // console.log(persona);
+    
     // verificando por mail
     // if(req.session.user?.mail == 'adminCoder@coder.com'){
     //     userRole = true;
