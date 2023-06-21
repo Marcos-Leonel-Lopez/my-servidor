@@ -1,9 +1,9 @@
 import AccessManager from "./AccessManager.js";
 import cartModel from "../models/cart.model.js";
-import ValidationManager from "./ValidationManager.js";
+import ProductController from "../../controllers/product.controller.js";
 
 const accessManager = new AccessManager();
-const validationManager = new ValidationManager();
+const productController = new ProductController();
 
 export default class cartManager {
 
@@ -93,7 +93,7 @@ export default class cartManager {
 
             if (cart) {
                
-                const stockUpdate = await validationManager.updateStock(pid, 1);
+                const stockUpdate = await productController.updateStock(pid, 1);
                 if (stockUpdate.status !== 200) {
                     return stockUpdate;
                 }
@@ -113,7 +113,7 @@ export default class cartManager {
             );
 
             // Stock validation and update
-            const stockUpdate = await validationManager.updateStock(pid, 1);
+            const stockUpdate = await productController.updateStock(pid, 1);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
@@ -171,7 +171,7 @@ export default class cartManager {
                     }
                 };
             }
-            const stockUpdate = await validationManager.updateStock(pid, cantidad);
+            const stockUpdate = await productController.updateStock(pid, cantidad);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }

@@ -1,93 +1,62 @@
-import AccessManager from "./AccessManager.js";
-import productModel from "../models/product.model.js";
+import AccessManager from "../Dao/managers/AccessManager.js";
+import productModel from "../Dao/models/product.model.js";
+import ProductService from "../services/product.service.js";
 
 const accessManager = new AccessManager();
+const productService = new ProductService();
 
-export default class ValidationManager {
-    getProductsPage = async (limit, page, category, stock, sort) => {
-        if (limit <= 0) {
-            await accessManager.createRecords("Get fallido - limit menor a 0");
-            return {
-                status: 400,
-                smg: {
-                    status: "error",
-                    error: `Limite debe ser mayor a 0(cero)`
-                }
-            };
+export default class ProductController {
+    root = (req,res)=>{
+        return res.redirect('/login');
+    }
+    registerProduct = (req, res) => {
+        res.render('registerProduct' , { title:'Registro de productos',style: 'style.css'});
+    }
+    getProductsPage = async (req, res) => {
+        const { limit = 10, page = 1, category = 'all', stock = 'all', sort = 'none' } = req.query;
+        let userRole = false;
+        const result = await productService.getProductsPage(limit, page, category, stock, sort);
+        const userName = req.session.user?.name ? req.session.user.name : req.session.user?.first_name;
+        if (req.session.user?.role == 'admin') {
+            userRole = true;
         }
-
-        await accessManager.createRecords(`Consulta los productos`);
-
-        let filter = {};
-        let sortOrder = sort === '-1' ? -1 : 1;
-        let sortOption = {};
-
-        if (category !== 'all') {
-            filter.category = category;
-            sortOption.price = sortOrder;
-        }
-
-        if (stock !== 'all') {
-            filter.status = stock;
-            sortOption.price = sortOrder;
-        }
-
-        if (sort !== 'none') {
-            sortOption.price = sortOrder;
-        }
-        const data = await productModel.paginate(filter, { limit, page, sort: sortOption });
-        const prevLink = data.hasPrevPage ? `/products?page=${data.prevPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
-        const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
-        return {
-            status: 200,
-            smg: {
-                status: "success",
-                payload: data.docs,
-                totalPages: data.totalPages,
-                prevPage: data.prevPage,
-                nextPage: data.nextPage,
-                hasPrevPage: data.hasPrevPage,
-                hasNextPage: data.hasNextPage,
-                prevLink,
-                nextLink
-            }
-        };
-    };
-
-
-    getProducts = async (limit) => {
-        if (limit) {
-            if (limit > 0) {
-                await accessManager.createRecords(`Consulta los productos los primeros ${limit} productos`);
-                const payload = await productModel.find().limit(limit)
-                return {
-                    status: 200,
-                    smg: {
-                        status: "success",
-                        payload
-                    }
-                }
-            }
-            await accessManager.createRecords("Get fallido - limit menor a 0");
-            return {
-                status: 400,
-                smg: {
-                    status: "error",
-                    error: `Limite debe ser mayor a 0(cero)`
-                }
-            }
-        } else {
+        const { status, smg } = result;
+        if (status == 200) {
+            const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = smg;
             await accessManager.createRecords("Consulta los productos");
-            const payload = await productModel.find();
-            return {
-                status: 200,
-                smg: {
-                    status: "success",
-                    payload
-                }
-            }
+            const products = payload.map(item => item.toObject())
+            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, userRole, title: 'Productos', style: 'style.css', error: false })
+        } else {
+            await accessManager.createRecords("Get fallido - limit menor a 0");
+            return res.render('home', { title: 'Productos', style: 'style.css', error: true })
         }
-    };
+    }
+
+    getProducts = async (req, res) => {
+        const { limit } = req.query;
+        const products = await productService.getProducts(limit);
+        const { status, smg } = products;
+        return res.status(status).send(smg);
+    }
+
+    getProductsRealTime = async (req, res) => {
+        const products = await productService.getProducts();
+        return products.smg.payload
+    }
+
+    realtimeproducts = async (req,res) => {
+        return res.render('realTimeProducts', { title:'Productos en tiempo real', style: 'style.css', error: false })
+    }
+
+    chat = (req, res)=>{
+        return res.render('chat',{ title:'Chat', style: 'style.css', error: false })
+    }
+
+ 
+
+
+
+
     getProductById = async (id) => {
         const payload = await productModel.find({ _id: id });
         if (payload.length > 0) {
@@ -241,50 +210,50 @@ export default class ValidationManager {
 
     updateStock = async (productId, quantity) => {
         try {
-          const product = await productModel.findById(productId);
-          if (!product) {
+            const product = await productModel.findById(productId);
+            if (!product) {
+                return {
+                    status: 400,
+                    smg: {
+                        status: "error",
+                        error: `El producto con id:${productId} no existe`,
+                    },
+                };
+            }
+            const updatedStock = product.stock - quantity;
+            if (updatedStock < 0) {
+                return {
+                    status: 400,
+                    smg: {
+                        status: "error",
+                        error: `No hay suficiente stock disponible para agregar ${quantity} productos`,
+                    },
+                };
+            }
+
+            product.stock = updatedStock;
+            product.status = updatedStock > 0;
+
+            await product.save();
+
             return {
-              status: 400,
-              smg: {
-                status: "error",
-                error: `El producto con id:${productId} no existe`,
-              },
+                status: 200,
+                smg: {
+                    status: "success",
+                    message: `Se actualizó el stock del producto con id:${productId}`,
+                },
             };
-          }
-          const updatedStock = product.stock - quantity;
-          if (updatedStock < 0) {
-            return {
-              status: 400,
-              smg: {
-                status: "error",
-                error: `No hay suficiente stock disponible para agregar ${quantity} productos`,
-              },
-            };
-          }
-      
-          product.stock = updatedStock;
-          product.status = updatedStock > 0;
-      
-          await product.save();
-      
-          return {
-            status: 200,
-            smg: {
-              status: "success",
-              message: `Se actualizó el stock del producto con id:${productId}`,
-            },
-          };
         } catch (error) {
-          return {
-            status: 500,
-            smg: {
-              status: "error",
-              error: error.message,
-            },
-          };
+            return {
+                status: 500,
+                smg: {
+                    status: "error",
+                    error: error.message,
+                },
+            };
         }
-      };
-      
+    };
+
 
 
 }

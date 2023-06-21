@@ -16,7 +16,7 @@ import cartsRouter from './routes/carts.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
-import ValidationManager from './Dao/managers/ValidationManager.js';
+import ProductController from './controllers/product.controller.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import cartManager from './Dao/managers/CartManager.js';
 import iniitializePassport from './config/passport.config.js';
@@ -32,12 +32,6 @@ const app = express();
 const MONGO = config.url;
 const connection = mongoose.connect(MONGO);
 console.log(config);
-
-const products = [{}]
-
-
-
-
 
 
 //servicio
@@ -66,32 +60,30 @@ const server = app.listen(PORT, () => {
     console.log(`Servidor funcionando en ${PORT}`);
 });
 //servidor
-const validationManager = new ValidationManager();
+const productController = new ProductController();
 const messageManager = new MessageManager();
 const io = new Server(server);
 
 
 // productos en tiempo real
 io.on('connection', async client => {
-
-    const result = await validationManager.getProducts();
-    const products = result.smg.payload.map(item => item.toObject())
+    const result = await productController.getProductsRealTime();
+    const products = result.map(item => item.toObject())
     io.emit('productList', products);
 
     client.on('newProduct', async (data, callback) => {
         console.log('Datos recibidos en el back:', data);
-        await validationManager.addProduct(data); //debe ir el model
-        const result = await validationManager.getProducts();
-        const products = result.smg.payload.map(item => item.toObject())
+        await productController.addProduct(data); //debe ir el model
+        const result = await productController.getProductsRealTime();
+        const products = result.map(item => item.toObject()) 
         io.emit('productList', products);
         callback();
     })
-
     client.on('delete', async data => {
         console.log('Se eliminara id: ' + data);
-        await validationManager.deleteProduct(data);
-        const result = await validationManager.getProducts();
-        const products = result.smg.payload.map(item => item.toObject())
+        await productController.deleteProduct(data);
+        const result = await productController.getProductsRealTime();
+        const products = result.map(item => item.toObject()) 
         io.emit('productList', products);
     })
     //chat
@@ -101,32 +93,21 @@ io.on('connection', async client => {
         const messages = messagesBefore.map(item => item.toObject())
         io.emit('messageLogs', messages)
     })
-
     client.on('authenticated', data => {
         client.broadcast.emit('newUserConnected', data);
     })
-
     client.on('takeProduct', async data_id =>{
-        const result = await validationManager.getProductById(data_id);
+        const result = await productController.getProductById(data_id);
         const product = result.smg.payload.map(item => item.toObject());
         client.emit('productDetails',product);
     })
-
     client.on('editProduct', async (data,id) =>{
-        await validationManager.updateProduct(id, data);
-        const result = await validationManager.getProducts();
-        const products = result.smg.payload.map(item => item.toObject())
+        await productController.updateProduct(id, data);
+        const result = await productController.getProductsRealTime();
+        const products = result.map(item => item.toObject())
         io.emit('productList', products);
     })
-
-
 })
-
-
-
-
-
-
 
 //rutas
 app.use('/', viewsRouter);

@@ -10,23 +10,9 @@ router.post('/register', passport.authenticate('register', { failureRedirect: '/
         status: "success",
         smg: 'Usuario Registrado'
     })
-    // const exist = await userModel.findOne({ mail });
-    // if (exist) {
-    //     return res.status(400).send({
-    //         status: 'error',
-    //         smg: 'Usuario existente'
-    //     })
-    // }
-    // const user = {first_name, last_name, mail, age, password: createHash(password)};
-    // const result = await userModel.create(user);
-    // return res.status(200).send({
-    //     status: 'success',
-    //     result
-    // })
 })
 
 router.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin' }), async (req, res) => {
-    
     if (!req.user) {
         return res.status(400).send({
             status: 'error',
@@ -40,39 +26,11 @@ router.post('/login', passport.authenticate('login', { failureRedirect: '/faillo
         role: `${req.user.role}`,
         cart: `${req.user.cart}`,
     };
-    
     return res.status(200).send({
         status: 'success',
         payload: req.user,
         smg: 'Primer logueo'
     });
-
-    // const {mail, password}=req.body;
-    // const user = await userModel.findOne({mail});
-    // if(!user){
-    //     return res.status(400).send({
-    //         status: 'error',
-    //         smg: 'Datos incorrectos'
-    //     })
-    // }
-    // const isValidPass = validatePass(password, user);
-    // if(!isValidPass){
-    //     return res.status(401).send({
-    //         status: 'error',
-    //         smg: 'Datos incorrectos'
-    //     })
-    // }
-    // req.session.user = {
-    //     name: `${user.first_name} ${user.last_name}`,
-    //     mail: `${user.mail}`,
-    //     age: `${user.age}`,
-    //     role: `${user.role}`
-    // };
-    // return res.status(200).send({
-    //     status: 'success',
-    //     payload: req.res.user,
-    //     smg: 'Primer logueo'
-    // });
 });
 
 router.get('/github', passport.authenticate('github',{scope:['user:email']}), async (req,res)=>{});
@@ -89,10 +47,6 @@ router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: 
     
     res.redirect('/profile')
 })
-
-
-
-
 
 router.get('/logout', (req, res) => {
     req.session.destroy(err => {

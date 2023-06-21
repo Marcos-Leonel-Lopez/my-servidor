@@ -1,10 +1,10 @@
 import { Router } from "express";
 import CartManager from "../Dao/managers/CartManager.js";
 import cartModel from "../Dao/models/cart.model.js";
-import ValidationManager from "../Dao/managers/ValidationManager.js";
+import ProductController from "../controllers/product.controller.js";
 
 const cartManager = new CartManager();
-const validationManager = new ValidationManager();
+const productController = new ProductController();
 
 const router = Router();
 

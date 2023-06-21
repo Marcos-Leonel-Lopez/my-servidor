@@ -24,9 +24,9 @@ export const authToken = (req, res, next) =>{
                 status: 'error',
                 error: 'No autorizado'
             })
-            req.user = credentials.user;
-            next();
         }
+        req.user = credentials.user;
+        next();
     })
 }
 
