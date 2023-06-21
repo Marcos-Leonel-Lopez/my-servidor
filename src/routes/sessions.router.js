@@ -2,103 +2,25 @@ import { Router } from "express";
 import userModel from "../Dao/models/user.model.js";
 import { createHash, validatePass } from '../utils.js';
 import passport from "passport";
+import SessionController from "../controllers/session.controller.js";
 
 const router = Router();
+const sessionController = new SessionController();
 
-router.post('/register', passport.authenticate('register', { failureRedirect: '/failregister' }), async (req, res) => {
-    return res.status(200).send({
-        status: "success",
-        smg: 'Usuario Registrado'
-    })
-})
+router.post('/register', passport.authenticate('register', { failureRedirect: '/failregister' }), sessionController.register)
 
-router.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin' }), async (req, res) => {
-    if (!req.user) {
-        return res.status(400).send({
-            status: 'error',
-            smg: 'Datos incorrectos'
-        })
-    }
-    req.session.user = {
-        name: `${req.user.first_name} ${req.user.last_name}`,
-        mail: `${req.user.mail}`,
-        age: `${req.user.age}`,
-        role: `${req.user.role}`,
-        cart: `${req.user.cart}`,
-    };
-    return res.status(200).send({
-        status: 'success',
-        payload: req.user,
-        smg: 'Primer logueo'
-    });
-});
+router.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin' }), sessionController.login);
 
 router.get('/github', passport.authenticate('github',{scope:['user:email']}), async (req,res)=>{});
 
-router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: '/faillogin' }), async (req, res)=>{
-    req.session.user = {
-        name: `${req.user.first_name}`,
-        mail: `${req.user.mail}`,
-        age: `${req.user.age}`,
-        role: `${req.user.role}`,
-        cart: `${req.user.cart}`
-    };
-    console.log(req.session.user);
-    
-    res.redirect('/profile')
-})
+router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: '/faillogin' }), sessionController.githubcallback)
 
-router.get('/logout', (req, res) => {
-    req.session.destroy(err => {
-        if (err) return res.status(500).send({
-            status: 'error',
-            smg: 'No se pudo cerrar sesion'
-        })
-        res.redirect('/login')
-    })
-});
+router.get('/logout', sessionController.logout);
 
-router.post('/restartPassword', async (req, res) => {
-    const { mail, password } = req.body;
-    if (!mail || !password) {
-        return res.status(400).send({
-            stauts: 'error',
-            smg: 'datos incorrectos'
-        })
-    }
-    const user = await userModel.findOne({ mail });
-    if (!user) {
-        return res.status(400).send({
-            stauts: 'error',
-            smg: 'datos incorrectos'
-        })
-    }
-    const newHashedPass = createHash(password);
-    await userModel.updateOne({ _id: user._id }, { $set: { password: newHashedPass } });
-    res.status(200).send({
-        stauts: 'success',
-        smg: 'contraseña actualizado'
-    })
-})
+router.post('/restartPassword', sessionController.restartPassword)
 
-router.get('/failregister', async (req, res) => {
-    console.log('fallo registro');
-    return res.status(400).send({
-        status: error,
-        smg: 'fallo el registro'
-    })
+router.get('/failregister', sessionController.failregister);
 
-});
-
-router.get('/faillogin', async (req, res) => {
-    console.log('fallo ingreso');
-    return res.status(400).send({
-        status: error,
-        smg: 'fallo el ingreso'
-    })
-
-});
-
-
+router.get('/faillogin', sessionController.faillogin);
 
 export default router;
