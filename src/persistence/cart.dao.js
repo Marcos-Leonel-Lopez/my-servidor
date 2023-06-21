@@ -1,12 +1,11 @@
-import AccessManager from "./AccessManager.js";
-import cartModel from "../models/cart.model.js";
-import ProductController from "../../controllers/product.controller.js";
+import cartModel from "../Dao/models/cart.model.js";
+import AccessManager from "../Dao/managers/AccessManager.js";
+import ProductDao from "./product.dao.js";
 
+const productDao = new ProductDao();
 const accessManager = new AccessManager();
-const productController = new ProductController();
 
-export default class cartManager {
-
+export default class CartDao {
     getCarts = async () => {
         try {
             await accessManager.createRecords("Consulta los carritos");
@@ -28,30 +27,6 @@ export default class cartManager {
             };
         }
     };
-
-
-    addCart = async () => {
-        try {
-            const payload = await cartModel.create({});
-            return {
-                status: 200,
-                smg: {
-                    status: "success",
-                    payload,
-                }
-            };
-        } catch (error) {
-            return {
-                status: 500,
-                smg: {
-                    status: "error",
-                    error: error.message
-                }
-            };
-        }
-    };
-
-
     getCartById = async (id) => {
         try {
             const cart = await cartModel.findById(id).populate('products.productId');
@@ -81,8 +56,26 @@ export default class cartManager {
             };
         }
     };
-
-
+    addCart = async () => {
+        try {
+            const payload = await cartModel.create({});
+            return {
+                status: 200,
+                smg: {
+                    status: "success",
+                    payload,
+                }
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                smg: {
+                    status: "error",
+                    error: error.message
+                }
+            };
+        }
+    };
     addProductToCart = async (cid, pid) => {
         try {
             const cart = await cartModel.findOneAndUpdate(
@@ -90,10 +83,8 @@ export default class cartManager {
                 { $inc: { "products.$.quantity": 1 } },
                 { new: true }
             );
-
             if (cart) {
-               
-                const stockUpdate = await productController.updateStock(pid, 1);
+                const stockUpdate = await productDao.updateStock(pid, 1);
                 if (stockUpdate.status !== 200) {
                     return stockUpdate;
                 }
@@ -105,15 +96,13 @@ export default class cartManager {
                     }
                 };
             }
-
             const updatedCart = await cartModel.findByIdAndUpdate(
                 cid,
                 { $push: { products: { productId: pid, quantity: 1 } } },
                 { new: true }
             );
-
             // Stock validation and update
-            const stockUpdate = await productController.updateStock(pid, 1);
+            const stockUpdate = await productDao.updateStock(pid, 1);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
@@ -135,31 +124,6 @@ export default class cartManager {
             };
         }
     };
-
-
-    deleteProductOnCart = async (cid, pid) => {
-        try {
-            const result = await cartModel.findOneAndUpdate({ _id: cid }, { $pull: { products: { productId: pid } } }, { new: true });
-            console.log('se debe haber eliminado');
-            return {
-                status: 200,
-                smg: {
-                    status: "success",
-                    result
-                }
-            }
-        } catch (error) {
-            return {
-                status: 500,
-                smg: {
-                    status: "error",
-                    error: "error en los datos ingresados"
-                }
-            }
-        }
-
-    }
-
     updateProductQuantity = async (cid, pid, cantidad) => {
         try {
             if (typeof cantidad !== 'number' || cantidad <= 0) {
@@ -171,7 +135,7 @@ export default class cartManager {
                     }
                 };
             }
-            const stockUpdate = await productController.updateStock(pid, cantidad);
+            const stockUpdate = await productDao.updateStock(pid, cantidad);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
@@ -216,8 +180,27 @@ export default class cartManager {
             };
         }
     };
-
-
+    deleteProductOnCart = async (cid, pid) => {
+        try {
+            const result = await cartModel.findOneAndUpdate({ _id: cid }, { $pull: { products: { productId: pid } } }, { new: true });
+            console.log('se debe haber eliminado');
+            return {
+                status: 200,
+                smg: {
+                    status: "success",
+                    result
+                }
+            }
+        } catch (error) {
+            return {
+                status: 500,
+                smg: {
+                    status: "error",
+                    error: "error en los datos ingresados"
+                }
+            }
+        }
+    }
     deleteAllProductsFromCart = async (cid) => {
         try {
             const updatedCart = await cartModel.findByIdAndUpdate(
@@ -243,6 +226,4 @@ export default class cartManager {
             };
         }
     };
-
-
 }

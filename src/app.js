@@ -18,8 +18,9 @@ import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
-import cartManager from './Dao/managers/CartManager.js';
+import CartManager from './controllers/cart.controller.js';
 import iniitializePassport from './config/passport.config.js';
+import ProductService from './services/product.service.js';
 
 
 
@@ -62,6 +63,7 @@ const server = app.listen(PORT, () => {
 //servidor
 const productController = new ProductController();
 const messageManager = new MessageManager();
+const productService = new ProductService();
 const io = new Server(server);
 
 
@@ -73,7 +75,7 @@ io.on('connection', async client => {
 
     client.on('newProduct', async (data, callback) => {
         console.log('Datos recibidos en el back:', data);
-        await productController.addProduct(data); //debe ir el model
+        await productService.addProduct(data); //debe ir el model
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject()) 
         io.emit('productList', products);
@@ -81,7 +83,7 @@ io.on('connection', async client => {
     })
     client.on('delete', async data => {
         console.log('Se eliminara id: ' + data);
-        await productController.deleteProduct(data);
+        await productService.deleteProduct(data);
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject()) 
         io.emit('productList', products);
@@ -97,12 +99,12 @@ io.on('connection', async client => {
         client.broadcast.emit('newUserConnected', data);
     })
     client.on('takeProduct', async data_id =>{
-        const result = await productController.getProductById(data_id);
+        const result = await productService.getProductById(data_id);
         const product = result.smg.payload.map(item => item.toObject());
         client.emit('productDetails',product);
     })
     client.on('editProduct', async (data,id) =>{
-        await productController.updateProduct(id, data);
+        await productService.updateProduct(id, data);
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject())
         io.emit('productList', products);

@@ -2,10 +2,10 @@ import passport from "passport";
 import local from 'passport-local';
 import GitHubStrategy from 'passport-github2';
 import userModel from "../Dao/models/user.model.js";
-import CartManager from "../Dao/managers/CartManager.js";
 import {createHash, validatePass} from '../utils.js';
+import CartService from "../services/cart.service.js";
 
-const cartManager = new CartManager();
+const cartService = new CartService();
 const LocalStrategy = local.Strategy;
 
 const iniitializePassport = () =>{
@@ -21,7 +21,7 @@ const iniitializePassport = () =>{
     passport.use('register', new LocalStrategy(
         {passReqToCallback:true,usernameField:'mail'},
         async (req, username, password, done)=>{
-            const newCart = await cartManager.addCart();            
+            const newCart = await cartService.addCart();            
             const {first_name, last_name, mail, age} = req.body;
             try{
                 const exist = await userModel.findOne({ mail:username });
@@ -72,7 +72,7 @@ const iniitializePassport = () =>{
             const exist = await userModel.findOne({ mail:email });
             if(!exist){
                 console.log('Usuario creado con github');
-                const newCart = await cartManager.addCart(); 
+                const newCart = await cartService.addCart(); 
                 const user = {
                     first_name:profile._json.name,
                     last_name:'',
