@@ -4,6 +4,7 @@ import GitHubStrategy from 'passport-github2';
 import userModel from "../Dao/models/user.model.js";
 import {createHash, validatePass} from '../utils.js';
 import CartService from "../services/cart.service.js";
+import { config } from "./config.js";
 
 const cartService = new CartService();
 const LocalStrategy = local.Strategy;
@@ -52,7 +53,6 @@ const iniitializePassport = () =>{
                 return done(null, false);
             }
             return done(null, user)
-
         }catch(err){
             return done("error al intentar ingresar: "+ err)
         }
