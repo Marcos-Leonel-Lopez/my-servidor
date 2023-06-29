@@ -9,7 +9,7 @@ import { config } from "./config.js";
 const cartService = new CartService();
 const LocalStrategy = local.Strategy;
 
-const iniitializePassport = () =>{
+const initializePassport = () =>{
 
     passport.serializeUser((user, done)=>{
         done(null, user._id);
@@ -99,4 +99,4 @@ const iniitializePassport = () =>{
 
 }
 
-export default iniitializePassport;
+export default initializePassport;

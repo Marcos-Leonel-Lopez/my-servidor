@@ -6,8 +6,10 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
+import cors from 'cors';
 
 import { config } from './config/config.js';
+import {ConnectionDB} from './config/connectionDB.js';
 import __dirname from './utils.js';
 import productModel from './Dao/models/product.model.js';
 import messagesModel from './Dao/models/message.model.js';
@@ -19,7 +21,7 @@ import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import CartManager from './controllers/cart.controller.js';
-import iniitializePassport from './config/passport.config.js';
+import initializePassport from './config/passport.config.js';
 import ProductService from './services/product.service.js';
 
 
@@ -30,8 +32,7 @@ const PORT = config.port || 8080;
 const app = express();
 
 //database
-const MONGO = config.url;
-const connection = mongoose.connect(MONGO);
+const connectionDB = ConnectionDB.getInstance();
 console.log(config);
 
 
@@ -42,16 +43,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
     store: new MongoStore({
-        mongoUrl:MONGO,
+        mongoUrl:config.url,
         ttl:360
     }),
     secret:'SecretCode',
     resave:true, // true or false?
     saveUninitialized:true // true or false? 
 }));
-iniitializePassport();
+initializePassport();
 app.use(passport.initialize());
 app.use(passport.session())
+//comunicacion con front
+app.use(cors({
+    origin: "http://127.0.0.1:5500/"
+}))
+// app.use(cors()) puede acceder cualquiera
 //vistas
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
