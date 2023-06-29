@@ -1,7 +1,6 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import { Server } from 'socket.io';
-import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
@@ -11,8 +10,6 @@ import cors from 'cors';
 import { config } from './config/config.js';
 import {ConnectionDB} from './config/connectionDB.js';
 import __dirname from './utils.js';
-import productModel from './Dao/models/product.model.js';
-import messagesModel from './Dao/models/message.model.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import sessionsRouter from './routes/sessions.router.js';
@@ -20,7 +17,6 @@ import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
-import CartManager from './controllers/cart.controller.js';
 import initializePassport from './config/passport.config.js';
 import ProductService from './services/product.service.js';
 
