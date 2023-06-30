@@ -8,7 +8,6 @@ import passport from 'passport';
 import cors from 'cors';
 
 import { config } from './config/config.js';
-import {ConnectionDB} from './config/connectionDB.js';
 import __dirname from './utils.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
@@ -21,14 +20,11 @@ import initializePassport from './config/passport.config.js';
 import ProductService from './services/product.service.js';
 
 
-
-
 const PORT = config.port || 8080;
 
 const app = express();
 
-//database
-ConnectionDB.getInstance();
+//.env
 console.log(config);
 
 

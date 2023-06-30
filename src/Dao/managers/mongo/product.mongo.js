@@ -3,7 +3,7 @@ import AccessManager from "../AccessManager.js";
 
 const accessManager = new AccessManager();
 
-export default class ProductMongo{
+export class ProductMongo{
     getProductsPage = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
             await accessManager.createRecords("Get fallido - limit menor a 0");

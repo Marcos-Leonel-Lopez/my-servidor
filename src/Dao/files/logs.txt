@@ -434,3 +434,7 @@ Fecha: 6/30/2023 - Hora: 12:47:02 AM - Accion: Consulta los productos
 Fecha: 6/30/2023 - Hora: 12:47:02 AM - Accion: Consulta los productos 
 Fecha: 6/30/2023 - Hora: 1:15:56 AM - Accion: Consulta los productos 
 Fecha: 6/30/2023 - Hora: 1:15:56 AM - Accion: Consulta los productos 
+Fecha: 6/30/2023 - Hora: 2:11:37 AM - Accion: Consulta los productos 
+Fecha: 6/30/2023 - Hora: 2:11:37 AM - Accion: Consulta los productos 
+Fecha: 6/30/2023 - Hora: 2:11:45 AM - Accion: Consulta los productos 
+Fecha: 6/30/2023 - Hora: 2:11:45 AM - Accion: Consulta los productos 

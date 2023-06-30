@@ -1,25 +1,24 @@
 import { config } from "../config/config.js";
 
 const persistence = config.persistence;
-let contactDao;
+
+let productPersistence;
 
 switch (persistence) {
     case 'mongo':
         const {ConnectionDB} = await import('../config/connectionDB.js')
-        ConnectionDB();
-        const {ContactMongo} = await import('')
-        contactDao = new ContactMongo();
+        ConnectionDB.getInstance();
+        const {ProductMongo} = await import('./managers/mongo/product.mongo.js'); //error al importar cuando en el product.mongo.js lo exporto por default
+        productPersistence = new ProductMongo();
         break;
     case 'memory':
         //
         break;
-    case 'SQL':
+    case 'sql':
         //
         break;
     default:
         break;
 }
 
-
-
-export {contactDao}
+export {productPersistence}
