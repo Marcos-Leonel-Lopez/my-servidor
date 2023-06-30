@@ -1,9 +1,9 @@
-import productModel from "../Dao/models/product.model.js";
-import AccessManager from "../Dao/managers/AccessManager.js";
+import productModel from "../../models/product.model.js";
+import AccessManager from "../AccessManager.js";
 
 const accessManager = new AccessManager();
 
-export default class ProductDao{
+export default class ProductMongo{
     getProductsPage = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
             await accessManager.createRecords("Get fallido - limit menor a 0");

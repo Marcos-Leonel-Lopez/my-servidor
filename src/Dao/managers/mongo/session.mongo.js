@@ -1,6 +1,6 @@
-import userModel from "../Dao/models/user.model.js";
+import userModel from "../../models/user.model.js";
 
-export default class SessionDao{
+export default class SessionMongo{
     getUser = async (email) =>{
         return await userModel.findOne({ email });
     }

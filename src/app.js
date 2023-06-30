@@ -28,7 +28,7 @@ const PORT = config.port || 8080;
 const app = express();
 
 //database
-const connectionDB = ConnectionDB.getInstance();
+ConnectionDB.getInstance();
 console.log(config);
 
 

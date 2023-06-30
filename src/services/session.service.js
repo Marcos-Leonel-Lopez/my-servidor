@@ -1,12 +1,12 @@
-import SessionDao from "../persistence/session.dao.js";
+import SessionMongo from "../Dao/managers/mongo/session.mongo.js";
 
-const sessionDao = new SessionDao();
+const sessionMongo = new SessionMongo();
 
 export default class SessionService{
     getUser = async (email) =>{
-        return sessionDao.getUser(email);
+        return sessionMongo.getUser(email);
     }
     updatePassword = async (user, newHashedPass) =>{
-        return sessionDao.updatePassword(user, newHashedPass);
+        return sessionMongo.updatePassword(user, newHashedPass);
     }
 }

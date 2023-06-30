@@ -1,11 +1,11 @@
-import cartModel from "../Dao/models/cart.model.js";
-import AccessManager from "../Dao/managers/AccessManager.js";
-import ProductDao from "./product.dao.js";
+import cartModel from "../../models/cart.model.js";
+import AccessManager from "../AccessManager.js";
+import ProductMongo from "./product.mongo.js";
 
-const productDao = new ProductDao();
+const productMongo = new ProductMongo();
 const accessManager = new AccessManager();
 
-export default class CartDao {
+export default class CartMongo {
     getCarts = async () => {
         try {
             await accessManager.createRecords("Consulta los carritos");
@@ -84,7 +84,7 @@ export default class CartDao {
                 { new: true }
             );
             if (cart) {
-                const stockUpdate = await productDao.updateStock(pid, 1);
+                const stockUpdate = await productMongo.updateStock(pid, 1);
                 if (stockUpdate.status !== 200) {
                     return stockUpdate;
                 }
@@ -102,7 +102,7 @@ export default class CartDao {
                 { new: true }
             );
             // Stock validation and update
-            const stockUpdate = await productDao.updateStock(pid, 1);
+            const stockUpdate = await productMongo.updateStock(pid, 1);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
@@ -135,7 +135,7 @@ export default class CartDao {
                     }
                 };
             }
-            const stockUpdate = await productDao.updateStock(pid, cantidad);
+            const stockUpdate = await productMongo.updateStock(pid, cantidad);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
