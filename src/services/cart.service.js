@@ -1,30 +1,28 @@
-import CartMongo from "../Dao/managers/mongo/cart.mongo.js";
-
-const cartMongo = new CartMongo();
+import { cartPersistence } from "../Dao/factory.js";
 
 export default class CartService{
     getCarts = async () =>{
-        return await cartMongo.getCarts();
+        return await cartPersistence.getCarts();
     }
     getCartById = async (id) =>{
-        return await cartMongo.getCartById(id);
+        return await cartPersistence.getCartById(id);
     }
     addCart = async () => {
-        return await cartMongo.addCart();
+        return await cartPersistence.addCart();
     }
     addProductToCart = async (cid, pid) =>{
-        return await cartMongo.addProductToCart(cid, pid)
+        return await cartPersistence.addProductToCart(cid, pid)
     }
 
     updateProductQuantity = async (cid, pid, cantidad) =>{
-        return await cartMongo.updateProductQuantity(cid, pid, cantidad)
+        return await cartPersistence.updateProductQuantity(cid, pid, cantidad)
     }
 
     deleteProductOnCart = async (cid, pid) =>{
-        return await cartMongo.deleteProductOnCart(cid, pid)
+        return await cartPersistence.deleteProductOnCart(cid, pid)
     }
 
     deleteAllProductsFromCart = async (cid)=>{
-        return await cartMongo.deleteAllProductsFromCart(cid)
+        return await cartPersistence.deleteAllProductsFromCart(cid)
     }
 }

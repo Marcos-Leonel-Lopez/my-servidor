@@ -1,6 +1,6 @@
 import userModel from "../../models/user.model.js";
 
-export default class SessionMongo{
+export class SessionMongo{
     getUser = async (email) =>{
         return await userModel.findOne({ email });
     }

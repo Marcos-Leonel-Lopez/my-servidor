@@ -1,9 +1,5 @@
-// import ProductMongo from "../Dao/managers/mongo/product.mongo.js"
-// import ProductMemory from "../Dao/managers/memory/product.memory.js"
 import { productPersistence } from "../Dao/factory.js";
 
-// const productPersistence = new ProductMongo();
-// const productPersistence = new ProductMemory();
 
 export default class ProductService{
     getProductsPage = async (limit, page, category, stock, sort) =>{

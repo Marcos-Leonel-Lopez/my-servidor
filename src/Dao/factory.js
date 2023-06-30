@@ -3,6 +3,8 @@ import { config } from "../config/config.js";
 const persistence = config.persistence;
 
 let productPersistence;
+let cartPersistence;
+let sessionPersistence;
 
 switch (persistence) {
     case 'mongo':
@@ -10,6 +12,10 @@ switch (persistence) {
         ConnectionDB.getInstance();
         const {ProductMongo} = await import('./managers/mongo/product.mongo.js'); //error al importar cuando en el product.mongo.js lo exporto por default
         productPersistence = new ProductMongo();
+        const {SessionMongo} = await import('./managers/mongo/session.mongo.js');
+        sessionPersistence = new SessionMongo();
+        const {CartMongo} = await import('./managers/mongo/cart.mongo.js');
+        cartPersistence = new CartMongo();
         break;
     case 'memory':
         //
@@ -21,4 +27,4 @@ switch (persistence) {
         break;
 }
 
-export {productPersistence}
+export {productPersistence, sessionPersistence, cartPersistence}

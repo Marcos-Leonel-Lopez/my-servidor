@@ -1,12 +1,11 @@
 import cartModel from "../../models/cart.model.js";
 import AccessManager from "../AccessManager.js";
-// import ProductMongo from "./product.mongo.js";
-import { productPersistence } from "../../factory.js";
+import {ProductMongo} from "./product.mongo.js";
 
-// const productMongo = new ProductMongo();
+const productMongo = new ProductMongo();
 const accessManager = new AccessManager();
 
-export default class CartMongo {
+export class CartMongo {
     getCarts = async () => {
         try {
             await accessManager.createRecords("Consulta los carritos");
@@ -85,7 +84,7 @@ export default class CartMongo {
                 { new: true }
             );
             if (cart) {
-                const stockUpdate = await productPersistence.updateStock(pid, 1);
+                const stockUpdate = await productMongo.updateStock(pid, 1);
                 if (stockUpdate.status !== 200) {
                     return stockUpdate;
                 }
@@ -103,7 +102,7 @@ export default class CartMongo {
                 { new: true }
             );
             // Stock validation and update
-            const stockUpdate = await productPersistence.updateStock(pid, 1);
+            const stockUpdate = await productMongo.updateStock(pid, 1);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
@@ -136,7 +135,7 @@ export default class CartMongo {
                     }
                 };
             }
-            const stockUpdate = await productPersistence.updateStock(pid, cantidad);
+            const stockUpdate = await productMongo.updateStock(pid, cantidad);
             if (stockUpdate.status !== 200) {
                 return stockUpdate;
             }
