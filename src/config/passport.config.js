@@ -30,7 +30,7 @@ const initializePassport = () =>{
                     console.log('Usuario existente');
                     return done(null, false)
                 }
-                const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.smg.payload._id };
+                const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.message.payload._id };
                 console.log(user);
                 
                 const result = await userModel.create(user);
@@ -79,7 +79,7 @@ const initializePassport = () =>{
                     mail:email ,
                     age: 18,
                     password:'',
-                    cart:newCart.smg.payload._id,
+                    cart:newCart.message.payload._id,
                 };
                 const result = await userModel.create(user);
                 console.log(result);

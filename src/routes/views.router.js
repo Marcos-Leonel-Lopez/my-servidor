@@ -43,7 +43,7 @@ const adminAccess = async (req, res, next) => {
         //         req.session.destroy(err => {
         //             if (err) return res.status(500).send({
         //                 status: 'error',
-        //                 smg: 'No se pudo cerrar sesion'
+        //                 message: 'No se pudo cerrar sesion'
         //             })
         //             res.redirect('/login')
         //         });
@@ -65,7 +65,7 @@ router.get('/realtimeproducts', productController.realtimeproducts)
 
 router.get('/chat', productController.chat)
 
-router.get('/cart/:cid', cartController.getCartById)
+router.get('/cart/:cid', cartController.getCartByIdRender)
 
 router.get('/register', publicAccess, (req, res) => {
     res.render('register', { title: 'Registro de Usuario', style: 'style.css' })

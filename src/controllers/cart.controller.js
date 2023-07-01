@@ -3,69 +3,109 @@ import CartService from "../services/cart.service.js";
 const cartService = new CartService();
 
 export default class CartController {
+
     getCarts = async (req, res) => {
-        const result = await cartService.getCarts();
-        const { status, smg } = result;
-        return res.status(status).send(smg);
-    }
+        try {
+            const { status, message } = await cartService.getCarts();
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
     getCartById = async (req, res) => {
-        const cid = req.params.cid;
-        const result = await cartService.getCartById(cid)
-        const { status, smg } = result;
-        const theCart = smg.cart.products.map(item => item.toObject());
-        return res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' })
-    }
+        try {
+            const cid = req.params.cid;
+            const { status, message } = await cartService.getCartById(cid);
+            // const theCart = message.cart.products.map(item => item.toObject());
+            // console.log(message);
+            
+            res.status(status).send(message)
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
+    getCartByIdRender = async (req, res) => {
+        try {
+            const cid = req.params.cid;
+            const { status, message } = await cartService.getCartById(cid);
+            const theCart = message.cart.products.map(item => item.toObject());
+            res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
     addCart = async (req, res) => {
-        const result = await cartService.addCart();
-        const { status, smg } = result;
-        return res.status(status).send(smg);
-    }
+        try {
+            const { status, message } = await cartService.addCart();
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
     addProductToCart = async (req, res) => {
         try {
             const cid = req.params.cid;
             const pid = req.params.pid;
-            const result = await cartService.addProductToCart(cid, pid);
-            const { status, smg } = result;
-            return res.status(status).send(smg);
+            const { status, message } = await cartService.addProductToCart(cid, pid);
+            res.status(status).send(message);
         } catch (error) {
-            return res.status(500).send(error.message);
+            console.error(error);
+            res.status(500).send(error.message);
         }
-    }
+    };
 
-    updateProductQuantity = async (req, res) =>{
-        try{
+    updateProductQuantity = async (req, res) => {
+        try {
             const cid = req.params.cid;
             const pid = req.params.pid;
             const { quantity } = req.body;
-            const updatedCart = await cartService.updateProductQuantity(cid, pid, quantity);
-            const { status, smg } = updatedCart;
-            return res.status(status).send(smg);
-        }catch (error) {
-            return res.status(500).send(error.message);
-          }
-    }
+            const { status, message } = await cartService.updateProductQuantity(cid, pid, quantity);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
 
     deleteProductOnCart = async (req, res) => {
         try {
-          const cid = req.params.cid;
-          const pid = req.params.pid;
-          const newCart = await cartService.deleteProductOnCart(cid, pid);
-          const { status, smg } = newCart;
-          return res.status(status).send(smg);
+            const cid = req.params.cid;
+            const pid = req.params.pid;
+            const { status, message } = await cartService.deleteProductOnCart(cid, pid);
+            res.status(status).send(message);
         } catch (error) {
-          return res.status(500).send(error.message);
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
+    deleteAllProductsFromCart = async (req, res) => {
+        try {
+            const cid = req.params.cid;
+            const { status, message } = await cartService.deleteAllProductsFromCart(cid);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
+    resolveCart = async (req, res) =>{
+        try {
+            
+            res.status(200).send({message:'resolveCart'});
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
         }
     }
 
-    deleteAllProductsFromCart = async (req, res) =>{
-        try{
-            const cid = req.params.cid;
-            const updatedCart = await cartService.deleteAllProductsFromCart(cid);
-            const { status, smg } = updatedCart;
-            return res.status(status).send(smg);
-        }catch (error) {
-          return res.status(500).send(error.message);
-        }
-    }
-    
 }

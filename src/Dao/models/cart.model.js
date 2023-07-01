@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
-const cartCollection = 'carts' // el nombre de la coleccion
+import { cartCollection, productCollection } from '../../constants/index.js';
+
 
 const cartSchema = new mongoose.Schema({
     products:{
@@ -8,7 +9,7 @@ const cartSchema = new mongoose.Schema({
             {
                 productId:{
                     type: mongoose.Schema.Types.ObjectId,
-                    ref: "products"
+                    ref: productCollection
                 },
                  quantity: Number
             }

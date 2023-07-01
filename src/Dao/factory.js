@@ -5,6 +5,7 @@ const persistence = config.persistence;
 let productPersistence;
 let cartPersistence;
 let sessionPersistence;
+let ticketPersistence;
 
 switch (persistence) {
     case 'mongo':
@@ -16,6 +17,8 @@ switch (persistence) {
         sessionPersistence = new SessionMongo();
         const {CartMongo} = await import('./managers/mongo/cart.mongo.js');
         cartPersistence = new CartMongo();
+        const {TicketMongo} = await import('./managers/mongo/ticket.mongo.js');
+        ticketPersistence = new TicketMongo();
         break;
     case 'memory':
         //
@@ -27,4 +30,4 @@ switch (persistence) {
         break;
 }
 
-export {productPersistence, sessionPersistence, cartPersistence}
+export {productPersistence, sessionPersistence, cartPersistence, ticketPersistence}

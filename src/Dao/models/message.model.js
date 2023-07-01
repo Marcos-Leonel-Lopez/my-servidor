@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const messageCollection = 'messages' // el nombre de la coleccion
+import { messageCollection } from '../../constants/index.js';
 
 const messageSchema = new mongoose.Schema({
     user: {

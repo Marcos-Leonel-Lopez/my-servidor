@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const userCollection = 'users' // el nombre de la coleccion
+import { userCollection, cartCollection } from '../../constants/index.js';
 
 const userSchema = new mongoose.Schema({
     first_name: {
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     },
     cart:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "carts"
+        ref: cartCollection
     },
 })
 

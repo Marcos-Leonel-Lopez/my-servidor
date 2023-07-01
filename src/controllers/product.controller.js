@@ -19,9 +19,9 @@ export default class ProductController {
         if (req.session.user?.role == 'admin') {
             userRole = true;
         }
-        const { status, smg } = result;
+        const { status, message } = result;
         if (status == 200) {
-            const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = smg;
+            const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
             await accessManager.createRecords("Consulta los productos");
             const products = payload.map(item => item.toObject())
             return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, userRole, title: 'Productos', style: 'style.css', error: false })
@@ -33,12 +33,12 @@ export default class ProductController {
     getProducts = async (req, res) => {
         const { limit } = req.query;
         const products = await productService.getProducts(limit);
-        const { status, smg } = products;
-        return res.status(status).send(smg);
+        const { status, message } = products;
+        return res.status(status).send(message);
     }
     getProductsRealTime = async (req, res) => {
         const products = await productService.getProducts();
-        return products.smg.payload
+        return products.message.payload
     }
     realtimeproducts = async (req,res) => {
         return res.render('realTimeProducts', { title:'Productos en tiempo real', style: 'style.css', error: false })
@@ -49,26 +49,26 @@ export default class ProductController {
     getProductById = async (req, res) =>{
         const id = req.params.pid;
         const result = await productService.getProductById(id);
-        const {status, smg} = result;
-        return res.status(status).send(smg);
+        const {status, message} = result;
+        return res.status(status).send(message);
     }
     deleteProduct = async (req, res) => {
         const id = req.params.pid;
         const result = await productService.deleteProduct(id);
-        const {status, smg} = result;
-        return res.status(status).send(smg);
+        const {status, message} = result;
+        return res.status(status).send(message);
     }
     addProduct = async (req, res) => {
         const newProduct = req.body;
         const result = await productService.addProduct(newProduct);
-        const {status, smg} = result;
-        return res.status(status).send(smg);
+        const {status, message} = result;
+        return res.status(status).send(message);
     }
     updateProduct = async (req, res) => {
         const id = req.params.pid;
         const newData = req.body;
         const result = await productService.updateProduct(id, newData);
-        const {status, smg} = result;
-        return res.status(status).send(smg);
+        const {status, message} = result;
+        return res.status(status).send(message);
     }
 }

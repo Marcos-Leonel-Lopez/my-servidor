@@ -444,3 +444,13 @@ Fecha: 6/30/2023 - Hora: 3:08:00 AM - Accion: Consulta los productos
 Fecha: 6/30/2023 - Hora: 3:08:00 AM - Accion: Consulta los productos 
 Fecha: 6/30/2023 - Hora: 3:24:53 AM - Accion: Consulta los productos 
 Fecha: 6/30/2023 - Hora: 3:24:53 AM - Accion: Consulta los productos 
+Fecha: 6/30/2023 - Hora: 5:02:49 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 5:03:20 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 5:37:03 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 9:41:38 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 9:42:01 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 9:44:31 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 10:49:23 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 10:53:07 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 10:53:29 PM - Accion: Consulta los carritos 
+Fecha: 6/30/2023 - Hora: 11:15:39 PM - Accion: Consulta los carritos 

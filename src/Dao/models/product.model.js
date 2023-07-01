@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
-const productCollection = 'products' // el nombre de la coleccion
+import { productCollection } from '../../constants/index.js';
 
 const productSchema = new mongoose.Schema({
     title: {

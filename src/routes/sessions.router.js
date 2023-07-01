@@ -1,4 +1,4 @@
-import { Router } from "express";
+ import { Router } from "express";
 import userModel from "../Dao/models/user.model.js";
 import { createHash, validatePass } from '../utils.js';
 import passport from "passport";
@@ -6,6 +6,10 @@ import SessionController from "../controllers/session.controller.js";
 
 const router = Router();
 const sessionController = new SessionController();
+
+router.get('/', sessionController.getUsers)
+router.get('/:mail', sessionController.getUser)
+
 
 router.post('/register', passport.authenticate('register', { failureRedirect: '/failregister' }), sessionController.register)
 
@@ -22,5 +26,7 @@ router.post('/restartPassword', sessionController.restartPassword)
 router.get('/failregister', sessionController.failregister);
 
 router.get('/faillogin', sessionController.faillogin);
+
+router.delete('/delete/:sid',sessionController.deleteUser)
 
 export default router;

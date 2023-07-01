@@ -12,7 +12,7 @@ export class CartMongo {
             const payload = await cartModel.find();
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload
                 }
@@ -20,7 +20,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message
                 }
@@ -33,7 +33,7 @@ export class CartMongo {
             if (cart) {
                 return {
                     status: 200,
-                    smg: {
+                    message: {
                         status: "success",
                         cart
                     }
@@ -41,7 +41,7 @@ export class CartMongo {
             }
             return {
                 status: 400,
-                smg: {
+                message: {
                     status: "error",
                     error: `El cart con id:${id} no existe`
                 }
@@ -49,7 +49,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message
                 }
@@ -61,7 +61,7 @@ export class CartMongo {
             const payload = await cartModel.create({});
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload,
                 }
@@ -69,7 +69,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message
                 }
@@ -90,7 +90,7 @@ export class CartMongo {
                 }
                 return {
                     status: 200,
-                    smg: {
+                    message: {
                         status: "success",
                         result: cart
                     }
@@ -109,7 +109,7 @@ export class CartMongo {
 
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     result: updatedCart
                 }
@@ -117,7 +117,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: "error en los datos ingresados"
                 }
@@ -129,7 +129,7 @@ export class CartMongo {
             if (typeof cantidad !== 'number' || cantidad <= 0) {
                 return {
                     status: 400,
-                    smg: {
+                    message: {
                         status: "error",
                         error: "La cantidad debe ser un número positivo"
                     }
@@ -143,7 +143,7 @@ export class CartMongo {
             if (!cart) {
                 return {
                     status: 400,
-                    smg: {
+                    message: {
                         status: "error",
                         error: `El carrito con id:${cid} no existe`
                     }
@@ -153,7 +153,7 @@ export class CartMongo {
             if (productIndex === -1) {
                 return {
                     status: 400,
-                    smg: {
+                    message: {
                         status: "error",
                         error: `El producto con id:${pid} no se encontró en el carrito con id:${cid}`
                     }
@@ -165,7 +165,7 @@ export class CartMongo {
             await cart.save();
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     result: cart
                 }
@@ -173,7 +173,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message
                 }
@@ -186,7 +186,7 @@ export class CartMongo {
             console.log('se debe haber eliminado');
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     result
                 }
@@ -194,7 +194,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: "error en los datos ingresados"
                 }
@@ -211,7 +211,7 @@ export class CartMongo {
 
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     result: updatedCart
                 }
@@ -219,7 +219,7 @@ export class CartMongo {
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message
                 }

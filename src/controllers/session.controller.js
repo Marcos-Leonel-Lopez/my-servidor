@@ -7,14 +7,14 @@ export default class SessionController{
     register = async (req, res) => {
         return res.status(200).send({
             status: "success",
-            smg: 'Usuario Registrado'
+            message: 'Usuario Registrado'
         })
     }
     login = async (req, res) => {        
         if (!req.user) {
             return res.status(400).send({
                 status: 'error',
-                smg: 'Datos incorrectos'
+                message: 'Datos incorrectos'
             })
         }
         req.session.user = {
@@ -27,7 +27,7 @@ export default class SessionController{
         return res.status(200).send({
             status: 'success',
             payload: req.user,
-            smg: 'Primer logueo'
+            message: 'Primer logueo'
         });
     }
     githubcallback = async (req, res)=>{
@@ -45,7 +45,7 @@ export default class SessionController{
         req.session.destroy(err => {
             if (err) return res.status(500).send({
                 status: 'error',
-                smg: 'No se pudo cerrar sesion'
+                message: 'No se pudo cerrar sesion'
             })
             res.redirect('/login')
         })
@@ -53,7 +53,7 @@ export default class SessionController{
     failregister = async (req, res) => {
         return res.status(400).send({
             status: error,
-            smg: 'fallo el registro'
+            message: 'fallo el registro'
         })
     
     }
@@ -61,7 +61,7 @@ export default class SessionController{
         console.log('fallo ingreso');
         return res.status(400).send({
             status: error,
-            smg: 'fallo el ingreso'
+            message: 'fallo el ingreso'
         })
     
     }
@@ -71,7 +71,7 @@ export default class SessionController{
         if (!mail || !password) {
             return res.status(400).send({
                 stauts: 'error',
-                smg: 'datos incorrectos'
+                message: 'datos incorrectos'
             })
         }
         // const user = await userModel.findOne({ mail });
@@ -79,7 +79,7 @@ export default class SessionController{
         if (!user) {
             return res.status(400).send({
                 stauts: 'error',
-                smg: 'datos incorrectos'
+                message: 'datos incorrectos'
             })
         }
         const newHashedPass = createHash(password);
@@ -87,8 +87,43 @@ export default class SessionController{
         await sessionService.updatePassword(user, newHashedPass)
         res.status(200).send({
             stauts: 'success',
-            smg: 'contraseña actualizado'
+            message: 'contraseña actualizado'
         })
+    }
+
+
+
+    
+    getUsers = async (req, res) => {
+        try {
+            const { status, message } = await sessionService.getUsers();
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
+
+
+    getUser = async (req,res)=>{
+        try {
+            const mail = req.params.mail;
+            const { status, message } = await sessionService.getUser(mail);
+            return res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);            
+        }
+    }
+    deleteUser = async (req, res)=>{
+        try {
+            const sid = req.params.sid;
+            const { status, message } = await sessionService.deleteUser(sid);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);            
+        }
     }
 
 }

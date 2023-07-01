@@ -12,6 +12,7 @@ import __dirname from './utils.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import sessionsRouter from './routes/sessions.router.js';
+import ticketsRouter from './routes/ticket.router.js';
 import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
@@ -98,7 +99,7 @@ io.on('connection', async client => {
     })
     client.on('takeProduct', async data_id =>{
         const result = await productService.getProductById(data_id);
-        const product = result.smg.payload.map(item => item.toObject());
+        const product = result.message.payload.map(item => item.toObject());
         client.emit('productDetails',product);
     })
     client.on('editProduct', async (data,id) =>{
@@ -113,6 +114,7 @@ io.on('connection', async client => {
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
+app.use('/api/tickets', ticketsRouter);
 app.use('/api/sessions',sessionsRouter);
 
 

@@ -9,7 +9,7 @@ export class ProductMongo{
             await accessManager.createRecords("Get fallido - limit menor a 0");
             return {
                 status: 400,
-                smg: {
+                message: {
                     status: "error",
                     error: `Limite debe ser mayor a 0(cero)`
                 }
@@ -35,7 +35,7 @@ export class ProductMongo{
         const nextLink = data.hasNextPage ? `/products?page=${data.nextPage}&limit=${limit}&category=${category}&stock=${stock}&sort=${sort}` : null;
         return {
             status: 200,
-            smg: {
+            message: {
                 status: "success",
                 payload: data.docs,
                 totalPages: data.totalPages,
@@ -55,7 +55,7 @@ export class ProductMongo{
                 const payload = await productModel.find().limit(limit)
                 return {
                     status: 200,
-                    smg: {
+                    message: {
                         status: "success",
                         payload
                     }
@@ -64,7 +64,7 @@ export class ProductMongo{
             await accessManager.createRecords("Get fallido - limit menor a 0");
             return {
                 status: 400,
-                smg: {
+                message: {
                     status: "error",
                     error: `Limite debe ser mayor a 0(cero)`
                 }
@@ -74,7 +74,7 @@ export class ProductMongo{
             const payload = await productModel.find();
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload
                 }
@@ -87,7 +87,7 @@ export class ProductMongo{
             await accessManager.createRecords(`Consulta el producto id: ${id}`);
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload
                 }
@@ -96,7 +96,7 @@ export class ProductMongo{
         await accessManager.createRecords(`Get fallido - id inexistente`);
         return {
             status: 400,
-            smg: {
+            message: {
                 status: "error",
                 error: `El producto con id:${id} no existe`
             }
@@ -108,7 +108,7 @@ export class ProductMongo{
             await accessManager.createRecords(`Elimina el producto id: ${id}`);
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload,
                 }
@@ -117,7 +117,7 @@ export class ProductMongo{
         await accessManager.createRecords(`Delete fallido - id inexistente`);
         return {
             status: 400,
-            smg: {
+            message: {
                 status: "error",
                 error: `El producto con id:${id} no existe`
             }
@@ -130,7 +130,7 @@ export class ProductMongo{
             await accessManager.createRecords(`Post fallido - falta: ${data.join(", ")}`);
             return {
                 status: 400,
-                smg: {
+                message: {
                     status: "error",
                     error: `falta: ${data.join(", ")}`,
                 }
@@ -141,14 +141,14 @@ export class ProductMongo{
             await accessManager.createRecords(`Post fallido - codigo se repite`);
             return {
                 status: 400,
-                smg: repeat
+                message: repeat
             }
         }
         await accessManager.createRecords(`Post correcto - se agrego ${newProduct.title}`);
         const payload = await productModel.create(newProduct);
         return {
             status: 200,
-            smg: {
+            message: {
                 status: "success",
                 payload,
             }
@@ -187,7 +187,7 @@ export class ProductMongo{
                 await accessManager.createRecords(`Put fallido codigo se repite`);
                 return {
                     status: 400,
-                    smg: repeat
+                    message: repeat
                 }
             }
         }// detecta si el codigo se repite
@@ -197,7 +197,7 @@ export class ProductMongo{
             const payload = await productModel.updateOne({ _id: id }, { $set: editValues });
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     payload
                 }
@@ -207,7 +207,7 @@ export class ProductMongo{
             await accessManager.createRecords(`Put fallido id inexistente`);
             return {
                 status: 400,
-                smg: {
+                message: {
                     status: "error",
                     error: `El producto con id:${id} no existe`,
                 }
@@ -230,7 +230,7 @@ export class ProductMongo{
             if (!product) {
                 return {
                     status: 400,
-                    smg: {
+                    message: {
                         status: "error",
                         error: `El producto con id:${productId} no existe`,
                     },
@@ -240,7 +240,7 @@ export class ProductMongo{
             if (updatedStock < 0) {
                 return {
                     status: 400,
-                    smg: {
+                    message: {
                         status: "error",
                         error: `No hay suficiente stock disponible para agregar ${quantity} productos`,
                     },
@@ -254,7 +254,7 @@ export class ProductMongo{
 
             return {
                 status: 200,
-                smg: {
+                message: {
                     status: "success",
                     message: `Se actualizó el stock del producto con id:${productId}`,
                 },
@@ -262,7 +262,7 @@ export class ProductMongo{
         } catch (error) {
             return {
                 status: 500,
-                smg: {
+                message: {
                     status: "error",
                     error: error.message,
                 },
