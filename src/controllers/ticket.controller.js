@@ -1,4 +1,5 @@
 import TicketService from "../services/ticket.service.js";
+import {v4 as uuidv4} from 'uuid';
 
 const ticketService = new TicketService();
 
@@ -26,6 +27,8 @@ export default class TicketController{
     createTicket = async (req, res) =>{
         try {
             const newTicket = req.body;
+            newTicket.code = uuidv4();
+            newTicket.purchase_datatime = await ticketService.date();
             const { status, message } = await ticketService.createTicket(newTicket);
             res.status(status).send(message);
         } catch (error) {
@@ -56,6 +59,7 @@ export default class TicketController{
             res.status(500).send(error.message);                
         }
     }
+
 
 
 

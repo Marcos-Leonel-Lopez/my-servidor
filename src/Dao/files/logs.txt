@@ -454,3 +454,9 @@ Fecha: 6/30/2023 - Hora: 10:49:23 PM - Accion: Consulta los carritos
 Fecha: 6/30/2023 - Hora: 10:53:07 PM - Accion: Consulta los carritos 
 Fecha: 6/30/2023 - Hora: 10:53:29 PM - Accion: Consulta los carritos 
 Fecha: 6/30/2023 - Hora: 11:15:39 PM - Accion: Consulta los carritos 
+Fecha: 7/1/2023 - Hora: 8:52:44 PM - Accion: Consulta los productos 
+Fecha: 7/1/2023 - Hora: 8:52:44 PM - Accion: Consulta los productos 
+Fecha: 7/1/2023 - Hora: 8:52:56 PM - Accion: Consulta los productos 
+Fecha: 7/1/2023 - Hora: 8:54:22 PM - Accion: Consulta los productos 
+Fecha: 7/1/2023 - Hora: 8:54:33 PM - Accion: Consulta los productos 
+Fecha: 7/1/2023 - Hora: 8:54:35 PM - Accion: Consulta los productos 

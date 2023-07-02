@@ -49,8 +49,13 @@ export class SessionMongo{
 
     getUser = async (email) =>{
         try {
-            const user = await userModel.findOne({ mail: email }).populate({ path: 'cart',populate: { path: 'products.productId', model: productModel}}); // populate de todo
+            // const user = await userModel.findOne({ mail: email }).populate({ path: 'cart',populate: { path: 'products.productId', model: productModel}}); // populate de todo
             // return await userModel.findOne({ mail:email }).populate('cart');
+            console.log(email);
+            
+            const user = await userModel.findOne({ mail:email })
+            console.log(user);
+            
             if(user){
                 return {
                     status: 200,
@@ -66,12 +71,7 @@ export class SessionMongo{
                   status: "error",
                   error : "user inexistente"
                 }
-              };
-
-           
-            
-             
-          
+              }; 
         } catch (error) {
             return {
                 status: 500,

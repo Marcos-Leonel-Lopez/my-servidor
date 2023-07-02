@@ -23,32 +23,8 @@ const privateAccess = (req, res, next) => {
 }
 const adminAccess = async (req, res, next) => {
     try {
-        // if (config.port == 8080) {
-        //     const user = await userModel.findOne({ mail: config.admin_email });
-        //     if (user) {
-        //         req.session.user = {
-        //             name: `${user.first_name} ${user.last_name}`,
-        //             mail: `${user.mail}`,
-        //             age: `${user.age}`,
-        //             role: `${user.role}`,
-        //             cart: `${user.cart}`,
-        //         };
-        //         return res.redirect('/products')
-        //     }
-        // }else{
-        //     console.log(req.session.user?.role);
-        //     console.log(req.session);
-            
-        //     if(req.user == 'admin'){
-        //         req.session.destroy(err => {
-        //             if (err) return res.status(500).send({
-        //                 status: 'error',
-        //                 message: 'No se pudo cerrar sesion'
-        //             })
-        //             res.redirect('/login')
-        //         });
-        //     }
-        // }
+        if(req.user.role != 'admin') return res.redirect('/profile');
+        console.log(req.user.role);
         next();
     } catch (error) {
         next(error);
@@ -57,7 +33,7 @@ const adminAccess = async (req, res, next) => {
 
 router.get('/', productController.root)
 
-router.get('/registerProduct', productController.registerProduct)
+router.get('/registerProduct', adminAccess, productController.registerProduct)
 
 router.get('/products', productController.getProductsPage)
 
@@ -71,7 +47,7 @@ router.get('/register', publicAccess, (req, res) => {
     res.render('register', { title: 'Registro de Usuario', style: 'style.css' })
 })
 
-router.get('/login', adminAccess, publicAccess, async (req, res) => {
+router.get('/login', publicAccess, async (req, res) => {
     res.render('login', { title: 'Login', style: 'style.css' })
 })
 

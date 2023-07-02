@@ -17,4 +17,8 @@ export default class TicketService{
     daleteTicket = async (id) =>{
         return await ticketPersistence.daleteTicket(id);
     }
+
+    date = async () =>{
+        return await ticketPersistence.date();
+    }
 }

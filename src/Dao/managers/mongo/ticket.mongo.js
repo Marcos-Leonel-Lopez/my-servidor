@@ -54,11 +54,11 @@ export class TicketMongo {
 
     createTicket = async (ticket) => {
         try {
-            const {code} = ticket;
-            
+            const { code } = ticket;
+
             const data = await this.correctData(ticket);
             console.log(data);
-            
+
             if (data != "success") {
                 return {
                     status: 400,
@@ -69,7 +69,7 @@ export class TicketMongo {
                 }
             }
             const repeat = await this.codeRepeat(code);
-            if (repeat){
+            if (repeat) {
                 return {
                     status: 400,
                     message: repeat
@@ -141,7 +141,7 @@ export class TicketMongo {
         return false
     };
 
-    daleteTicket = async (id)=>{
+    daleteTicket = async (id) => {
         try {
             const data = await ticketModel.deleteOne({ _id: id });
             if (data.deletedCount == 1) {
@@ -170,6 +170,18 @@ export class TicketMongo {
             };
         }
 
+    }
+
+    date = async () => {
+        const fechaActual = new Date(Date.now());
+        const dia = fechaActual.getDate();
+        const mes = fechaActual.getMonth() + 1;
+        const año = fechaActual.getFullYear();
+        const hora = fechaActual.getHours();
+        const minutos = fechaActual.getMinutes();
+        const segundos = fechaActual.getSeconds();
+        const fechaHoraActual = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
+        return fechaHoraActual
     }
 
 
