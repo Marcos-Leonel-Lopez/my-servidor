@@ -26,5 +26,8 @@ export default class CartService{
         return await cartPersistence.deleteAllProductsFromCart(cid)
     }
 
+    createOrder = async (cid)=>{
+        return await cartPersistence.createOrder(cid)
+    }
     
 }

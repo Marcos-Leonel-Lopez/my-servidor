@@ -20,4 +20,13 @@
     {{else}}
         <p>No hay productos en el carrito</p>
     {{/if}}
+    <ul class="categorias">
+        <li>
+            <a href="/products">Volver a productos</a>
+        </li>
+        <li>
+            <a href="/api/carts/{{cid}}/purchase">Finalizar compra</a>
+        </li>
+    </ul>
 </section>
+<script src="/js/cart.js"></script>

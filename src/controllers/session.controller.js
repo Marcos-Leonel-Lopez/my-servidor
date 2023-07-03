@@ -24,6 +24,7 @@ export default class SessionController{
             role: `${req.user.role}`,
             cart: `${req.user.cart}`,
         };
+        
         return res.status(200).send({
             status: 'success',
             payload: req.user,
@@ -38,10 +39,13 @@ export default class SessionController{
             role: `${req.user.role}`,
             cart: `${req.user.cart}`
         };
+
         console.log(req.session.user);
         res.redirect('/profile')
     }
+
     logout = (req, res) => {
+       
         req.session.destroy(err => {
             if (err) return res.status(500).send({
                 status: 'error',
@@ -49,7 +53,8 @@ export default class SessionController{
             })
             res.redirect('/login')
         })
-    }
+    };
+
     failregister = async (req, res) => {
         return res.status(400).send({
             status: error,

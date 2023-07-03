@@ -17,8 +17,16 @@ export default class TicketService{
     daleteTicket = async (id) =>{
         return await ticketPersistence.daleteTicket(id);
     }
+    resolveTicket = async (tid, action)=>{
+        return await ticketPersistence.resolveTicket(tid, action);
+    }
 
     date = async () =>{
         return await ticketPersistence.date();
     }
+
+    idFronFront = async (id)=>{
+        console.log(id);
+        return
+    }// ver como ahcerlo funcional
 }

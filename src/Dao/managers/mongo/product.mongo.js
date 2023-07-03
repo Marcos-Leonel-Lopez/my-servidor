@@ -236,27 +236,27 @@ export class ProductMongo{
                     },
                 };
             }
-            const updatedStock = product.stock - quantity;
-            if (updatedStock < 0) {
+            const newStock = product.stock - quantity;
+            if (newStock < 0) {
                 return {
                     status: 400,
                     message: {
                         status: "error",
                         error: `No hay suficiente stock disponible para agregar ${quantity} productos`,
+                        stock: false
                     },
                 };
             }
 
-            product.stock = updatedStock;
-            product.status = updatedStock > 0;
-
+            product.stock = newStock;
+            product.status = newStock > 0;
             await product.save();
-
             return {
                 status: 200,
                 message: {
                     status: "success",
                     message: `Se actualizó el stock del producto con id:${productId}`,
+                    stock: true
                 },
             };
         } catch (error) {

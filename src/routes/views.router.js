@@ -31,15 +31,17 @@ const adminAccess = async (req, res, next) => {
     }
 }
 
+
+
 router.get('/', productController.root)
 
-router.get('/registerProduct', adminAccess, productController.registerProduct)
+router.get('/registerProduct',privateAccess, adminAccess, productController.registerProduct)
 
 router.get('/products', productController.getProductsPage)
 
 router.get('/realtimeproducts', productController.realtimeproducts)
 
-router.get('/chat', productController.chat)
+router.get('/chat',privateAccess, productController.chat)
 
 router.get('/cart/:cid', cartController.getCartByIdRender)
 

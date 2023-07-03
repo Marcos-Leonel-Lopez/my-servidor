@@ -16,6 +16,7 @@ import ticketsRouter from './routes/ticket.router.js';
 import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
+import TicketService from './services/ticket.service.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
 import ProductService from './services/product.service.js';
@@ -61,10 +62,10 @@ const server = app.listen(PORT, () => {
 });
 //servidor
 const productController = new ProductController();
+const ticketService = new TicketService();
 const messageManager = new MessageManager();
 const productService = new ProductService();
 const io = new Server(server);
-
 
 // productos en tiempo real
 io.on('connection', async client => {
@@ -108,6 +109,11 @@ io.on('connection', async client => {
         const products = result.map(item => item.toObject())
         io.emit('productList', products);
     })
+    
+        client.on('idproduct', async (data) => {
+            await ticketService.idFronFront(data)
+        })
+    
 })
 
 //rutas

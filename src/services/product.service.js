@@ -21,4 +21,8 @@ export default class ProductService{
     updateProduct = async (id, newData)=>{
         return await productPersistence.updateProduct(id, newData)
     }
+
+    updateStock = async (productId, quantity) => {
+        return await productPersistence.updateStock(productId, quantity)
+    }
 }

@@ -8,6 +8,7 @@ const router = Router();
 router.get('/', ticketController.getTickets)
 router.get('/:tid', ticketController.getTicketsById)
 router.post('/', ticketController.createTicket)
+router.put('/:tid', ticketController.resolveTicket )
 router.delete('/:tid', ticketController.daleteTicket)
 
 export default router;

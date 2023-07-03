@@ -1,30 +1,30 @@
 import TicketService from "../services/ticket.service.js";
-import {v4 as uuidv4} from 'uuid';
+
 
 const ticketService = new TicketService();
 
-export default class TicketController{
-    getTickets = async(req, res)=>{
+export default class TicketController {
+    getTickets = async (req, res) => {
         try {
             const { status, message } = await ticketService.getTickets();
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message); 
+            res.status(500).send(error.message);
         }
     }
-    getTicketsById = async (req, res)=>{
+    getTicketsById = async (req, res) => {
         try {
             const tid = req.params.tid;
             const { status, message } = await ticketService.getTicketsById(tid);
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);  
+            res.status(500).send(error.message);
         }
     }
 
-    createTicket = async (req, res) =>{
+    createTicket = async (req, res) => {
         try {
             const newTicket = req.body;
             newTicket.code = uuidv4();
@@ -33,11 +33,11 @@ export default class TicketController{
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);             
+            res.status(500).send(error.message);
         }
     }
 
-    updateTicket = async (req, res)=>{
+    updateTicket = async (req, res) => {
         try {
             const tid = req.params.tid;
             const newData = req.body;
@@ -45,18 +45,39 @@ export default class TicketController{
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);                
+            res.status(500).send(error.message);
         }
     } // no tiene funcionalidad aun
 
-    daleteTicket = async (req, res) =>{
-        try{
-        const tid = req.params.tid;
-        const { status, message } = await ticketService.daleteTicket(tid);
-        res.status(status).send(message);
+    daleteTicket = async (req, res) => {
+        try {
+            const tid = req.params.tid;
+            const { status, message } = await ticketService.daleteTicket(tid);
+            res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);                
+            res.status(500).send(error.message);
+        }
+    }
+
+    resolveTicket = async (req, res) => {
+        try {
+            const tid = req.params.tid;
+            const action = req.body;
+            const { status, message } = await ticketService.resolveTicket(tid, action);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+
+    }
+
+    takeIDFront = async (req, res) => {
+        try {
+
+        } catch (error) {
+
         }
     }
 

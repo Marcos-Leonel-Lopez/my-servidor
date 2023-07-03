@@ -1,9 +1,13 @@
 import cartModel from "../../models/cart.model.js";
+import userModel from "../../models/user.model.js";
 import AccessManager from "../AccessManager.js";
-import {ProductMongo} from "./product.mongo.js";
+import { ProductMongo } from "./product.mongo.js";
+import { TicketMongo } from "./ticket.mongo.js";
 
-const productMongo = new ProductMongo();
+
 const accessManager = new AccessManager();
+const productMongo = new ProductMongo();
+const ticketMongo = new TicketMongo();
 
 export class CartMongo {
     getCarts = async () => {
@@ -51,7 +55,7 @@ export class CartMongo {
                 status: 500,
                 message: {
                     status: "error",
-                    error: error.message
+                    error: `El cart con id:${id} no existe`
                 }
             };
         }
@@ -84,10 +88,12 @@ export class CartMongo {
                 { new: true }
             );
             if (cart) {
-                const stockUpdate = await productMongo.updateStock(pid, 1);
-                if (stockUpdate.status !== 200) {
-                    return stockUpdate;
-                }
+                // const stockUpdate = await productMongo.updateStock(pid, 1);
+                // if (stockUpdate.status !== 200) {
+                //     return stockUpdate;
+                // } actualizaba stock automaticamente
+                console.log('el carrito ya tenia el producto');
+
                 return {
                     status: 200,
                     message: {
@@ -102,11 +108,11 @@ export class CartMongo {
                 { new: true }
             );
             // Stock validation and update
-            const stockUpdate = await productMongo.updateStock(pid, 1);
-            if (stockUpdate.status !== 200) {
-                return stockUpdate;
-            }
-
+            // const stockUpdate = await productMongo.updateStock(pid, 1);
+            // if (stockUpdate.status !== 200) {
+            //     return stockUpdate;
+            // } actualizaba stock
+            console.log('el carrito no tenia el producto');
             return {
                 status: 200,
                 message: {
@@ -135,10 +141,10 @@ export class CartMongo {
                     }
                 };
             }
-            const stockUpdate = await productMongo.updateStock(pid, cantidad);
-            if (stockUpdate.status !== 200) {
-                return stockUpdate;
-            }
+            // const stockUpdate = await productMongo.updateStock(pid, cantidad);
+            // if (stockUpdate.status !== 200) {
+            //     return stockUpdate;
+            // } actualizaba stock
             const cart = await cartModel.findOne({ _id: cid });
             if (!cart) {
                 return {
@@ -175,7 +181,7 @@ export class CartMongo {
                 status: 500,
                 message: {
                     status: "error",
-                    error: error.message
+                    error: 'error en datos ingresados'
                 }
             };
         }
@@ -226,4 +232,54 @@ export class CartMongo {
             };
         }
     };
+
+    createOrder = async (id) => {
+        try {
+            let amount = 0;
+            const cart = await cartModel.findById(id);
+            const user = await userModel.find({ cart: id })
+            const remainder = []
+            const { products } = cart
+            for (const unit of products) {
+                try {
+                    const product = await productMongo.getProductById(unit.productId);
+                    if (product.message.payload[0].stock >= unit.quantity) {
+                        amount = amount + product.message.payload[0].price * unit.quantity
+                    } else {
+                        remainder.push(unit);
+                    }
+                    const newStock = await productMongo.updateStock(product.message.payload[0].id, unit.quantity);
+                } catch (error) {
+                    console.error('Error al obtener el producto', error);
+                }
+            }
+            let ticket = {
+                code: '',
+                purchase_datetime: '',
+                amount: amount,
+                purchaser: user[0].mail
+            }
+            const order = await ticketMongo.createTicket(ticket);
+            cart.products = remainder;
+            await cart.save();
+            return {
+                status: 200,
+                message: {
+                    orden: order,
+                    noProcess: cart
+                }
+            };
+
+            // const newTicket = await createTicket.TicketMongo(data)
+
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error aqui",
+                    error: error.message
+                }
+            };
+        }
+    }
 }

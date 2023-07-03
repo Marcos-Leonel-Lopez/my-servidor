@@ -33,7 +33,9 @@ export default class CartController {
             const cid = req.params.cid;
             const { status, message } = await cartService.getCartById(cid);
             const theCart = message.cart.products.map(item => item.toObject());
-            res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' });
+            
+            
+            return res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' });
         } catch (error) {
             console.error(error);
             res.status(500).send(error.message);
@@ -102,6 +104,17 @@ export default class CartController {
         try {
             
             res.status(200).send({message:'resolveCart'});
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    }
+
+    createOrder = async (req, res) =>{
+        try {
+            const cid = req.params.cid;
+            const { status, message } = await cartService.createOrder(cid);
+            res.status(status).send(message);
         } catch (error) {
             console.error(error);
             res.status(500).send(error.message);

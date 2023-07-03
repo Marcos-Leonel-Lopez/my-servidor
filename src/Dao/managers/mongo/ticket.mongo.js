@@ -1,4 +1,5 @@
 import ticketModel from "../../models/ticket.model.js";
+import {v4 as uuidv4} from 'uuid';
 
 export class TicketMongo {
     getTickets = async () => {
@@ -54,11 +55,13 @@ export class TicketMongo {
 
     createTicket = async (ticket) => {
         try {
-            const { code } = ticket;
-
+            console.log(ticket);
+            
+            ticket.code = uuidv4();
+            ticket.purchase_datetime = await this.date();
+            console.log(ticket);
             const data = await this.correctData(ticket);
-            console.log(data);
-
+            
             if (data != "success") {
                 return {
                     status: 400,
@@ -68,6 +71,7 @@ export class TicketMongo {
                     }
                 }
             }
+            const {code} = ticket;
             const repeat = await this.codeRepeat(code);
             if (repeat) {
                 return {
@@ -77,6 +81,8 @@ export class TicketMongo {
             }
 
             const newTicket = await ticketModel.create(ticket);
+            console.log('nuevo creado');
+            
             return {
                 status: 200,
                 message: {
@@ -88,7 +94,7 @@ export class TicketMongo {
             return {
                 status: 500,
                 message: {
-                    status: "error aqui",
+                    status: "error al crear ticket",
                     error: error.message
                 }
             };
@@ -170,6 +176,29 @@ export class TicketMongo {
             };
         }
 
+    }
+
+    resolveTicket = async (tid, action)=>{
+        try {
+            const ticket = await this.getTicketsById(tid);
+            ticket.message.ticket.status = action.action
+            const result =  ticket.message.ticket
+            return{
+                status: 200,
+                message:{
+                    status: "success",
+                    result
+                }
+            }
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error al crear ticket",
+                    error: error.message
+                }
+            };
+        }
     }
 
     date = async () => {

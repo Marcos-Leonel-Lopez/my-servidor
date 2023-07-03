@@ -51,6 +51,11 @@
                     Ascendente</a>
             </li>
         </ul>
+        <ul class="categorias">
+            <li>
+                <a href="/cart/{{userCart}}">Ir al carrito</a>
+            </li>
+        </ul>
         {{/if}}
     </section>
     <section>
@@ -68,7 +73,106 @@
                 {{/if}}
             </ul>
         </section>
-
+        {{#if userRole}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if products}}
+                {{#each products}}
+                <tr>
+                    <td>{{this._id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>{{this.code}}</td>
+                    <th> -- </th>
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <th> -- </th>
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+         <section>
+            {{#if hasPrevPage}}
+            <a class="btn-page" href={{prevLink}}>Anterior</a>
+            {{/if}}
+            {{#if hasNextPage}}
+            <a class="btn-page" href={{nextLink}}>Siguiente</a>
+            {{!-- <a class="btn-page"
+                href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
+            --}}
+            {{/if}}
+        </section>
+        {{else}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if products}}
+                {{#each products}}
+                <tr>
+                    <td>{{this._id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>{{this.code}}</td>
+                    <th><button class="btn-add" id="{{this._id}}" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add
+                            Cart</button></th>
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <th> -- </th>
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+        <section>
+            {{#if hasPrevPage}}
+            <a class="btn-page" href={{prevLink}}>Anterior</a>
+            {{/if}}
+            {{#if hasNextPage}}
+            <a class="btn-page" href={{nextLink}}>Siguiente</a>
+            {{!-- <a class="btn-page"
+                href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
+            --}}
+            {{/if}}
+        </section>
+        {{/if}}
         {{else}}
         <ul class="categorias">
             <li>
@@ -78,55 +182,67 @@
                 <a href="/register">Registrarme</a>
             </li>
         </ul>
-        {{/if}}
+        
+
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#if products}}
+                {{#each products}}
+                <tr>
+                    <td>{{this._id}}</td>
+                    <td>{{this.title}}</td>
+                    <td>{{this.price}}</td>
+                    <td>{{this.category}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>{{this.code}}</td>
+                    <th> -- </th>
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <td> -- </td>
+                    <th> -- </th>
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+    
+
+        <section>
+            {{#if hasPrevPage}}
+            <a class="btn-page" href={{prevLink}}>Anterior</a>
+            {{/if}}
+            {{#if hasNextPage}}
+            <a class="btn-page" href={{nextLink}}>Siguiente</a>
+            {{!-- <a class="btn-page"
+                href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
+            --}}
+            {{/if}}
+        </section>
+        
+{{/if}}
+       
     </section>
 </section>
 
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Category</th>
-            <th>Stock</th>
-            <th>Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#if products}}
-        {{#each products}}
-        <tr>
-            <td>{{this._id}}</td>
-            <td>{{this.title}}</td>
-            <td>{{this.price}}</td>
-            <td>{{this.category}}</td>
-            <td>{{this.stock}}</td>
-            <td>{{this.code}}</td>
-            <th><button class="btn-add" id="{{this._id}}" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add Cart</button></th>
-        </tr>
-        {{/each}}
-        {{else}}
-        <tr>
-            <td> -- </td>
-            <td> -- </td>
-            <td> -- </td>
-            <td> -- </td>
-            <td> -- </td>
-            <td> -- </td>
-            <th> -- </th>
-        </tr>
-        {{/if}}
-    </tbody>
-</table>
-<section>
-    {{#if hasPrevPage}}
-    <a class="btn-page" href={{prevLink}}>Anterior</a>
-    {{/if}}
-    {{#if hasNextPage}}
-    <a class="btn-page" href={{nextLink}}>Siguiente</a>
-    {{!-- <a class="btn-page" href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
-    --}}
-    {{/if}}
-</section>
+
+
+<script src="/socket.io/socket.io.js"></script>
 <script src="/js/index.js"></script>
