@@ -5,6 +5,7 @@ import { ProductMongo } from "./product.mongo.js";
 import { TicketMongo } from "./ticket.mongo.js";
 
 
+
 const accessManager = new AccessManager();
 const productMongo = new ProductMongo();
 const ticketMongo = new TicketMongo();

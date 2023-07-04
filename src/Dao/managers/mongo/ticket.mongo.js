@@ -1,5 +1,7 @@
 import ticketModel from "../../models/ticket.model.js";
-import {v4 as uuidv4} from 'uuid';
+import { transporter } from "../../../config/gmail.js";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export class TicketMongo {
     getTickets = async () => {
@@ -56,12 +58,12 @@ export class TicketMongo {
     createTicket = async (ticket) => {
         try {
             console.log(ticket);
-            
+
             ticket.code = uuidv4();
             ticket.purchase_datetime = await this.date();
             console.log(ticket);
             const data = await this.correctData(ticket);
-            
+
             if (data != "success") {
                 return {
                     status: 400,
@@ -71,7 +73,7 @@ export class TicketMongo {
                     }
                 }
             }
-            const {code} = ticket;
+            const { code } = ticket;
             const repeat = await this.codeRepeat(code);
             if (repeat) {
                 return {
@@ -82,7 +84,7 @@ export class TicketMongo {
 
             const newTicket = await ticketModel.create(ticket);
             console.log('nuevo creado');
-            
+
             return {
                 status: 200,
                 message: {
@@ -178,14 +180,27 @@ export class TicketMongo {
 
     }
 
-    resolveTicket = async (tid, action)=>{
+    resolveTicket = async (tid, action) => {
         try {
             const ticket = await this.getTicketsById(tid);
             ticket.message.ticket.status = action.action
-            const result =  ticket.message.ticket
-            return{
+            const result = ticket.message.ticket
+            if (action.action == 'completed') {
+                const emailTemplate =   `<section>
+                                            <h1>Compra Realizada por ${ticket.message.ticket.purchaser}</h1>
+                                            <h2>Monto a pagar: $${ticket.message.ticket.amount}</h2>
+                                            <h2>Codigo de referencia : ${ticket.message.ticket.code}</h2>
+                                        </section>`
+                const contenido = await transporter.sendMail({
+                    from: 'Ecomerce',
+                    to: "marcosleonellopez@gmail.com",
+                    subject: 'Compra exitosa',
+                    html: emailTemplate
+                })
+            }
+            return {
                 status: 200,
-                message:{
+                message: {
                     status: "success",
                     result
                 }
@@ -194,7 +209,7 @@ export class TicketMongo {
             return {
                 status: 500,
                 message: {
-                    status: "error al crear ticket",
+                    status: "error al resolver ticket",
                     error: error.message
                 }
             };

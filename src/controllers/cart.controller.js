@@ -1,4 +1,5 @@
 import CartService from "../services/cart.service.js";
+import {transporter} from '../config/gmail.js'
 
 const cartService = new CartService();
 
@@ -102,7 +103,9 @@ export default class CartController {
 
     resolveCart = async (req, res) =>{
         try {
-            
+            const cid = req.params.cid
+            const resolve = req.body;
+            const { status, message } = await cartService.deleteAllProductsFromCart(cid);
             res.status(200).send({message:'resolveCart'});
         } catch (error) {
             console.error(error);
