@@ -50,7 +50,7 @@ router.get('/realtimeproducts', productController.realtimeproducts)
 
 router.get('/chat',privateAccess ,onlyClient , productController.chat)
 
-router.get('/cart/:cid', cartController.getCartByIdRender)
+router.get('/cart/:cid', onlyClient, cartController.getCartByIdRender)
 
 router.get('/register', publicAccess, (req, res) => {
     res.render('register', { title: 'Registro de Usuario', style: 'style.css' })
