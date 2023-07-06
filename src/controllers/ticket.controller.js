@@ -1,7 +1,4 @@
-import TicketService from "../services/ticket.service.js";
-
-
-const ticketService = new TicketService();
+import { ticketService } from "../repository/index.repository.js";
 
 export default class TicketController {
     getTickets = async (req, res) => {

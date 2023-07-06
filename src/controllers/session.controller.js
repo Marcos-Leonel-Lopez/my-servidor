@@ -1,7 +1,6 @@
-import SessionService from "../services/session.service.js"
+import { sessionService } from "../repository/index.repository.js";
 import { createHash, validatePass } from "../utils.js"
 
-const sessionService = new SessionService();
 
 export default class SessionController{
     register = async (req, res) => {

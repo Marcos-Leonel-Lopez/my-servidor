@@ -1,7 +1,6 @@
-import CartService from "../services/cart.service.js";
 import {transporter} from '../config/gmail.js'
+import { cartService } from "../repository/index.repository.js";
 
-const cartService = new CartService();
 
 export default class CartController {
 

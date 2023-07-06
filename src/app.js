@@ -16,11 +16,12 @@ import ticketsRouter from './routes/ticket.router.js';
 import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
 import ProductController from './controllers/product.controller.js';
-import TicketService from './services/ticket.service.js';
+//import TicketService from './services/ticket.service.js';
+import { TicketRepository } from './repository/ticket.repository.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
-import ProductService from './services/product.service.js';
-
+//import ProductRepository from './services/product.service.js';
+import { productService } from './repository/index.repository.js';
 
 const PORT = config.port || 8080;
 
@@ -62,9 +63,9 @@ const server = app.listen(PORT, () => {
 });
 //servidor
 const productController = new ProductController();
-const ticketService = new TicketService();
+//const ticketService = new TicketService();
 const messageManager = new MessageManager();
-const productService = new ProductService();
+//const productService = new ProductRepository();
 const io = new Server(server);
 
 // productos en tiempo real

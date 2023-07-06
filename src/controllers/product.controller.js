@@ -1,10 +1,10 @@
 import AccessManager from "../Dao/managers/AccessManager.js";
-import ProductService from "../services/product.service.js";
+import { productService } from "../repository/index.repository.js";
 import { UserDto } from "../Dao/dto/user.dto.js";
 
 
 const accessManager = new AccessManager();
-const productService = new ProductService();
+
 
 
 
