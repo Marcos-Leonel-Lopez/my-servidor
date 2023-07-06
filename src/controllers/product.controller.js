@@ -1,5 +1,7 @@
 import AccessManager from "../Dao/managers/AccessManager.js";
 import ProductService from "../services/product.service.js";
+import { UserDto } from "../Dao/dto/user.dto.js";
+
 
 const accessManager = new AccessManager();
 const productService = new ProductService();
@@ -15,26 +17,28 @@ export default class ProductController {
     }
     getProductsPage = async (req, res) => {
         const { limit = 10, page = 1, category = 'all', stock = 'all', sort = 'none' } = req.query;
-        let userRole = false;
-        let userCart = '';
         const result = await productService.getProductsPage(limit, page, category, stock, sort);
-        const userName = req.session.user?.name ? req.session.user.name : req.session.user?.first_name;
-        if (req.session.user?.role == 'admin') {
-            userRole = true;
+        let admin = false; 
+        let userRole = null;
+        let userCart = null;
+        let userName = null;
+        const persona = req.session.user;   
+        if(persona){
+             const usuarioDto = new UserDto(persona);
+             userName = usuarioDto.name;
+             userRole = usuarioDto.role;
+             userCart = usuarioDto.cart;
         }
-        if(req.session.user?.cart){
-            userCart = req.session.user.cart
+        console.log(userRole + ' despues ');
+        if (userRole === 'admin') {
+            admin = true;
         }
         const { status, message } = result;
         if (status == 200) {
             const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
             await accessManager.createRecords("Consulta los productos");
             const products = payload.map(item => item.toObject())
-            // const userCart = req.session.user.cart
-            
-            
-
-            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, userRole, userCart, title: 'Productos', style: 'style.css', error: false })
+            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart, title: 'Productos', style: 'style.css', error: false })
         } else {
             await accessManager.createRecords("Get fallido - limit menor a 0");
             return res.render('home', { title: 'Productos', style: 'style.css', error: true })

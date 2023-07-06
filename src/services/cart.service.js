@@ -1,6 +1,7 @@
 import { cartPersistence } from "../Dao/factory.js";
 
 export default class CartService{
+    
     getCarts = async () =>{
         return await cartPersistence.getCarts();
     }

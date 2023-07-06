@@ -66,14 +66,14 @@
                 <li>
                     <a class="btn-page" href="/api/sessions/logout">Salir</a>
                 </li>
-                {{#if userRole }}
+                {{#if admin }}
                 <li>
                     <a id="admin" href="">ADMIN</a>
                 </li>
                 {{/if}}
             </ul>
         </section>
-        {{#if userRole}}
+        {{#if admin}}
         <table>
             <thead>
                 <tr>
