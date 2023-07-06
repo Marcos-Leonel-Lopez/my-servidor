@@ -24,7 +24,14 @@ const privateAccess = (req, res, next) => {
 const adminAccess = async (req, res, next) => {
     try {
         if(req.user.role != 'admin') return res.redirect('/profile');
-        console.log(req.user.role);
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+const onlyClient = async (req, res, next) => {
+    try {
+        if(req.user.role != 'client') return res.redirect('/profile');
         next();
     } catch (error) {
         next(error);
@@ -41,7 +48,7 @@ router.get('/products', productController.getProductsPage)
 
 router.get('/realtimeproducts', productController.realtimeproducts)
 
-router.get('/chat',privateAccess, productController.chat)
+router.get('/chat',privateAccess ,onlyClient , productController.chat)
 
 router.get('/cart/:cid', cartController.getCartByIdRender)
 

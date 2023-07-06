@@ -24,9 +24,15 @@
         <li>
             <a href="/products">Volver a productos</a>
         </li>
+        {{#if theCart.length}}
         <li>
             <a href="/api/carts/{{cid}}/purchase">Finalizar compra</a>
         </li>
+
+    
+
+        {{/if}}
+
     </ul>
 </section>
 <script src="/js/cart.js"></script>

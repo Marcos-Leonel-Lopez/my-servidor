@@ -51,11 +51,26 @@
                     Ascendente</a>
             </li>
         </ul>
+        {{#if admin}}
+        <ul class="categorias">
+             <li>
+                <a id="admin" href="/registerProduct">EDITAR</a>
+            </li>
+        </ul>        
+        {{else}}
+        {{#if userName}}
         <ul class="categorias">
             <li>
                 <a href="/cart/{{userCart}}">Ir al carrito</a>
             </li>
+            <li>
+                <a href="/chat">Ir al chat</a>
+            </li>
         </ul>
+        {{/if}}
+
+        {{/if}}
+
         {{/if}}
     </section>
     <section>
@@ -66,11 +81,7 @@
                 <li>
                     <a class="btn-page" href="/api/sessions/logout">Salir</a>
                 </li>
-                {{#if admin }}
-                <li>
-                    <a id="admin" href="">ADMIN</a>
-                </li>
-                {{/if}}
+
             </ul>
         </section>
         {{#if admin}}
@@ -111,7 +122,7 @@
                 {{/if}}
             </tbody>
         </table>
-         <section>
+        <section>
             {{#if hasPrevPage}}
             <a class="btn-page" href={{prevLink}}>Anterior</a>
             {{/if}}
@@ -182,7 +193,7 @@
                 <a href="/register">Registrarme</a>
             </li>
         </ul>
-        
+
 
 
 
@@ -223,7 +234,7 @@
                 {{/if}}
             </tbody>
         </table>
-    
+
 
         <section>
             {{#if hasPrevPage}}
@@ -236,9 +247,9 @@
             --}}
             {{/if}}
         </section>
-        
-{{/if}}
-       
+
+        {{/if}}
+
     </section>
 </section>
 
