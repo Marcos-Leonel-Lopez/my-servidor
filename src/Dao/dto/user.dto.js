@@ -6,6 +6,3 @@
         this.cart = user.cart;
     }
  }
-//  export class GetProductDto{
-//     constructor()
-//  }

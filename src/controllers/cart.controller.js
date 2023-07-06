@@ -1,4 +1,3 @@
-import {transporter} from '../config/gmail.js'
 import { cartService } from "../repository/index.repository.js";
 
 

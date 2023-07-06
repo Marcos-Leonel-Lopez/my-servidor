@@ -14,18 +14,15 @@ export class TicketRepository{
     updateTicket = async (id, ticket)=>{
         return await this.dao.updateTicket(id, ticket);
     }
-
     daleteTicket = async (id) =>{
         return await this.dao.daleteTicket(id);
     }
     resolveTicket = async (tid, action)=>{
         return await this.dao.resolveTicket(tid, action);
     }
-
     date = async () =>{
         return await this.dao.date();
     }
-
     idFronFront = async (id)=>{
         console.log(id);
         return

@@ -14,21 +14,16 @@ export class CartRepository{
     addProductToCart = async (cid, pid) =>{
         return await this.dao.addProductToCart(cid, pid)
     }
-
     updateProductQuantity = async (cid, pid, cantidad) =>{
         return await this.dao.updateProductQuantity(cid, pid, cantidad)
     }
-
     deleteProductOnCart = async (cid, pid) =>{
         return await this.dao.deleteProductOnCart(cid, pid)
     }
-
     deleteAllProductsFromCart = async (cid)=>{
         return await this.dao.deleteAllProductsFromCart(cid)
     }
-
     createOrder = async (cid)=>{
         return await this.dao.createOrder(cid)
     }
-    
 }

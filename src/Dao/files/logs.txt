@@ -30,3 +30,12 @@ Fecha: 7/6/2023 - Hora: 4:52:26 AM - Accion: Consulta el producto id: 6462a68fc0
 Fecha: 7/6/2023 - Hora: 4:52:28 AM - Accion: Consulta los productos 
 Fecha: 7/6/2023 - Hora: 4:52:28 AM - Accion: Consulta los productos 
 Fecha: 7/6/2023 - Hora: 4:52:28 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:56:36 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:56:59 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:01 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:15 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:17 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:31 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:47 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:58 AM - Accion: Consulta los productos 
+Fecha: 7/6/2023 - Hora: 4:57:59 AM - Accion: Consulta los productos 

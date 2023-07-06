@@ -7,9 +7,6 @@ import SessionController from "../controllers/session.controller.js";
 const router = Router();
 const sessionController = new SessionController();
 
-// router.get('/', sessionController.getUsers)
-// router.get('/:mail', sessionController.getUser)
-
 
 router.post('/register', passport.authenticate('register', { failureRedirect: '/failregister' }), sessionController.register)
 
