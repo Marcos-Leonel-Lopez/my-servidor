@@ -1,5 +1,6 @@
 import productModel from "../../models/product.model.js";
 import AccessManager from "../AccessManager.js";
+import { generateProduct } from "../../../utils.js";
 
 const accessManager = new AccessManager();
 
@@ -82,7 +83,8 @@ export class ProductMongo{
         }
     };
     getProductById = async (id) => {
-        const payload = await productModel.find({ _id: id });
+        try {
+            const payload = await productModel.find({ _id: id });
         if (payload.length > 0) {
             await accessManager.createRecords(`Consulta el producto id: ${id}`);
             return {
@@ -101,6 +103,16 @@ export class ProductMongo{
                 error: `El producto con id:${id} no existe`
             }
         }
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error",
+                    error: error.message,
+                },
+            }; 
+        }
+        
     };
     deleteProduct = async (id) => {
         const payload = await productModel.deleteOne({ _id: id });
@@ -269,4 +281,24 @@ export class ProductMongo{
             };
         }
     };
+    mockingproducts = async (cantidad) =>{
+        try {
+            for (let index = 0; index < cantidad; index++) {
+                let product = generateProduct()
+                await this.addProduct(product); 
+            }
+            return {
+                status: 200,
+                message: `se crearon ${cantidad} productos`,  
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error",
+                    error: error.message,
+                },
+            }; 
+        }
+    }
 }

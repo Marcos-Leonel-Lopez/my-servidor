@@ -137,3 +137,33 @@ Fecha: 7/6/2023 - Hora: 7:54:04 PM - Accion: Consulta los productos
 Fecha: 7/6/2023 - Hora: 7:54:05 PM - Accion: Consulta los productos 
 Fecha: 7/6/2023 - Hora: 7:54:05 PM - Accion: Consulta los productos 
 Fecha: 7/6/2023 - Hora: 7:54:50 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 8:39:35 PM - Accion: Consulta el producto id: 6462a6ffc0197e8a1165e46c 
+Fecha: 7/10/2023 - Hora: 9:11:52 PM - Accion: Post correcto - se agrego Handcrafted Metal Bike 
+Fecha: 7/10/2023 - Hora: 9:12:10 PM - Accion: Post correcto - se agrego Modern Cotton Bike 
+Fecha: 7/10/2023 - Hora: 9:13:28 PM - Accion: Post correcto - se agrego Luxurious Fresh Bacon 
+Fecha: 7/10/2023 - Hora: 9:13:28 PM - Accion: Post correcto - se agrego Oriental Frozen Gloves 
+Fecha: 7/10/2023 - Hora: 9:13:28 PM - Accion: Post correcto - se agrego Sleek Metal Chicken 
+Fecha: 7/10/2023 - Hora: 9:14:21 PM - Accion: Post correcto - se agrego Tasty Bronze Computer 
+Fecha: 7/10/2023 - Hora: 9:14:22 PM - Accion: Post correcto - se agrego Small Concrete Ball 
+Fecha: 7/10/2023 - Hora: 9:14:22 PM - Accion: Post correcto - se agrego Bespoke Plastic Pizza 
+Fecha: 7/10/2023 - Hora: 9:45:27 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:28 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:28 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:29 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:30 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:30 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:31 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:31 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:31 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:35 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:35 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:35 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:45 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:45 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:45 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:48 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:49 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:49 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:51 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:51 PM - Accion: Consulta los productos 
+Fecha: 7/10/2023 - Hora: 9:45:51 PM - Accion: Consulta los productos 

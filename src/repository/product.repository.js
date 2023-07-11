@@ -24,4 +24,7 @@ export class ProductRepository{
     updateStock = async (productId, quantity) => {
         return await this.dao.updateStock(productId, quantity)
     }
+    mockingproducts = async (cantidad) =>{
+        return await this.dao.mockingproducts(cantidad)
+    }
 }

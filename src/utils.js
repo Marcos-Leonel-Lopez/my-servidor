@@ -2,6 +2,7 @@ import {fileURLToPath} from 'url';
 import { dirname } from 'path';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { Faker, en, es} from "@faker-js/faker";
 
 const PRIVATE_KEY = 'MllKEY';
 
@@ -33,6 +34,24 @@ export const authToken = (req, res, next) =>{
 
 export const createHash = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 export const validatePass = (password, user) => bcrypt.compareSync(password, user.password);
+
+export const customFaker = new Faker({
+    locale: [en]
+})
+
+const { commerce, string, number, image } = customFaker
+
+export const generateProduct = () =>{
+     return {
+        title: commerce.productName(),
+        description: commerce.productDescription(),
+        price: commerce.price({ min: 1000, max: 5000 }),
+        thumbnail: image.urlLoremFlickr({category: 'food'}),
+        code: string.uuid(),
+        stock: number.int({ min: 3, max: 50 }),
+        category: commerce.department()
+     }
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

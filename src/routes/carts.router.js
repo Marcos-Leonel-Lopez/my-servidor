@@ -24,5 +24,4 @@ router.delete('/:cid', cartController.deleteAllProductsFromCart)
 router.get('/:cid/purchase', cartController.createOrder)
 
 
-
 export default router

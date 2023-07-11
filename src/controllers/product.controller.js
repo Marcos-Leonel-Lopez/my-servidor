@@ -62,6 +62,8 @@ export default class ProductController {
     }
     getProductById = async (req, res) => {
         const id = req.params.pid;
+        console.log(id);
+        
         const result = await productService.getProductById(id);
         const { status, message } = result;
         return res.status(status).send(message);
@@ -84,6 +86,16 @@ export default class ProductController {
         const result = await productService.updateProduct(id, newData);
         const { status, message } = result;
         return res.status(status).send(message);
+    }
+    mockingproducts = async (req, res) =>{
+        try {
+            const cantidad = 3;        
+            const {status, message} = await productService.mockingproducts(cantidad)
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);            
+        }
     }
 
 

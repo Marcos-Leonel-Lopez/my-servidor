@@ -7,6 +7,8 @@ const router = Router();
 
 router.get('/', productController.getProducts)
 
+router.get("/mockingproducts", productController.mockingproducts);
+
 router.get("/:pid", productController.getProductById);
 
 router.delete("/:pid", productController.deleteProduct);
@@ -14,5 +16,7 @@ router.delete("/:pid", productController.deleteProduct);
 router.post("/", productController.addProduct);
 
 router.put("/:pid", productController.updateProduct);
+
+
 
 export default router;
