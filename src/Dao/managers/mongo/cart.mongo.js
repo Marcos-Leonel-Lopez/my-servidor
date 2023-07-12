@@ -35,7 +35,7 @@ export class CartMongo {
     getCartById = async (id) => {
         try {
             const cart = await cartModel.findById(id).populate('products.productId');
-            if (cart) {
+            if (!cart) {
                 return {
                     status: 200,
                     message: {
@@ -89,12 +89,6 @@ export class CartMongo {
                 { new: true }
             );
             if (cart) {
-                // const stockUpdate = await productMongo.updateStock(pid, 1);
-                // if (stockUpdate.status !== 200) {
-                //     return stockUpdate;
-                // } actualizaba stock automaticamente
-                console.log('el carrito ya tenia el producto');
-
                 return {
                     status: 200,
                     message: {
@@ -108,12 +102,6 @@ export class CartMongo {
                 { $push: { products: { productId: pid, quantity: 1 } } },
                 { new: true }
             );
-            // Stock validation and update
-            // const stockUpdate = await productMongo.updateStock(pid, 1);
-            // if (stockUpdate.status !== 200) {
-            //     return stockUpdate;
-            // } actualizaba stock
-            console.log('el carrito no tenia el producto');
             return {
                 status: 200,
                 message: {
@@ -142,10 +130,6 @@ export class CartMongo {
                     }
                 };
             }
-            // const stockUpdate = await productMongo.updateStock(pid, cantidad);
-            // if (stockUpdate.status !== 200) {
-            //     return stockUpdate;
-            // } actualizaba stock
             const cart = await cartModel.findOne({ _id: cid });
             if (!cart) {
                 return {

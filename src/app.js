@@ -6,6 +6,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import cors from 'cors';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 import { config } from './config/config.js';
 import __dirname from './utils.js';
@@ -119,6 +120,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/sessions',sessionsRouter);
+app.use(errorHandler)
 
 
 //crea la cookie
