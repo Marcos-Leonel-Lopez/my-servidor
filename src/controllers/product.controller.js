@@ -92,17 +92,27 @@ export default class ProductController {
     addProduct = async (req, res, next) => {
         try {
             const newProduct = req.body;
-            const data = await productService.correctData(newProduct)
-            if (data != "success") {
+            let errors = [];
+            const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
+            for (let i = 0; i < keys.length; i++){
+                let key = keys[i];
+                if (!newProduct.hasOwnProperty(key) || newProduct[key] == null || newProduct[key] == undefined || newProduct[key] == "" || newProduct[key] == " "){
+                    errors.push("El objeto no tiene la propiedad " + key + " o su valor es nulo, indefinido o vacío.");
+                }
+            }
+            console.log(errors);
+            
+            if (errors.length > 0) {
                 CustomError.createError({
                     name: "Error al agregar producto",
-                    cause: generateProductErrorInfo(data),
+                    cause: generateProductErrorInfo(errors),
                     message: "Faltan datos",
                     errorCode: EError.INVALID_JSON
                 })
+                console.log('hubo error');
+
             }
-            const result = await productService.addProduct(newProduct);
-            const { status, message } = result;
+            const { status, message } = await productService.addProduct(newProduct);
             return res.status(status).send(message);
         } catch (error) {
             next(error)
