@@ -1,6 +1,10 @@
 import AccessManager from "../Dao/managers/AccessManager.js";
 import { productService } from "../repository/index.repository.js";
 import { UserDto } from "../Dao/dto/user.dto.js";
+import { CustomError } from "../services/customError.service.js";
+import { generateProductErrorParam } from "../services/productError/productErrorParam.js";
+import { EError } from "../enums/EError.js";
+
 
 
 const accessManager = new AccessManager();
@@ -18,16 +22,16 @@ export default class ProductController {
     getProductsPage = async (req, res) => {
         const { limit = 10, page = 1, category = 'all', stock = 'all', sort = 'none' } = req.query;
         const result = await productService.getProductsPage(limit, page, category, stock, sort);
-        let admin = false; 
+        let admin = false;
         let userRole = null;
         let userCart = null;
         let userName = null;
-        const persona = req.session.user;   
-        if(persona){
-             const usuarioDto = new UserDto(persona);
-             userName = usuarioDto.name;
-             userRole = usuarioDto.role;
-             userCart = usuarioDto.cart;
+        const persona = req.session.user;
+        if (persona) {
+            const usuarioDto = new UserDto(persona);
+            userName = usuarioDto.name;
+            userRole = usuarioDto.role;
+            userCart = usuarioDto.cart;
         }
         console.log(userRole + ' despues ');
         if (userRole === 'admin') {
@@ -44,11 +48,23 @@ export default class ProductController {
             return res.render('home', { title: 'Productos', style: 'style.css', error: true })
         }
     }
-    getProducts = async (req, res) => {
-        const { limit } = req.query;
-        const products = await productService.getProducts(limit);
-        const { status, message } = products;
-        return res.status(status).send(message);
+    getProducts = async (req, res, next) => {
+        try {
+            const { limit } = req.query;
+            if(isNaN(limit) || parseInt(limit) < 0){
+                CustomError.createError({
+                    name: "Limit error",
+                    cause: generateProductErrorParam(limit),
+                    message: "Error al obtener productos",
+                    errorCode: EError.INVALID_PARAMS
+                })
+            }
+            const products = await productService.getProducts(limit);
+            const { status, message } = products;
+            return res.status(status).send(message);
+        } catch (error) {
+            next(error)
+        }
     }
     getProductsRealTime = async (req, res) => {
         const products = await productService.getProducts();
@@ -74,6 +90,11 @@ export default class ProductController {
     }
     addProduct = async (req, res) => {
         const newProduct = req.body;
+        
+
+
+
+
         const result = await productService.addProduct(newProduct);
         const { status, message } = result;
         return res.status(status).send(message);
@@ -85,14 +106,14 @@ export default class ProductController {
         const { status, message } = result;
         return res.status(status).send(message);
     }
-    mockingproducts = async (req, res) =>{
+    mockingproducts = async (req, res) => {
         try {
-            const cantidad = 100;        
-            const {status, message} = await productService.mockingproducts(cantidad)
+            const cantidad = 100;
+            const { status, message } = await productService.mockingproducts(cantidad)
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);            
+            res.status(500).send(error.message);
         }
     }
 }

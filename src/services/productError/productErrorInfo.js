@@ -1,3 +1,3 @@
 export const generateProductErrorInfo  = (data) =>{
-    return "faltan datos"
+    return `Faltan datos`
 }

@@ -1,4 +1,4 @@
-export const EEror = {
+export const EError = {
     ROUTING_ERROR: 1,
     DATABASE_ERROR: 2,
     INVALID_JSON: 3,

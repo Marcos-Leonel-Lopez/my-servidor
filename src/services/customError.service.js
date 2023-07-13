@@ -6,5 +6,4 @@ export class CustomError{
         console.log("error", error.cause);
         throw error;
     }
-     
 }

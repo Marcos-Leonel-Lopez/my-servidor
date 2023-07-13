@@ -1,9 +1,7 @@
 import productModel from "../../models/product.model.js";
 import AccessManager from "../AccessManager.js";
 import { generateProduct } from "../../../utils.js";
-import { CustomError } from "../../../services/customError.service.js";
-import { generateProductErrorInfo } from "../../../services/productError/productErrorInfo.js"
-import { EEror } from "../../../enums/EError.js";
+
 
 const accessManager = new AccessManager();
 
@@ -143,12 +141,6 @@ export class ProductMongo{
         const data = await this.correctData(newProduct);
         if (data != "success") {
             await accessManager.createRecords(`Post fallido - falta: ${data.join(", ")}`);
-            // CustomError.createError({
-            //     name: "Error al crear producto",
-            //     cause: generateProductErrorInfo(data),
-            //     message: "Error al crear producto, faltan datos",
-            //     errorCode: EEror.INVALID_JSON
-            // })
             return {
                 status: 400,
                 message: {

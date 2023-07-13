@@ -1,3 +1,3 @@
-export const generateProductErrorParam = ( id ) =>{
-    return `El id: ${id} no corresponde a un producto`
+export const generateProductErrorParam = ( limit ) =>{
+    return `El limit: " ${limit} " no corresponde`
 }
