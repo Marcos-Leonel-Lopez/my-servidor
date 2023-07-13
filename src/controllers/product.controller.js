@@ -3,6 +3,7 @@ import { productService } from "../repository/index.repository.js";
 import { UserDto } from "../Dao/dto/user.dto.js";
 import { CustomError } from "../services/customError.service.js";
 import { generateProductErrorParam } from "../services/productError/productErrorParam.js";
+import { generateProductErrorInfo } from "../services/productError/productErrorInfo.js";
 import { EError } from "../enums/EError.js";
 
 
@@ -88,16 +89,25 @@ export default class ProductController {
         const { status, message } = result;
         return res.status(status).send(message);
     }
-    addProduct = async (req, res) => {
-        const newProduct = req.body;
-        
+    addProduct = async (req, res, next) => {
+        try {
+            const newProduct = req.body;
+            const data = await productService.correctData(newProduct)
+            if (data != "success") {
+                CustomError.createError({
+                    name: "Error al agregar producto",
+                    cause: generateProductErrorInfo(data),
+                    message: "Faltan datos",
+                    errorCode: EError.INVALID_JSON
+                })
+            }
+            const result = await productService.addProduct(newProduct);
+            const { status, message } = result;
+            return res.status(status).send(message);
+        } catch (error) {
+            next(error)
+        }
 
-
-
-
-        const result = await productService.addProduct(newProduct);
-        const { status, message } = result;
-        return res.status(status).send(message);
     }
     updateProduct = async (req, res) => {
         const id = req.params.pid;

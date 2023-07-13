@@ -21,6 +21,9 @@ export class ProductRepository{
     updateProduct = async (id, newData)=>{
         return await this.dao.updateProduct(id, newData)
     }
+    correctData = async (newProduct)=>{
+        return await this.dao.correctData(newProduct)
+    }
     updateStock = async (productId, quantity) => {
         return await this.dao.updateStock(productId, quantity)
     }
