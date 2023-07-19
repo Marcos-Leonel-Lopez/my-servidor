@@ -68,5 +68,17 @@ router.get('/resetPassword', (req, res) => {
     res.render('resetPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
 })
 
+router.get('/loggerTest', (req, res)=>{
+    req.logger.fatal("fatal!");
+    req.logger.error("error!");
+    req.logger.warning("warning!");
+    req.logger.info('info');
+    req.logger.http('http');
+    req.logger.verbose('verbose');
+    req.logger.debug('debug');
+    req.logger.silly('silly');
+    res.redirect('/products')
+})
+
 
 export default router;

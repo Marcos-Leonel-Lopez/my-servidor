@@ -57,13 +57,9 @@ export class TicketMongo {
 
     createTicket = async (ticket) => {
         try {
-            console.log(ticket);
-
             ticket.code = uuidv4();
             ticket.purchase_datetime = await this.date();
-            console.log(ticket);
             const data = await this.correctData(ticket);
-
             if (data != "success") {
                 return {
                     status: 400,
@@ -83,8 +79,6 @@ export class TicketMongo {
             }
 
             const newTicket = await ticketModel.create(ticket);
-            console.log('nuevo creado');
-
             return {
                 status: 200,
                 message: {

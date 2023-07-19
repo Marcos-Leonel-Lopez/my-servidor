@@ -39,7 +39,7 @@ export default class SessionController{
             cart: `${req.user.cart}`
         };
 
-        console.log(req.session.user);
+        req.logger.debug(JSON.stringify(req.session.user));
         res.redirect('/profile')
     }
 
@@ -61,7 +61,7 @@ export default class SessionController{
     
     }
     faillogin = async (req, res) => {
-        console.log('fallo ingreso');
+        req.logger.error('fallo ingreso');
         return res.status(400).send({
             status: error,
             message: 'fallo el ingreso'

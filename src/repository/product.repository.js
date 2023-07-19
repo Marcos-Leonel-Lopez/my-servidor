@@ -6,7 +6,6 @@ export class ProductRepository{
         return await this.dao.getProductsPage(limit, page, category, stock, sort)
     }
     getProducts = async (limit) =>{
-        console.log(limit);
         return await this.dao.getProducts(limit)
     }
     getProductById = async (id) =>{

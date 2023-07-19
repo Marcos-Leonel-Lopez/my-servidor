@@ -174,7 +174,7 @@ export class CartMongo {
     deleteProductOnCart = async (cid, pid) => {
         try {
             const result = await cartModel.findOneAndUpdate({ _id: cid }, { $pull: { products: { productId: pid } } }, { new: true });
-            console.log('se debe haber eliminado');
+            req.logger.info('se debe haber eliminado el producto');
             return {
                 status: 200,
                 message: {

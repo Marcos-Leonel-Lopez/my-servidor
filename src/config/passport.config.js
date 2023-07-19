@@ -27,11 +27,13 @@ const initializePassport = () =>{
             try{
                 const exist = await userModel.findOne({ mail:username });
                 if (exist) {
-                    console.log('Usuario existente');
+                    req.logger.debug('Usuario existente');
+                    // console.log('Usuario existente');
                     return done(null, false)
                 }
                 const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.message.payload._id };
-                console.log(user);
+                // console.log(user);
+                req.logger.debug(user)
                 
                 const result = await userModel.create(user);
                 return done(null, result)
@@ -46,7 +48,8 @@ const initializePassport = () =>{
         try{
             const user = await userModel.findOne({ mail:username });
             if (!user) {
-                console.log('Usuario inexistente');
+                req.logger.debug('Usuario existente');
+                // console.log('Usuario inexistente');
                 return done(null, false);
             }
             if(!validatePass(password, user)){
@@ -62,7 +65,7 @@ const initializePassport = () =>{
         clientID:'Iv1.bef6d883ed8174ca',
         clientSecret:'5ebe7d7fa17ab6bd6d43fd4062ec9c09c0d6d6c5',
         callbackURL:'http://localhost:8080/api/sessions/githubcallback'
-    } , async (accessToken, refreshTocken, profile, done) =>{
+    } , async ( accessToken, refreshTocken, profile, done) =>{
         try{
             let email = profile._json.email;
             if(!email){
@@ -71,6 +74,7 @@ const initializePassport = () =>{
             // console.log(profile); //para ver como llega
             const exist = await userModel.findOne({ mail:email });
             if(!exist){
+                //req.logger.verbose('Usuario creado con github');
                 console.log('Usuario creado con github');
                 const newCart = await cartService.addCart(); 
                 const user = {
@@ -82,11 +86,10 @@ const initializePassport = () =>{
                     cart:newCart.message.payload._id,
                 };
                 const result = await userModel.create(user);
-                console.log(result);
-                
                 return done(null, result)
             }else{
                 console.log('Usuario existente con github');
+                //req.logger.verbose('Usuario existente con github');
                 done(null,exist)
             }
 

@@ -5,6 +5,7 @@ import { CustomError } from "../services/customError.service.js";
 import { generateProductErrorParam } from "../services/productError/productErrorParam.js";
 import { generateProductErrorInfo } from "../services/productError/productErrorInfo.js";
 import { EError } from "../enums/EError.js";
+import { addLogger } from "../utils/logger.js";
 
 
 
@@ -34,7 +35,8 @@ export default class ProductController {
             userRole = usuarioDto.role;
             userCart = usuarioDto.cart;
         }
-        console.log(userRole + ' despues ');
+        req.logger.debug(userRole + ' despues del dto' );
+        // console.log();
         if (userRole === 'admin') {
             admin = true;
         }
@@ -53,6 +55,7 @@ export default class ProductController {
         try {
             const { limit } = req.query;
             if(isNaN(limit) || parseInt(limit) < 0){
+                req.logger.fatal("error fatal al obtener productos!");
                 CustomError.createError({
                     name: "Limit error",
                     cause: generateProductErrorParam(limit),
@@ -100,17 +103,15 @@ export default class ProductController {
                     errors.push("El objeto no tiene la propiedad " + key + " o su valor es nulo, indefinido o vacío.");
                 }
             }
-            console.log(errors);
-            
+            req.logger.info(errors);
             if (errors.length > 0) {
+                req.logger.fatal("error fatal al crear producto!");
                 CustomError.createError({
                     name: "Error al agregar producto",
                     cause: generateProductErrorInfo(errors),
                     message: "Faltan datos",
                     errorCode: EError.INVALID_JSON
                 })
-                console.log('hubo error');
-
             }
             const { status, message } = await productService.addProduct(newProduct);
             return res.status(status).send(message);
@@ -132,7 +133,6 @@ export default class ProductController {
             const { status, message } = await productService.mockingproducts(cantidad)
             res.status(status).send(message);
         } catch (error) {
-            console.error(error);
             res.status(500).send(error.message);
         }
     }

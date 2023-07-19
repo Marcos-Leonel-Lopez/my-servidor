@@ -51,11 +51,7 @@ export class SessionMongo{
         try {
             // const user = await userModel.findOne({ mail: email }).populate({ path: 'cart',populate: { path: 'products.productId', model: productModel}}); // populate de todo
             // return await userModel.findOne({ mail:email }).populate('cart');
-            console.log(email);
-            
             const user = await userModel.findOne({ mail:email })
-            console.log(user);
-            
             if(user){
                 return {
                     status: 200,

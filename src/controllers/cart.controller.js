@@ -18,8 +18,6 @@ export default class CartController {
             const cid = req.params.cid;
             const { status, message } = await cartService.getCartById(cid);
             const theCart = message.cart.products.map(item => item.toObject());
-            console.log(message);
-            
             res.status(status).send(message)
         } catch (error) {
             console.error(error);
@@ -31,8 +29,8 @@ export default class CartController {
         try {
             const cid = req.params.cid;
             const { status, message } = await cartService.getCartById(cid);
-            console.log(message);
-            
+            req.logger.debug(message.cart);
+            // console.log(message);
             const theCart = message.cart.products.map(item => item.toObject());
             return res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' });
         } catch (error) {

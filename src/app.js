@@ -21,6 +21,7 @@ import { TicketRepository } from './repository/ticket.repository.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
 import { productService } from './repository/index.repository.js';
+import { addLogger } from './utils/logger.js';
 
 const PORT = config.port || 8080;
 
@@ -72,7 +73,8 @@ io.on('connection', async client => {
     io.emit('productList', products);
 
     client.on('newProduct', async (data, callback) => {
-        console.log('Datos recibidos en el back:', data);
+        // req.logger.verbose('Datos recibidos en el back:', data);
+         console.log('Datos recibidos en el back:', data);
         await productService.addProduct(data); //debe ir el model
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject()) 
@@ -80,7 +82,8 @@ io.on('connection', async client => {
         callback();
     })
     client.on('delete', async data => {
-        console.log('Se eliminara id: ' + data);
+        // req.logger.verbose('Se eliminara id: ' + data);
+         console.log('Se eliminara id: ' + data);
         await productService.deleteProduct(data);
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject()) 
@@ -115,12 +118,14 @@ io.on('connection', async client => {
 })
 
 //rutas
+app.use(addLogger)
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/sessions',sessionsRouter);
-app.use(errorHandler)
+app.use(errorHandler);
+
 
 
 //crea la cookie
