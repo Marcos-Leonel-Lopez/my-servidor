@@ -35,7 +35,7 @@ export class CartMongo {
     getCartById = async (id) => {
         try {
             const cart = await cartModel.findById(id).populate('products.productId');
-            if (!cart) {
+            if (cart) {
                 return {
                     status: 200,
                     message: {
@@ -47,7 +47,7 @@ export class CartMongo {
             return {
                 status: 400,
                 message: {
-                    status: "error",
+                    status: "error despues del return",
                     error: `El cart con id:${id} no existe`
                 }
             };
@@ -55,7 +55,7 @@ export class CartMongo {
             return {
                 status: 500,
                 message: {
-                    status: "error",
+                    status: "error en catch",
                     error: `El cart con id:${id} no existe`
                 }
             };
