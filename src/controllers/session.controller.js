@@ -38,7 +38,6 @@ export default class SessionController{
             role: `${req.user.role}`,
             cart: `${req.user.cart}`
         };
-
         req.logger.debug(JSON.stringify(req.session.user));
         res.redirect('/profile')
     }

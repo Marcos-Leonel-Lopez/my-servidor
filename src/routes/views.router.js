@@ -4,6 +4,7 @@ import ProductController from "../controllers/product.controller.js";
 import CartController from "../controllers/cart.controller.js";
 import userModel from "../Dao/models/user.model.js";
 import { config } from "../config/config.js";
+import { onlyClient, publicAccess, adminAccess, privateAccess } from "../middlewares/auth.js";
 
 const accessManager = new AccessManager();
 const productController = new ProductController();
@@ -11,34 +12,6 @@ const cartController = new CartController();
 
 
 const router = Router();
-
-const publicAccess = (req, res, next) => {
-    if (req.session.user) return res.redirect('/products');
-    next();
-}
-
-const privateAccess = (req, res, next) => {
-    if (!req.session.user) return res.redirect('/login');
-    next();
-}
-const adminAccess = async (req, res, next) => {
-    try {
-        if(req.user.role != 'admin') return res.redirect('/profile');
-        next();
-    } catch (error) {
-        next(error);
-    }
-}
-const onlyClient = async (req, res, next) => {
-    try {
-        if(req.user.role != 'client') return res.redirect('/profile');
-        next();
-    } catch (error) {
-        next(error);
-    }
-}
-
-
 
 router.get('/', productController.root)
 

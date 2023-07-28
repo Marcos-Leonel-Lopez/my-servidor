@@ -14,7 +14,6 @@ const pathEnviroment = enviroment.Mode === "prod" ? path.join(__dirname, '../.en
 console.log(pathEnviroment);
 dotenv.config({path: pathEnviroment});
 
-
 const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
 const SESSION_SECRET = process.env.SESSION_SECRET;

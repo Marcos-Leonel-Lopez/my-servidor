@@ -1,5 +1,5 @@
 import ticketModel from "../../models/ticket.model.js";
-import { transporter } from "../../../config/gmail.js";
+import { sendTiketCompleted } from "../../../config/gmail.js";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -180,17 +180,18 @@ export class TicketMongo {
             ticket.message.ticket.status = action.action
             const result = ticket.message.ticket
             if (action.action == 'completed') {
-                const emailTemplate =   `<section>
-                                            <h1>Compra Realizada por ${ticket.message.ticket.purchaser}</h1>
-                                            <h2>Monto a pagar: $${ticket.message.ticket.amount}</h2>
-                                            <h2>Codigo de referencia : ${ticket.message.ticket.code}</h2>
-                                        </section>`
-                const contenido = await transporter.sendMail({
-                    from: 'Ecomerce',
-                    to: "marcosleonellopez@gmail.com",
-                    subject: 'Compra exitosa',
-                    html: emailTemplate
-                })
+                await sendTiketCompleted(result)
+                // const emailTemplate =   `<section>
+                //                             <h1>Compra Realizada por ${ticket.message.ticket.purchaser}</h1>
+                //                             <h2>Monto a pagar: $${ticket.message.ticket.amount}</h2>
+                //                             <h2>Codigo de referencia : ${ticket.message.ticket.code}</h2>
+                //                         </section>`
+                // const contenido = await transporter.sendMail({
+                //     from: 'Ecomerce',
+                //     to: "marcosleonellopez@gmail.com",
+                //     subject: 'Compra exitosa',
+                //     html: emailTemplate
+                // })
             }
             return {
                 status: 200,
