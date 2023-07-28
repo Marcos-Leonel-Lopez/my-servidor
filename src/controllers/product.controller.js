@@ -35,7 +35,7 @@ export default class ProductController {
             userRole = usuarioDto.role;
             userCart = usuarioDto.cart;
         }
-        req.logger.debug(userRole + ' despues del dto' );
+        req.logger.debug(userRole + ' despues del dto');
         // console.log();
         if (userRole === 'admin') {
             admin = true;
@@ -56,7 +56,7 @@ export default class ProductController {
             const { limit } = req.query;
             const products = await productService.getProducts(limit);
             const { status, message } = products;
-            if(status === 400){
+            if (status === 400) {
                 req.logger.fatal("error fatal al obtener productos!");
                 CustomError.createError({
                     name: "Limit error",
@@ -95,25 +95,17 @@ export default class ProductController {
     addProduct = async (req, res, next) => {
         try {
             const newProduct = req.body;
-            let errors = [];
-            const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
-            for (let i = 0; i < keys.length; i++){
-                let key = keys[i];
-                if (!newProduct.hasOwnProperty(key) || newProduct[key] == null || newProduct[key] == undefined || newProduct[key] == "" || newProduct[key] == " "){
-                    errors.push("El objeto no tiene la propiedad " + key + " o su valor es nulo, indefinido o vacío.");
-                }
-            }
-            req.logger.info(errors);
-            if (errors.length > 0) {
+            const { status, message } = await productService.addProduct(newProduct);
+            if (status === 400) {
+                const info = message.status === 'error_json' ? 'Faltan datos' : '"code" se repite';
                 req.logger.fatal("error fatal al crear producto!");
                 CustomError.createError({
                     name: "Error al agregar producto",
-                    cause: generateProductErrorInfo(errors),
-                    message: "Faltan datos",
+                    cause: generateProductErrorInfo(message.error),
+                    message: info,
                     errorCode: EError.INVALID_JSON
                 })
             }
-            const { status, message } = await productService.addProduct(newProduct);
             return res.status(status).send(message);
         } catch (error) {
             next(error)
