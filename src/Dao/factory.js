@@ -1,6 +1,6 @@
 import { config } from "../config/config.js";
 
-const persistence = config.persistence;
+const persistence = config.persistence.persistence;
 
 let productPersistence;
 let cartPersistence;

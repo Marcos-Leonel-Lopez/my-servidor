@@ -2,8 +2,8 @@ import nodemailer from 'nodemailer';
 import { config } from './config.js';
 
 //Credenciales
-const adminEmail = config.admin_email;
-const adminPass = config.admin_pass;
+const adminEmail = config.gmail.admin_email;
+const adminPass = config.gmail.admin_pass;
 
 //config. canal de comunicacion node-gmail
 

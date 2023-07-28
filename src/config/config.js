@@ -19,18 +19,32 @@ const PORT = process.env.PORT;
 const MONGO_URL = process.env.MONGO_URL;
 const SESSION_SECRET = process.env.SESSION_SECRET;
 const CLIENT_GITHUB = process.env.CLIENT_GITHUB;
+const ID_GITHUB = process.env.ID_GITHUB;
+const URL_GITHUB = process.env.URL_GITHUB;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const PERSISTENCE = process.env.PERSISTENCE;
 const NODE_ENV = process.env.NODE_ENV;
 
 export const config = {
-    port: PORT,
-    url_mongo: MONGO_URL,
-    secret_session: SESSION_SECRET,
-    client_github:CLIENT_GITHUB,
-    admin_email: ADMIN_EMAIL,
-    admin_pass : ADMIN_PASSWORD,
-    persistence: PERSISTENCE,
-    node_env: NODE_ENV
+    node_env: NODE_ENV,
+    server:{
+        port: PORT,
+        secret_session: SESSION_SECRET,
+    },
+    mongo:{
+        url: MONGO_URL,
+    },
+    gmail:{
+        admin_email: ADMIN_EMAIL,
+        admin_pass : ADMIN_PASSWORD,
+    },
+    github:{
+        clientSecret:CLIENT_GITHUB,
+        clientID: ID_GITHUB,
+        url: URL_GITHUB
+    },
+    persistence:{
+       persistence: PERSISTENCE, 
+    }
 }

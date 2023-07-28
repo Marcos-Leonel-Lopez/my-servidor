@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { config } from "./config.js";
 
-const MONGO = config.url_mongo;  
+const MONGO = config.mongo.url;  
 
 class ConnectionDB {
     static #instance

@@ -23,7 +23,7 @@ import initializePassport from './config/passport.config.js';
 import { productService } from './repository/index.repository.js';
 import { addLogger } from './utils/logger.js';
 
-const PORT = config.port || 8080;
+const PORT = config.server.port || 8080;
 
 const app = express();
 
@@ -37,10 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
     store: new MongoStore({
-        mongoUrl:config.url_mongo,
+        mongoUrl:config.mongo.url,
         ttl:360
     }),
-    secret:config.secret_session,
+    secret:config.server.secret_session,
     resave:true, // true or false?
     saveUninitialized:true // true or false? 
 }));
