@@ -30,7 +30,6 @@ const app = express();
 //.env
 console.log(config);
 
-
 //servicio
 app.use(cookieParser());
 app.use(express.json());
@@ -38,10 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
     store: new MongoStore({
-        mongoUrl:config.url,
+        mongoUrl:config.url_mongo,
         ttl:360
     }),
-    secret:'SecretCode',
+    secret:config.secret_session,
     resave:true, // true or false?
     saveUninitialized:true // true or false? 
 }));
