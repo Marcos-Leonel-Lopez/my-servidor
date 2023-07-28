@@ -5,7 +5,7 @@ import { generateProduct } from "../../../utils.js";
 
 const accessManager = new AccessManager();
 
-export class ProductMongo{
+export class ProductMongo {
     getProductsPage = async (limit, page, category, stock, sort) => {
         if (limit <= 0) {
             await accessManager.createRecords("Get fallido - limit menor a 0");
@@ -52,23 +52,24 @@ export class ProductMongo{
     };
     getProducts = async (limit) => {
         if (limit) {
-            if (limit > 0) {
-                await accessManager.createRecords(`Consulta los productos los primeros ${limit} productos`);
-                const payload = await productModel.find().limit(limit)
+            if (isNaN(limit) || parseInt(limit) <= 0) {
+                await accessManager.createRecords("Get fallido - limit erroneo");
                 return {
-                    status: 200,
+                    status: 400,
                     message: {
-                        status: "success",
-                        payload
+                        status: "error",
+                        error: `Limit error`
                     }
                 }
+
             }
-            await accessManager.createRecords("Get fallido - limit menor a 0");
+            await accessManager.createRecords(`Consulta los productos los primeros ${limit} productos`);
+            const payload = await productModel.find().limit(limit)
             return {
-                status: 400,
+                status: 200,
                 message: {
-                    status: "error",
-                    error: `Limite debe ser mayor a 0(cero)`
+                    status: "success",
+                    payload
                 }
             }
         } else {
@@ -86,24 +87,24 @@ export class ProductMongo{
     getProductById = async (id) => {
         try {
             const payload = await productModel.find({ _id: id });
-        if (payload.length > 0) {
-            await accessManager.createRecords(`Consulta el producto id: ${id}`);
-            return {
-                status: 200,
-                message: {
-                    status: "success",
-                    payload
+            if (payload.length > 0) {
+                await accessManager.createRecords(`Consulta el producto id: ${id}`);
+                return {
+                    status: 200,
+                    message: {
+                        status: "success",
+                        payload
+                    }
                 }
             }
-        }
-        await accessManager.createRecords(`Get fallido - id inexistente`);
-        return {
-            status: 400,
-            message: {
-                status: "error",
-                error: `El producto con id:${id} no existe`
+            await accessManager.createRecords(`Get fallido - id inexistente`);
+            return {
+                status: 400,
+                message: {
+                    status: "error",
+                    error: `El producto con id:${id} no existe`
+                }
             }
-        }
         } catch (error) {
             return {
                 status: 500,
@@ -111,9 +112,9 @@ export class ProductMongo{
                     status: "error",
                     error: error.message,
                 },
-            }; 
+            };
         }
-        
+
     };
     deleteProduct = async (id) => {
         const payload = await productModel.deleteOne({ _id: id });
@@ -282,15 +283,15 @@ export class ProductMongo{
             };
         }
     };
-    mockingproducts = async (cantidad) =>{
+    mockingproducts = async (cantidad) => {
         try {
             for (let index = 0; index < cantidad; index++) {
                 let product = generateProduct()
-                await this.addProduct(product); 
+                await this.addProduct(product);
             }
             return {
                 status: 200,
-                message: `se crearon ${cantidad} productos`,  
+                message: `se crearon ${cantidad} productos`,
             };
         } catch (error) {
             return {
@@ -299,7 +300,7 @@ export class ProductMongo{
                     status: "error",
                     error: error.message,
                 },
-            }; 
+            };
         }
     }
 }

@@ -453,3 +453,8 @@ Fecha: 7/27/2023 - Hora: 5:13:42 PM - Accion: Consulta los productos
 Fecha: 7/27/2023 - Hora: 5:13:46 PM - Accion: Consulta los productos 
 Fecha: 7/27/2023 - Hora: 5:13:46 PM - Accion: Consulta los productos 
 Fecha: 7/27/2023 - Hora: 5:13:46 PM - Accion: Consulta los productos 
+Fecha: 7/28/2023 - Hora: 12:27:28 PM - Accion: Consulta los productos los primeros 1 productos 
+Fecha: 7/28/2023 - Hora: 12:32:52 PM - Accion: Consulta los productos los primeros 1 productos 
+Fecha: 7/28/2023 - Hora: 12:32:57 PM - Accion: Get fallido - limit erroneo 
+Fecha: 7/28/2023 - Hora: 12:33:10 PM - Accion: Get fallido - limit erroneo 
+Fecha: 7/28/2023 - Hora: 12:33:15 PM - Accion: Get fallido - limit erroneo 

@@ -54,7 +54,9 @@ export default class ProductController {
     getProducts = async (req, res, next) => {
         try {
             const { limit } = req.query;
-            if(isNaN(limit) || parseInt(limit) < 0){
+            const products = await productService.getProducts(limit);
+            const { status, message } = products;
+            if(status === 400){
                 req.logger.fatal("error fatal al obtener productos!");
                 CustomError.createError({
                     name: "Limit error",
@@ -63,8 +65,6 @@ export default class ProductController {
                     errorCode: EError.INVALID_PARAMS
                 })
             }
-            const products = await productService.getProducts(limit);
-            const { status, message } = products;
             return res.status(status).send(message);
         } catch (error) {
             next(error)
