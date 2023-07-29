@@ -6,6 +6,7 @@ import { generateProductErrorParam } from "../services/productError/productError
 import { generateProductErrorInfo } from "../services/productError/productErrorInfo.js";
 import { EError } from "../enums/EError.js";
 import { addLogger } from "../utils/logger.js";
+import { updateOwner } from "../scripts/script.js";
 
 
 
@@ -15,7 +16,9 @@ const accessManager = new AccessManager();
 
 
 export default class ProductController {
-    root = (req, res) => {
+    root = async (req, res) => {
+        await updateOwner();
+        req.logger.info('actualizado')
         return res.redirect('/login');
     }
     registerProduct = (req, res) => {
@@ -54,6 +57,8 @@ export default class ProductController {
     getProducts = async (req, res, next) => {
         try {
             const { limit } = req.query;
+            // const owner = req.user.role;
+            // req.logger.info(`el 'owner' es ${owner} `)
             const products = await productService.getProducts(limit);
             const { status, message } = products;
             if (status === 400) {
@@ -94,8 +99,18 @@ export default class ProductController {
     }
     addProduct = async (req, res, next) => {
         try {
+            req.logger.info('addProduct');
+            let ownerEmail = " ";
             const newProduct = req.body;
-            const { status, message } = await productService.addProduct(newProduct);
+            const person = req.session.user;
+            if (person) {
+                const usuarioDto = new UserDto(person);
+                ownerEmail = usuarioDto.mail;
+            }else{
+                ownerEmail =  'marcosleonellopez@gmail.com'// "bypass" para postman
+            }
+            req.logger.info(ownerEmail);
+            const { status, message } = await productService.addProduct(newProduct,ownerEmail);
             if (status === 400) {
                 const info = message.status === 'error_json' ? 'Faltan datos' : '"code" se repite';
                 req.logger.fatal("error fatal al crear producto!");
@@ -119,10 +134,19 @@ export default class ProductController {
         const { status, message } = result;
         return res.status(status).send(message);
     }
-    mockingproducts = async (req, res) => {
+    mockingproducts = async (req, res, next) => {
         try {
-            const cantidad = 100;
-            const { status, message } = await productService.mockingproducts(cantidad)
+            let ownerEmail = " ";
+            const person = req.session.user;
+            if (person) {
+                const usuarioDto = new UserDto(person);
+                ownerEmail = usuarioDto.mail;
+            }else{
+                req.logger.info('se hardcodeo')
+                ownerEmail = 'marcosleonellopez@gmail.com'
+            }
+            const cantidad = 3;
+            const { status, message } = await productService.mockingproducts(cantidad,ownerEmail)
             res.status(status).send(message);
         } catch (error) {
             res.status(500).send(error.message);

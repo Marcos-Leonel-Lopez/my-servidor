@@ -1,6 +1,7 @@
 import productModel from "../../models/product.model.js";
 import AccessManager from "../AccessManager.js";
 import { generateProduct } from "../../../utils.js";
+import userModel from "../../models/user.model.js";
 
 
 const accessManager = new AccessManager();
@@ -169,8 +170,9 @@ export class ProductMongo {
     //         }
     //     }
     // }
-    addProduct = async (newProduct) => {
-        let errors = [];
+    addProduct = async (newProduct,ownerEmail) => {
+        try {
+            let errors = [];
         const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
         for (let i = 0; i < keys.length; i++) {
             let key = keys[i];
@@ -201,6 +203,8 @@ export class ProductMongo {
             }
         }
         await accessManager.createRecords(`Post correcto - se agrego ${newProduct.title}`);
+        const {id} = await userModel.findOne({mail:ownerEmail});
+        newProduct.owner = id;
         const payload = await productModel.create(newProduct);
         return {
             status: 200,
@@ -209,6 +213,10 @@ export class ProductMongo {
                 payload,
             }
         }
+        } catch (error) {
+            console.log(error.message);
+        }
+        
     }
     codeRepeat = async (code) => {
         let result = await productModel.find({ code: code });
@@ -325,11 +333,11 @@ export class ProductMongo {
             };
         }
     };
-    mockingproducts = async (cantidad) => {
+    mockingproducts = async (cantidad,ownerEmail) => {
         try {
             for (let index = 0; index < cantidad; index++) {
                 let product = generateProduct()
-                await this.addProduct(product);
+                await this.addProduct(product,ownerEmail);
             }
             return {
                 status: 200,

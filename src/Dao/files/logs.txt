@@ -531,3 +531,461 @@ Fecha: 7/28/2023 - Hora: 6:52:44 PM - Accion: Consulta los productos
 Fecha: 7/28/2023 - Hora: 6:54:23 PM - Accion: Consulta los productos 
 Fecha: 7/28/2023 - Hora: 6:54:23 PM - Accion: Consulta los productos 
 Fecha: 7/28/2023 - Hora: 6:54:24 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:22:46 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:22:47 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:22:47 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:04 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:04 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:04 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:32 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:34 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:34 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:34 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:40 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:40 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 10:24:40 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:22:43 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:22:44 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:22:44 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:32:26 AM - Accion: Post correcto - se agrego Handmade Cotton Chair 
+Fecha: 7/29/2023 - Hora: 11:32:26 AM - Accion: Post correcto - se agrego Awesome Rubber Ball 
+Fecha: 7/29/2023 - Hora: 11:32:27 AM - Accion: Post correcto - se agrego Generic Soft Chicken 
+Fecha: 7/29/2023 - Hora: 11:34:53 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:37:47 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:37:47 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:37:48 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:37:50 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:10 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:17 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:17 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:17 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:19 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:19 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:19 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:38:37 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:40:49 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:40:52 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:40:55 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:40:59 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:41:02 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:41:31 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:41:39 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:42:56 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:43:05 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:43:54 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:44:24 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:44:30 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:44:32 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:44:34 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 11:44:44 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:44:47 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 11:45:11 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:45:14 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:45:17 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:45:21 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:49:48 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 11:50:23 AM - Accion: Post correcto - se agrego Gorgeous Fresh Computer 
+Fecha: 7/29/2023 - Hora: 11:50:23 AM - Accion: Post correcto - se agrego Small Granite Pants 
+Fecha: 7/29/2023 - Hora: 11:50:23 AM - Accion: Post correcto - se agrego Licensed Plastic Shirt 
+Fecha: 7/29/2023 - Hora: 11:50:26 AM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:26:17 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 12:26:54 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 12:27:05 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 12:27:19 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 12:27:24 PM - Accion: Post fallido - codigo se repite 
+Fecha: 7/29/2023 - Hora: 12:27:29 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 12:30:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:30:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:30:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:30:34 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:30:44 PM - Accion: Post correcto - se agrego makako 
+Fecha: 7/29/2023 - Hora: 12:30:44 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:31:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:03 PM - Accion: Post correcto - se agrego Sleek Soft Mouse 
+Fecha: 7/29/2023 - Hora: 12:33:03 PM - Accion: Post correcto - se agrego Ergonomic Steel Towels 
+Fecha: 7/29/2023 - Hora: 12:33:04 PM - Accion: Post correcto - se agrego Unbranded Rubber Computer 
+Fecha: 7/29/2023 - Hora: 12:33:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:11 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:12 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:12 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:13 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:13 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:13 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:34 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:34 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:34 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:41 PM - Accion: Post correcto - se agrego Oriental Bronze Bike 
+Fecha: 7/29/2023 - Hora: 12:33:41 PM - Accion: Post correcto - se agrego Incredible Cotton Computer 
+Fecha: 7/29/2023 - Hora: 12:33:41 PM - Accion: Post correcto - se agrego Generic Soft Bacon 
+Fecha: 7/29/2023 - Hora: 12:33:50 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:50 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:50 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:52 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:52 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:52 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:53 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:53 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:33:53 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:34:49 PM - Accion: Post correcto - se agrego Intelligent Fresh Car 
+Fecha: 7/29/2023 - Hora: 12:34:49 PM - Accion: Post correcto - se agrego Tasty Frozen Soap 
+Fecha: 7/29/2023 - Hora: 12:34:49 PM - Accion: Post correcto - se agrego Small Bronze Shoes 
+Fecha: 7/29/2023 - Hora: 12:35:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:35:19 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:35:20 PM - Accion: Post correcto - se agrego Handcrafted Granite Pants 
+Fecha: 7/29/2023 - Hora: 12:35:20 PM - Accion: Post correcto - se agrego Handcrafted Concrete Bike 
+Fecha: 7/29/2023 - Hora: 12:35:20 PM - Accion: Post correcto - se agrego Modern Fresh Bacon 
+Fecha: 7/29/2023 - Hora: 12:35:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:35:44 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:35:45 PM - Accion: Post correcto - se agrego Elegant Metal Cheese 
+Fecha: 7/29/2023 - Hora: 12:35:45 PM - Accion: Post correcto - se agrego Sleek Concrete Salad 
+Fecha: 7/29/2023 - Hora: 12:35:46 PM - Accion: Post correcto - se agrego Handcrafted Granite Pants 
+Fecha: 7/29/2023 - Hora: 12:36:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:36:01 PM - Accion: Post correcto - se agrego Ergonomic Concrete Tuna 
+Fecha: 7/29/2023 - Hora: 12:36:01 PM - Accion: Post correcto - se agrego Rustic Granite Mouse 
+Fecha: 7/29/2023 - Hora: 12:36:01 PM - Accion: Post correcto - se agrego Awesome Granite Computer 
+Fecha: 7/29/2023 - Hora: 12:36:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:36:28 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:36:30 PM - Accion: Post correcto - se agrego Handcrafted Fresh Chicken 
+Fecha: 7/29/2023 - Hora: 12:36:30 PM - Accion: Post correcto - se agrego Unbranded Bronze Fish 
+Fecha: 7/29/2023 - Hora: 12:36:31 PM - Accion: Post correcto - se agrego Intelligent Granite Sausages 
+Fecha: 7/29/2023 - Hora: 12:37:56 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:29 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:38 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:45 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:38:47 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:39:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:39:09 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:39:10 PM - Accion: Post correcto - se agrego Intelligent Fresh Mouse 
+Fecha: 7/29/2023 - Hora: 12:39:10 PM - Accion: Post correcto - se agrego Refined Wooden Chair 
+Fecha: 7/29/2023 - Hora: 12:39:10 PM - Accion: Post correcto - se agrego Luxurious Cotton Hat 
+Fecha: 7/29/2023 - Hora: 12:39:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:39:32 PM - Accion: Post correcto - se agrego Refined Fresh Mouse 
+Fecha: 7/29/2023 - Hora: 12:39:33 PM - Accion: Post correcto - se agrego Luxurious Fresh Table 
+Fecha: 7/29/2023 - Hora: 12:39:33 PM - Accion: Post correcto - se agrego Intelligent Soft Computer 
+Fecha: 7/29/2023 - Hora: 12:39:44 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:39:46 PM - Accion: Post correcto - se agrego Modern Wooden Chair 
+Fecha: 7/29/2023 - Hora: 12:39:46 PM - Accion: Post correcto - se agrego Elegant Metal Shoes 
+Fecha: 7/29/2023 - Hora: 12:39:46 PM - Accion: Post correcto - se agrego Licensed Steel Tuna 
+Fecha: 7/29/2023 - Hora: 12:40:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:08 PM - Accion: Post correcto - se agrego Rustic Frozen Chips 
+Fecha: 7/29/2023 - Hora: 12:40:08 PM - Accion: Post correcto - se agrego Recycled Rubber Salad 
+Fecha: 7/29/2023 - Hora: 12:40:08 PM - Accion: Post correcto - se agrego Practical Bronze Hat 
+Fecha: 7/29/2023 - Hora: 12:40:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:16 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:16 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:16 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:19 PM - Accion: Post correcto - se agrego Fantastic Plastic Keyboard 
+Fecha: 7/29/2023 - Hora: 12:40:19 PM - Accion: Post correcto - se agrego Elegant Steel Pants 
+Fecha: 7/29/2023 - Hora: 12:40:20 PM - Accion: Post correcto - se agrego Practical Metal Pants 
+Fecha: 7/29/2023 - Hora: 12:40:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:22 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:22 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:23 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:23 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:40:23 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:43:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:43:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:43:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:43:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 12:43:45 PM - Accion: Post correcto - se agrego makako 
+Fecha: 7/29/2023 - Hora: 12:43:45 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:08:56 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:10:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:10:12 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:10:16 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:10:18 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:31:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:31:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:31:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:31:43 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:31:58 PM - Accion: Post correcto - se agrego makako 
+Fecha: 7/29/2023 - Hora: 1:31:58 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:17 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:18 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:18 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:18 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:25 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:27 PM - Accion: Consulta el producto id: 64c53efe32d0e6058ca080a9 
+Fecha: 7/29/2023 - Hora: 1:32:35 PM - Accion: Elimina el producto id: 64c53efe32d0e6058ca080a9 
+Fecha: 7/29/2023 - Hora: 1:32:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:39 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:39 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:39 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:32:59 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:33:24 PM - Accion: Post correcto - se agrego Fantastic Concrete Bacon 
+Fecha: 7/29/2023 - Hora: 1:33:24 PM - Accion: Post correcto - se agrego Incredible Concrete Shirt 
+Fecha: 7/29/2023 - Hora: 1:33:25 PM - Accion: Post correcto - se agrego Fantastic Cotton Gloves 
+Fecha: 7/29/2023 - Hora: 1:33:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:33:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:33:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:38 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:41 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:48 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:34:54 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:35:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:35:28 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:35:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:35:38 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:35:46 PM - Accion: Post correcto - se agrego Recycled Bronze Keyboard 
+Fecha: 7/29/2023 - Hora: 1:35:46 PM - Accion: Post correcto - se agrego Small Concrete Ball 
+Fecha: 7/29/2023 - Hora: 1:35:46 PM - Accion: Post correcto - se agrego Ergonomic Concrete Sausages 
+Fecha: 7/29/2023 - Hora: 1:36:10 PM - Accion: Post correcto - se agrego Rustic Frozen Ball 
+Fecha: 7/29/2023 - Hora: 1:36:10 PM - Accion: Post correcto - se agrego Small Cotton Ball 
+Fecha: 7/29/2023 - Hora: 1:36:10 PM - Accion: Post correcto - se agrego Sleek Plastic Computer 
+Fecha: 7/29/2023 - Hora: 1:37:53 PM - Accion: Post correcto - se agrego Intelligent Steel Chicken 
+Fecha: 7/29/2023 - Hora: 1:37:53 PM - Accion: Post correcto - se agrego Elegant Rubber Fish 
+Fecha: 7/29/2023 - Hora: 1:37:53 PM - Accion: Post correcto - se agrego Tasty Bronze Pants 
+Fecha: 7/29/2023 - Hora: 1:38:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:05 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:05 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:05 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:10 PM - Accion: Post correcto - se agrego Handmade Cotton Soap 
+Fecha: 7/29/2023 - Hora: 1:38:11 PM - Accion: Post correcto - se agrego Tasty Cotton Chips 
+Fecha: 7/29/2023 - Hora: 1:38:11 PM - Accion: Post correcto - se agrego Unbranded Concrete Hat 
+Fecha: 7/29/2023 - Hora: 1:38:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:38:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:39:11 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:39:44 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:40:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:40:33 PM - Accion: Post correcto - se agrego Handcrafted Concrete Shoes 
+Fecha: 7/29/2023 - Hora: 1:40:33 PM - Accion: Post correcto - se agrego Oriental Wooden Sausages 
+Fecha: 7/29/2023 - Hora: 1:40:33 PM - Accion: Post correcto - se agrego Small Granite Hat 
+Fecha: 7/29/2023 - Hora: 1:40:42 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:40:46 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:41:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:41:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:41:37 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:29 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:32 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:37 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:55 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:42:57 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:15 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:18 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:44 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:46 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:51 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:43:57 PM - Accion: Post correcto - se agrego Handmade Rubber Car 
+Fecha: 7/29/2023 - Hora: 1:43:57 PM - Accion: Post correcto - se agrego Handcrafted Fresh Chips 
+Fecha: 7/29/2023 - Hora: 1:43:57 PM - Accion: Post correcto - se agrego Incredible Plastic Hat 
+Fecha: 7/29/2023 - Hora: 1:44:09 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:44:09 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:44:09 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:44:14 PM - Accion: Post correcto - se agrego Fantastic Granite Chair 
+Fecha: 7/29/2023 - Hora: 1:44:15 PM - Accion: Post correcto - se agrego Bespoke Cotton Ball 
+Fecha: 7/29/2023 - Hora: 1:44:15 PM - Accion: Post correcto - se agrego Recycled Soft Bacon 
+Fecha: 7/29/2023 - Hora: 1:44:28 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:44:39 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:44:59 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:45:49 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:45:53 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:46:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:46:26 PM - Accion: Post correcto - se agrego Ergonomic Wooden Fish 
+Fecha: 7/29/2023 - Hora: 1:46:27 PM - Accion: Post correcto - se agrego Handcrafted Frozen Chair 
+Fecha: 7/29/2023 - Hora: 1:46:27 PM - Accion: Post correcto - se agrego Fantastic Granite Shirt 
+Fecha: 7/29/2023 - Hora: 1:46:34 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:49:34 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 1:49:42 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:49:45 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:11 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:19 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:28 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:32 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:50:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:51:10 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 1:51:12 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:52:25 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:52:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:52:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:52:43 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 1:53:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:09:42 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:09:49 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:09:52 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:19:59 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 2:20:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:29 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:29 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:29 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:32 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:32 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:32 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:46 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:46 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:47 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:48 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:20:56 PM - Accion: Post correcto - se agrego kk 
+Fecha: 7/29/2023 - Hora: 2:20:57 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:02 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:02 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:02 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:03 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:04 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:06 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:08 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:11 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:14 PM - Accion: Elimina el producto id: 64c54a78bd2c531e3b0a1cf9 
+Fecha: 7/29/2023 - Hora: 2:21:14 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:21 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:22 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:22 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:23 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:24 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:24 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:21:24 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:23:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:23:36 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:24:42 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:24:47 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:24:50 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:24:55 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:25:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:25:26 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 2:25:57 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:01 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:03 PM - Accion: Post fallido - codigo se repite 
+Fecha: 7/29/2023 - Hora: 2:26:06 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 7/29/2023 - Hora: 2:26:15 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:23 PM - Accion: Post correcto - se agrego kk 
+Fecha: 7/29/2023 - Hora: 2:26:23 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:26 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:28 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:30 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:26:33 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 2:37:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:00 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:05 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:09 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:12 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:15 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:22 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:31 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:38 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:40 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:45 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:47 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:50 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:52 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:55 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:07:58 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:05 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:20 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:24 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:27 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:35 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:08:39 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:26:07 PM - Accion: Consulta los productos 
+Fecha: 7/29/2023 - Hora: 3:41:51 PM - Accion: Consulta los productos 

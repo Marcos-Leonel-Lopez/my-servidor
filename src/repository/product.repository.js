@@ -14,8 +14,12 @@ export class ProductRepository{
     deleteProduct = async (id) =>{
         return await this.dao.deleteProduct(id);
     }
-    addProduct = async (newProduct) =>{
-        return await this.dao.addProduct(newProduct);
+    addProduct = async (newProduct,ownerEmail) =>{
+        return await this.dao.addProduct(newProduct,ownerEmail);
+    }
+    addProductRealTime = async (newProduct,ownerEmail) =>{
+        console.log('addProductRealTime');
+        return await this.dao.addProduct(newProduct,ownerEmail);
     }
     updateProduct = async (id, newData)=>{
         return await this.dao.updateProduct(id, newData)
@@ -26,7 +30,7 @@ export class ProductRepository{
     updateStock = async (productId, quantity) => {
         return await this.dao.updateStock(productId, quantity)
     }
-    mockingproducts = async (cantidad) =>{
-        return await this.dao.mockingproducts(cantidad)
+    mockingproducts = async (cantidad,ownerEmail) =>{
+        return await this.dao.mockingproducts(cantidad,ownerEmail)
     }
 }

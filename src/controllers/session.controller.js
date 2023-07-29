@@ -93,9 +93,6 @@ export default class SessionController{
         })
     }
 
-
-
-    
     getUsers = async (req, res) => {
         try {
             const { status, message } = await sessionService.getUsers();

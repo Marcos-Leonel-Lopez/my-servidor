@@ -20,7 +20,7 @@ import ProductController from './controllers/product.controller.js';
 import { TicketRepository } from './repository/ticket.repository.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
-import { productService } from './repository/index.repository.js';
+import { productService, ticketService } from './repository/index.repository.js';
 import { addLogger } from './utils/logger.js';
 
 const PORT = config.server.port || 8080;
@@ -73,8 +73,8 @@ io.on('connection', async client => {
 
     client.on('newProduct', async (data, callback) => {
         // req.logger.verbose('Datos recibidos en el back:', data);
-         console.log('Datos recibidos en el back:', data);
-        await productService.addProduct(data); //debe ir el model
+        console.log('Datos recibidos en el back:', data);
+        await productService.addProductRealTime(data,'marcosleonellopez@gmail.com'); //email hardcodeado
         const result = await productController.getProductsRealTime();
         const products = result.map(item => item.toObject()) 
         io.emit('productList', products);

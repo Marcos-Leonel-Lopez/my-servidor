@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate-v2';
-import { productCollection } from '../../constants/index.js';
+import { productCollection, userCollection } from '../../constants/index.js';
 
 const productSchema = new mongoose.Schema({
     title: {
@@ -34,6 +34,10 @@ const productSchema = new mongoose.Schema({
      category: {
          type: String,
          required: true
+     },
+     owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:userCollection
      }
 })
 productSchema.plugin(mongoosePaginate);
