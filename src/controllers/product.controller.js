@@ -42,13 +42,13 @@ export default class ProductController {
         req.logger.debug(userRole + ' despues del dto');
         // console.log();
         if (userRole === 'admin') admin = true;
-        if(userRole === 'premium') canEdit = true;
+        if (userRole === 'premium') canEdit = true;
         const { status, message } = result;
         if (status == 200) {
             const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
             await accessManager.createRecords("Consulta los productos");
             const products = payload.map(item => item.toObject())
-            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart,canEdit, title: 'Productos', style: 'style.css', error: false })
+            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart, canEdit, title: 'Productos', style: 'style.css', error: false })
         } else {
             await accessManager.createRecords("Get fallido - limit menor a 0");
             return res.render('home', { title: 'Productos', style: 'style.css', error: true })
@@ -92,25 +92,38 @@ export default class ProductController {
         return res.status(status).send(message);
     }
     deleteProduct = async (req, res) => {
-        const id = req.params.pid;
-        const result = await productService.deleteProduct(id);
-        const { status, message } = result;
-        return res.status(status).send(message);
+        try {
+            const id = req.params.pid;
+            let userEmail = " ";
+            const person = req.session.user;
+            req.logger.debug(JSON.stringify(person))
+            if (person) {
+                const usuarioDto = new UserDto(person);
+                userEmail = usuarioDto.mail;
+            }
+            const result = await productService.deleteProduct(id,userEmail);
+            const { status, message } = result;
+            return res.status(status).send(message);
+            // return res.status(200).send('message');
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+
     }
     addProduct = async (req, res, next) => {
         try {
             req.logger.info('addProduct');
-            let ownerEmail = " ";
+            
             const newProduct = req.body;
             const person = req.session.user;
             if (person) {
                 const usuarioDto = new UserDto(person);
                 ownerEmail = usuarioDto.mail;
-            }else{
-                ownerEmail =  'marcosleonellopez@gmail.com'// "bypass" para postman
+            } else {
+                ownerEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
             req.logger.info(ownerEmail);
-            const { status, message } = await productService.addProduct(newProduct,ownerEmail);
+            const { status, message } = await productService.addProduct(newProduct, ownerEmail);
             if (status === 400) {
                 const info = message.status === 'error_json' ? 'Faltan datos' : '"code" se repite';
                 req.logger.fatal("error fatal al crear producto!");
@@ -141,12 +154,12 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 ownerEmail = usuarioDto.mail;
-            }else{
+            } else {
                 req.logger.info('se hardcodeo')
                 ownerEmail = 'marcosleonellopez@gmail.com'
             }
             const cantidad = 3;
-            const { status, message } = await productService.mockingproducts(cantidad,ownerEmail)
+            const { status, message } = await productService.mockingproducts(cantidad, ownerEmail)
             res.status(status).send(message);
         } catch (error) {
             res.status(500).send(error.message);

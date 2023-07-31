@@ -67,10 +67,10 @@ const messageManager = new MessageManager();
 const io = new Server(server);
 
 // productos en tiempo real
-// io.on('connection', async client => {
-//     const result = await productController.getProductsRealTime();
-//     const products = result.map(item => item.toObject())
-//     io.emit('productList', products);
+ io.on('connection', async client => {
+     const result = await productController.getProductsRealTime();
+     const products = result.map(item => item.toObject())
+     io.emit('productList', products);
 
 //     client.on('newProduct', async (data, callback) => {
 //         // req.logger.verbose('Datos recibidos en el back:', data);
@@ -115,7 +115,7 @@ const io = new Server(server);
 //             await ticketService.idFronFront(data)
 //         })
     
-// })
+})
 
 //rutas
 app.use(addLogger)

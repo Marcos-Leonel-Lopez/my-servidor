@@ -117,29 +117,59 @@ export class ProductMongo {
         }
 
     };
-    deleteProduct = async (id) => {
-        const payload = await productModel.deleteOne({ _id: id });
-        if (payload.deletedCount == 1) {
-            await accessManager.createRecords(`Elimina el producto id: ${id}`);
+    deleteProduct = async (pid, userEmail) => {
+        try {
+            const user = await userModel.findOne({ mail: userEmail });
+            console.log('primera verificacion', user.role);
+            if (user.role === 'premium' || user.role === 'admin') {
+                const product = await productModel.findById(pid)
+                console.log('segunda verificacion', user.id, product.owner);
+                if (user.id == product.owner || user.role === 'admin') {
+                    const payload = await productModel.deleteOne({ _id: pid });
+                    if (payload.deletedCount == 1) {
+                        await accessManager.createRecords(`Elimina el producto id: ${pid}`);
+                        return {
+                            status: 200,
+                            message: {
+                                status: "success",
+                                payload,
+                            }
+                        }
+                    }
+                } else {
+                    console.log(`No puedes eliminar producto con id:${pid}`);
+                    await accessManager.createRecords(`Delete fallido - id inexistente`);
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: `No puedes eliminar producto con id:${pid}`
+                        }
+                    }
+                }
+            } else {
+                await accessManager.createRecords(`Delete fallido - id inexistente`);
+                return {
+                    status: 400,
+                    message: {
+                        status: "error",
+                        error: `No posees los permisos correspondientes`
+                    }
+                }
+            }
+        } catch (error) {
             return {
-                status: 200,
+                status: 400,
                 message: {
-                    status: "success",
-                    payload,
+                    status: "error",
+                    error: error.message
                 }
             }
         }
-        await accessManager.createRecords(`Delete fallido - id inexistente`);
-        return {
-            status: 400,
-            message: {
-                status: "error",
-                error: `El producto con id:${id} no existe`
-            }
-        }
+
     };
     // addProduct = async (newProduct) => {
-        
+
     //     const { code } = newProduct;
     //     const data = await this.correctData(newProduct);
     //     if (data != "success") {
@@ -170,53 +200,53 @@ export class ProductMongo {
     //         }
     //     }
     // }
-    addProduct = async (newProduct,ownerEmail) => {
+    addProduct = async (newProduct, ownerEmail) => {
         try {
             let errors = [];
-        const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
-        for (let i = 0; i < keys.length; i++) {
-            let key = keys[i];
-            if (!newProduct.hasOwnProperty(key) || newProduct[key] == null || newProduct[key] == undefined || newProduct[key] == "" || newProduct[key] == " ") {
-                errors.push("El objeto no tiene la propiedad " + key + " o su valor es nulo, indefinido o vacío.");
+            const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i];
+                if (!newProduct.hasOwnProperty(key) || newProduct[key] == null || newProduct[key] == undefined || newProduct[key] == "" || newProduct[key] == " ") {
+                    errors.push("El objeto no tiene la propiedad " + key + " o su valor es nulo, indefinido o vacío.");
+                }
             }
-        }
-        if (errors.length > 0){
+            if (errors.length > 0) {
+                return {
+                    status: 400,
+                    message: {
+                        status: "error_json",
+                        error: errors
+                    }
+                }
+            }
+            const { code } = newProduct;
+            const repeat = await this.codeRepeat(code);
+            if (repeat) {
+                await accessManager.createRecords(`Post fallido - codigo se repite`);
+                return {
+                    status: 400,
+                    message: {
+                        status: "error_code",
+                        error: ["El code se repite"]
+                    }
+
+                }
+            }
+            await accessManager.createRecords(`Post correcto - se agrego ${newProduct.title}`);
+            const { id } = await userModel.findOne({ mail: ownerEmail });
+            newProduct.owner = id;
+            const payload = await productModel.create(newProduct);
             return {
-                status: 400,
+                status: 200,
                 message: {
-                    status: "error_json",
-                    error: errors
+                    status: "success",
+                    payload,
                 }
             }
-        }
-        const { code } = newProduct;
-        const repeat = await this.codeRepeat(code);
-        if (repeat) {
-            await accessManager.createRecords(`Post fallido - codigo se repite`);
-            return {
-                status: 400,
-                message:{
-                    status: "error_code",
-                    error: ["El code se repite"]
-                }
-                
-            }
-        }
-        await accessManager.createRecords(`Post correcto - se agrego ${newProduct.title}`);
-        const {id} = await userModel.findOne({mail:ownerEmail});
-        newProduct.owner = id;
-        const payload = await productModel.create(newProduct);
-        return {
-            status: 200,
-            message: {
-                status: "success",
-                payload,
-            }
-        }
         } catch (error) {
             console.log(error.message);
         }
-        
+
     }
     codeRepeat = async (code) => {
         let result = await productModel.find({ code: code });
@@ -333,11 +363,11 @@ export class ProductMongo {
             };
         }
     };
-    mockingproducts = async (cantidad,ownerEmail) => {
+    mockingproducts = async (cantidad, ownerEmail) => {
         try {
             for (let index = 0; index < cantidad; index++) {
                 let product = generateProduct()
-                await this.addProduct(product,ownerEmail);
+                await this.addProduct(product, ownerEmail);
             }
             return {
                 status: 200,

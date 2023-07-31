@@ -94,7 +94,7 @@ export class CartMongo {
                         status: 400,
                         message: {
                             status: "error",
-                            error: "Mo puede agregar este producto porque es de su pertenecia"
+                            error: "No puede agregar este producto porque es de su pertenecia"
                         }
                     };
                 }
@@ -147,7 +147,7 @@ export class CartMongo {
                         status: 400,
                         message: {
                             status: "error",
-                            error: "Mo puede agregar este producto porque es de su pertenecia"
+                            error: "No puede agregar este producto porque es de su pertenecia"
                         }
                     };
                 }

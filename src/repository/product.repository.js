@@ -11,8 +11,8 @@ export class ProductRepository{
     getProductById = async (id) =>{
         return await this.dao.getProductById(id)  
     }
-    deleteProduct = async (id) =>{
-        return await this.dao.deleteProduct(id);
+    deleteProduct = async (id,userEmail) =>{
+        return await this.dao.deleteProduct(id,userEmail);
     }
     addProduct = async (newProduct,ownerEmail) =>{
         return await this.dao.addProduct(newProduct,ownerEmail);
