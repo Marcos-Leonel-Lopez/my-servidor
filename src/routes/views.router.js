@@ -37,9 +37,13 @@ router.get('/profile', privateAccess, (req, res) => {
     res.render('profile', { user: req.session.user, title: 'Mi Perfil', style: 'style.css' })
 })
 
+router.get('/forgot-password', (req,res)=>{
+    res.render('forgotPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
+})
 router.get('/resetPassword', (req, res) => {
     res.render('resetPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
 })
+
 
 router.get('/loggerTest', (req, res)=>{
     req.logger.fatal("fatal!");

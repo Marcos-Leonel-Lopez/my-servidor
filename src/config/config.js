@@ -22,6 +22,7 @@ const ID_GITHUB = process.env.ID_GITHUB;
 const URL_GITHUB = process.env.URL_GITHUB;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const PERSISTENCE = process.env.PERSISTENCE;
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -45,5 +46,8 @@ export const config = {
     },
     persistence:{
        persistence: PERSISTENCE, 
+    },
+    jwt:{
+        private_key: PRIVATE_KEY
     }
 }

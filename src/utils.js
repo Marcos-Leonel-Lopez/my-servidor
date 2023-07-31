@@ -3,13 +3,26 @@ import { dirname } from 'path';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Faker, en, es} from "@faker-js/faker";
+import { config } from './config/config.js';
 
-const PRIVATE_KEY = 'MllKEY';
 
-export const generateToken = (user) =>{
-    const token = jwt.sign({user},PRIVATE_KEY,{expiresIn:'1d'});
+export const generateEmailToken = (mail,expireTime) =>{
+    const token = jwt.sign({mail},config.jwt.private_key,{expiresIn:expireTime});
     return token;
 }
+export const verifyEmailToken = (token) =>{
+    try {
+        const info = jwt.verify(token,config.jwt.private_key);
+        return info.email;
+    } catch (error) {
+        console.log(error.message)
+        return false
+    }
+}
+
+
+
+
 export const authToken = (req, res, next) =>{
     const authHeader = req.headers.authorization;
     if(!authHeader){

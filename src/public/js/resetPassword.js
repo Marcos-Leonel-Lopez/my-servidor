@@ -2,11 +2,8 @@ const form = document.getElementById("resetPassForm");
 
 form.addEventListener('submit', e=>{
     e.preventDefault();
-
     const data = new FormData(form);
     const obj = Object.fromEntries(data.entries());
-
-    
     fetch('/api/sessions/restartPassword', {
         method: 'POST',
         body: JSON.stringify(obj),
@@ -16,11 +13,9 @@ form.addEventListener('submit', e=>{
     })
     .then(result => {
         if(result.status == 200){
-            console.log('contraseña restaurada');
-            
+            console.log('mail enviado');
             window.location.replace('/login')
         }
     })
     .catch(error => console.error('Error:', error));
-    
 })

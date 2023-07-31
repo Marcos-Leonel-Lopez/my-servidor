@@ -17,7 +17,7 @@ const accessManager = new AccessManager();
 
 export default class ProductController {
     root = async (req, res) => {
-        await updateOwner();
+        //await updateOwner();
         req.logger.info('actualizado')
         return res.redirect('/login');
     }
@@ -57,8 +57,6 @@ export default class ProductController {
     getProducts = async (req, res, next) => {
         try {
             const { limit } = req.query;
-            // const owner = req.user.role;
-            // req.logger.info(`el 'owner' es ${owner} `)
             const products = await productService.getProducts(limit);
             const { status, message } = products;
             if (status === 400) {
@@ -96,7 +94,6 @@ export default class ProductController {
             const id = req.params.pid;
             let userEmail = " ";
             const person = req.session.user;
-            req.logger.debug(JSON.stringify(person))
             if (person) {
                 const usuarioDto = new UserDto(person);
                 userEmail = usuarioDto.mail;
@@ -104,7 +101,6 @@ export default class ProductController {
             const result = await productService.deleteProduct(id,userEmail);
             const { status, message } = result;
             return res.status(status).send(message);
-            // return res.status(200).send('message');
         } catch (error) {
             res.status(500).send(error.message);
         }
@@ -113,9 +109,10 @@ export default class ProductController {
     addProduct = async (req, res, next) => {
         try {
             req.logger.info('addProduct');
-            
+            let ownerEmail = " ";
             const newProduct = req.body;
             const person = req.session.user;
+            req.logger.debug(JSON.stringify(req.session.user))
             if (person) {
                 const usuarioDto = new UserDto(person);
                 ownerEmail = usuarioDto.mail;
@@ -141,11 +138,21 @@ export default class ProductController {
 
     }
     updateProduct = async (req, res) => {
-        const id = req.params.pid;
-        const newData = req.body;
-        const result = await productService.updateProduct(id, newData);
-        const { status, message } = result;
-        return res.status(status).send(message);
+        try {
+            const id = req.params.pid;
+            const newData = req.body;
+            let userEmail = " ";
+            const person = req.session.user;
+            if (person) {
+                const usuarioDto = new UserDto(person);
+                userEmail = usuarioDto.mail;
+            }
+            const { status, message } = await productService.updateProduct(id, newData,userEmail);
+            return res.status(status).send(message);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+
     }
     mockingproducts = async (req, res, next) => {
         try {

@@ -166,7 +166,6 @@ export class ProductMongo {
                 }
             }
         }
-
     };
     // addProduct = async (newProduct) => {
 
@@ -273,41 +272,66 @@ export class ProductMongo {
         }
         return 'success'
     };
-    updateProduct = async (id, newData) => {
-        let editValues = await this.conditionData(newData); //acondiciona datos, elimina vacios y undefined
-        if (editValues.code) {
-            const repeat = await this.codeRepeat(editValues.code);
-            if (repeat) {
-                await accessManager.createRecords(`Put fallido codigo se repite`);
+    updateProduct = async (pid, newData, userEmail) => {
+        try {
+            const user = await userModel.findOne({ mail: userEmail });
+            console.log('primera verificacion', user.role);
+            if (user.role === 'premium' || user.role === 'admin') {
+                const product = await productModel.findById(pid)
+                console.log('segunda verificacion', user.id, product.owner);
+                if (user.id == product.owner || user.role === 'admin') {
+                    let editValues = await this.conditionData(newData); //acondiciona datos, elimina vacios y undefined
+                    if (editValues.code) {
+                        const repeat = await this.codeRepeat(editValues.code);
+                        if (repeat) {
+                            await accessManager.createRecords(`Put fallido codigo se repite`);
+                            return {
+                                status: 400,
+                                message: repeat
+                            }
+                        }
+                    }// detecta si el codigo se repite
+                        await accessManager.createRecords(`Modifica el producto id: ${pid}`);
+                        const payload = await productModel.updateOne({ _id: pid }, { $set: editValues });
+                        return {
+                            status: 200,
+                            message: {
+                                status: "success",
+                                payload
+                            }
+                        }
+                } else {
+                    console.log(`No puedes editar producto con id:${pid}`);
+                    await accessManager.createRecords(`Edit fallido`);
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: `Usted no puedes editar producto con id:${pid}`
+                        }
+                    }
+                }
+            } else {
+                await accessManager.createRecords(`Edit fallido`);
                 return {
                     status: 400,
-                    message: repeat
+                    message: {
+                        status: "error",
+                        error: `No posees los permisos correspondientes`
+                    }
                 }
-            }
-        }// detecta si el codigo se repite
-        const consulta = await productModel.find({ _id: id });
-        if (consulta.length > 0) {
-            await accessManager.createRecords(`Modifica el producto id: ${id}`);
-            const payload = await productModel.updateOne({ _id: id }, { $set: editValues });
-            return {
-                status: 200,
-                message: {
-                    status: "success",
-                    payload
-                }
+            }   
+        }
+     catch(error) {
+        return {
+            status: 400,
+            message: {
+                status: "error",
+                error: error.message
             }
         }
-        else {
-            await accessManager.createRecords(`Put fallido id inexistente`);
-            return {
-                status: 400,
-                message: {
-                    status: "error",
-                    error: `El producto con id:${id} no existe`,
-                }
-            }
-        }
-    };
+    }
+    }
     conditionData = async (newData) => {
         let editValues = {};
         for (let [key, value] of Object.entries(newData)) {

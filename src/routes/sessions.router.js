@@ -17,6 +17,8 @@ router.get('/logout', sessionController.logout);
 
 router.post('/restartPassword', sessionController.restartPassword)
 
+router.post('/forgotPassword', sessionController.forgotPassword)
+
 router.get('/failregister', sessionController.failregister);
 
 router.get('/faillogin', sessionController.faillogin);

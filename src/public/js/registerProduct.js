@@ -3,13 +3,15 @@ const form = document.querySelector('#myForm')
 form.addEventListener('submit', e => {
     e.preventDefault();
     if (e.target[9].value === 'Enviar') {
-        console.log(e.target[9].value+ 'dentro de enviar');
+        console.log(e.target[9].value+ ' dentro de enviar ');
         const formData = new FormData(form);
         const data = {};
         for (let [key, value] of formData.entries()) {
             data[key] = value;
         }
         delete data.id;
+        console.log(data);
+        
         fetch('/api/products', {
             method: 'POST',
             body: JSON.stringify(data),

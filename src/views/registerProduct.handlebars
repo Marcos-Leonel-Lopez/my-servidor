@@ -1,4 +1,10 @@
 <div class="formulario">
+  <ul class="categorias">
+            <li>
+                <a href="/products">Volver</a>
+            </li>
+
+  </ul>
   {{!-- <form id="myForm" action="" method="post">
     <label for="title">Título:</label>
     <input type="text" id="title" name="title"><br><br>
@@ -27,10 +33,10 @@
 
     <input type="submit" value="Enviar">
   </form> --}}
-  
-{{!-- se debe agreagar boton para editar --}}
 
-<form id="myForm" action="" method="post">
+  {{!-- se debe agreagar boton para editar --}}
+
+  <form id="myForm" action="" method="post">
     <label for="id">ID:</label>
     <input type="text" id="id" name="id">
     <button type="button" onclick="loadData()">EDIT</button><br><br>
@@ -68,10 +74,10 @@
 <hr>
 <div class="formulario">
   <form id="formDelete">
-  <label for="text-input">Id:</label>
-  <input type="test" id="text-input" name="text-input">
-  <button type="button" id="delete-button">Eliminar</button>
-</form>
+    <label for="text-input">Id:</label>
+    <input type="test" id="text-input" name="text-input">
+    <button type="button" id="delete-button">Eliminar</button>
+  </form>
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/registerProduct.js"></script>

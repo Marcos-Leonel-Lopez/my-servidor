@@ -69,30 +69,30 @@ export default class SessionController{
     }
 
     restartPassword = async (req, res) => {
-        const { mail, password } = req.body;
-        if (!mail || !password) {
-            return res.status(400).send({
-                stauts: 'error',
-                message: 'datos incorrectos'
-            })
+        try {
+            const token = req.query.token;
+            const { mail, password } = req.body;
+            req.logger.info(token);
+            const {status, message} = await sessionService.restartPassword(mail, password,token);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);   
         }
-        // const user = await userModel.findOne({ mail });
-        const user = await sessionService.getUser(mail);
-        if (!user) {
-            return res.status(400).send({
-                stauts: 'error',
-                message: 'datos incorrectos'
-            })
-        }
-        const newHashedPass = createHash(password);
-        // await userModel.updateOne({ _id: user._id }, { $set: { password: newHashedPass } });
-        await sessionService.updatePassword(user, newHashedPass)
-        res.status(200).send({
-            stauts: 'success',
-            message: 'contraseña actualizado'
-        })
     }
 
+    forgotPassword = async (req,res) =>{
+        try {
+            const {mail} = req.body;
+            console.log(mail);
+            
+            const { status, message } = await sessionService.forgotPassword(mail);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);   
+        }
+    }
     // getUsers = async (req, res) => {
     //     try {
     //         const { status, message } = await sessionService.getUsers();

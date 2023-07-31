@@ -21,8 +21,8 @@ export class ProductRepository{
         console.log('addProductRealTime');
         return await this.dao.addProduct(newProduct,ownerEmail);
     }
-    updateProduct = async (id, newData)=>{
-        return await this.dao.updateProduct(id, newData)
+    updateProduct = async (id, newData, userEmail)=>{
+        return await this.dao.updateProduct(id, newData, userEmail)
     }
     correctData = async (newProduct)=>{
         return await this.dao.correctData(newProduct)
