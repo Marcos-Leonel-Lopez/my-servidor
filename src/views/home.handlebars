@@ -66,6 +66,11 @@
             <li>
                 <a href="/chat">Ir al chat</a>
             </li>
+            {{#if canEdit}}
+            <li>
+                <a id="admin" href="/registerProduct">EDITAR</a>
+            </li>
+            {{/if}}
         </ul>
         {{else}}
         <ul class="categorias">

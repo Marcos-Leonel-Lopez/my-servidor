@@ -16,6 +16,7 @@ import sessionsRouter from './routes/sessions.router.js';
 import ticketsRouter from './routes/ticket.router.js';
 import viewsRouter from './routes/views.router.js';
 import cookieRouter from './routes/cookie.router.js';
+import usersRouter from './routes/users.router.js'
 import ProductController from './controllers/product.controller.js';
 import { TicketRepository } from './repository/ticket.repository.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
@@ -66,55 +67,55 @@ const messageManager = new MessageManager();
 const io = new Server(server);
 
 // productos en tiempo real
-io.on('connection', async client => {
-    const result = await productController.getProductsRealTime();
-    const products = result.map(item => item.toObject())
-    io.emit('productList', products);
+// io.on('connection', async client => {
+//     const result = await productController.getProductsRealTime();
+//     const products = result.map(item => item.toObject())
+//     io.emit('productList', products);
 
-    client.on('newProduct', async (data, callback) => {
-        // req.logger.verbose('Datos recibidos en el back:', data);
-        console.log('Datos recibidos en el back:', data);
-        await productService.addProductRealTime(data,'marcosleonellopez@gmail.com'); //email hardcodeado
-        const result = await productController.getProductsRealTime();
-        const products = result.map(item => item.toObject()) 
-        io.emit('productList', products);
-        callback();
-    })
-    client.on('delete', async data => {
-        // req.logger.verbose('Se eliminara id: ' + data);
-         console.log('Se eliminara id: ' + data);
-        await productService.deleteProduct(data);
-        const result = await productController.getProductsRealTime();
-        const products = result.map(item => item.toObject()) 
-        io.emit('productList', products);
-    })
-    //chat
-    client.on('message', async data => {
-        await messageManager.newMessage(data);
-        const messagesBefore = await messageManager.getMessages()
-        const messages = messagesBefore.map(item => item.toObject())
-        io.emit('messageLogs', messages)
-    })
-    client.on('authenticated', data => {
-        client.broadcast.emit('newUserConnected', data);
-    })
-    client.on('takeProduct', async data_id =>{
-        const result = await productService.getProductById(data_id);
-        const product = result.message.payload.map(item => item.toObject());
-        client.emit('productDetails',product);
-    })
-    client.on('editProduct', async (data,id) =>{
-        await productService.updateProduct(id, data);
-        const result = await productController.getProductsRealTime();
-        const products = result.map(item => item.toObject())
-        io.emit('productList', products);
-    })
+//     client.on('newProduct', async (data, callback) => {
+//         // req.logger.verbose('Datos recibidos en el back:', data);
+//         console.log('Datos recibidos en el back:', data);
+//         await productService.addProductRealTime(data,'marcosleonellopez@gmail.com'); //email hardcodeado
+//         const result = await productController.getProductsRealTime();
+//         const products = result.map(item => item.toObject()) 
+//         io.emit('productList', products);
+//         callback();
+//     })
+//     client.on('delete', async data => {
+//         // req.logger.verbose('Se eliminara id: ' + data);
+//          console.log('Se eliminara id: ' + data);
+//         await productService.deleteProduct(data);
+//         const result = await productController.getProductsRealTime();
+//         const products = result.map(item => item.toObject()) 
+//         io.emit('productList', products);
+//     })
+//     //chat
+//     client.on('message', async data => {
+//         await messageManager.newMessage(data);
+//         const messagesBefore = await messageManager.getMessages()
+//         const messages = messagesBefore.map(item => item.toObject())
+//         io.emit('messageLogs', messages)
+//     })
+//     client.on('authenticated', data => {
+//         client.broadcast.emit('newUserConnected', data);
+//     })
+//     client.on('takeProduct', async data_id =>{
+//         const result = await productService.getProductById(data_id);
+//         const product = result.message.payload.map(item => item.toObject());
+//         client.emit('productDetails',product);
+//     })
+//     client.on('editProduct', async (data,id) =>{
+//         await productService.updateProduct(id, data);
+//         const result = await productController.getProductsRealTime();
+//         const products = result.map(item => item.toObject())
+//         io.emit('productList', products);
+//     })
     
-        client.on('idproduct', async (data) => {
-            await ticketService.idFronFront(data)
-        })
+//         client.on('idproduct', async (data) => {
+//             await ticketService.idFronFront(data)
+//         })
     
-})
+// })
 
 //rutas
 app.use(addLogger)
@@ -123,6 +124,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts',cartsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/sessions',sessionsRouter);
+app.use('/api/users',usersRouter)
 app.use(errorHandler);
 
 

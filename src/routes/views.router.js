@@ -4,7 +4,7 @@ import ProductController from "../controllers/product.controller.js";
 import CartController from "../controllers/cart.controller.js";
 import userModel from "../Dao/models/user.model.js";
 import { config } from "../config/config.js";
-import { onlyClient, publicAccess, adminAccess, privateAccess } from "../middlewares/auth.js";
+import { onlyClient, publicAccess, exclusiveAccess, privateAccess } from "../middlewares/auth.js";
 
 const accessManager = new AccessManager();
 const productController = new ProductController();
@@ -15,7 +15,7 @@ const router = Router();
 
 router.get('/', productController.root)
 
-router.get('/registerProduct',privateAccess, adminAccess, productController.registerProduct)
+router.get('/registerProduct',privateAccess, exclusiveAccess, productController.registerProduct)
 
 router.get('/products', productController.getProductsPage)
 

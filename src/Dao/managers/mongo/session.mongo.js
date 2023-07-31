@@ -1,8 +1,6 @@
 import userModel from "../../models/user.model.js";
-import productModel from "../../models/product.model.js";
 
 export class SessionMongo{
-
     getUsers = async () =>{
         try {
             const payload = await userModel.find();
@@ -23,7 +21,6 @@ export class SessionMongo{
             };
         }
     }
-
     deleteUser = async (sid) =>{
         try {
             const payload = await userModel.deleteOne({_id: sid});
@@ -46,7 +43,6 @@ export class SessionMongo{
             };
         }
     }
-
     getUser = async (email) =>{
         try {
             // const user = await userModel.findOne({ mail: email }).populate({ path: 'cart',populate: { path: 'products.productId', model: productModel}}); // populate de todo

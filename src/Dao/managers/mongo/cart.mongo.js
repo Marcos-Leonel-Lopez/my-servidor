@@ -1,4 +1,5 @@
 import cartModel from "../../models/cart.model.js";
+import productModel from "../../models/product.model.js";
 import userModel from "../../models/user.model.js";
 import AccessManager from "../AccessManager.js";
 import { ProductMongo } from "./product.mongo.js";
@@ -83,6 +84,21 @@ export class CartMongo {
     };
     addProductToCart = async (cid, pid) => {
         try {
+            const user = await userModel.findOne({cart:cid});
+            if(user.role === 'premium'){
+                const product = await productModel.findById(pid)
+                console.log(user.id , product.owner,user.id == product.owner);
+                if(user.id == product.owner){
+                    console.log('pertenece a esta persona');
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: "Mo puede agregar este producto porque es de su pertenecia"
+                        }
+                    };
+                }
+            }
             const cart = await cartModel.findOneAndUpdate(
                 { _id: cid, "products.productId": pid },
                 { $inc: { "products.$.quantity": 1 } },
@@ -121,6 +137,21 @@ export class CartMongo {
     };
     updateProductQuantity = async (cid, pid, cantidad) => {
         try {
+            const user = await userModel.findOne({cart:cid});
+            if(user.role === 'premium'){
+                const product = await productModel.findById(pid)
+                console.log(user.id , product.owner,user.id == product.owner);
+                if(user.id == product.owner){
+                    console.log('pertenece a esta persona');
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: "Mo puede agregar este producto porque es de su pertenecia"
+                        }
+                    };
+                }
+            }
             if (typeof cantidad !== 'number' || cantidad <= 0) {
                 return {
                     status: 400,

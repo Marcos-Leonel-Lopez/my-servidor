@@ -6,6 +6,7 @@ let productPersistence;
 let cartPersistence;
 let sessionPersistence;
 let ticketPersistence;
+let userPersistence;
 
 switch (persistence) {
     case 'mongo':
@@ -19,6 +20,8 @@ switch (persistence) {
         cartPersistence = new CartMongo();
         const {TicketMongo} = await import('./managers/mongo/ticket.mongo.js');
         ticketPersistence = new TicketMongo();
+        const {UserMongo} = await import('./managers/mongo/user.mongo.js')
+        userPersistence = new UserMongo()
         break;
     case 'memory':
         //
@@ -30,4 +33,4 @@ switch (persistence) {
         break;
 }
 
-export {productPersistence, sessionPersistence, cartPersistence, ticketPersistence}
+export {productPersistence, sessionPersistence, cartPersistence, ticketPersistence, userPersistence}

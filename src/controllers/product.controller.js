@@ -28,6 +28,7 @@ export default class ProductController {
         const { limit = 10, page = 1, category = 'all', stock = 'all', sort = 'none' } = req.query;
         const result = await productService.getProductsPage(limit, page, category, stock, sort);
         let admin = false;
+        let canEdit = false;
         let userRole = null;
         let userCart = null;
         let userName = null;
@@ -40,15 +41,14 @@ export default class ProductController {
         }
         req.logger.debug(userRole + ' despues del dto');
         // console.log();
-        if (userRole === 'admin') {
-            admin = true;
-        }
+        if (userRole === 'admin') admin = true;
+        if(userRole === 'premium') canEdit = true;
         const { status, message } = result;
         if (status == 200) {
             const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
             await accessManager.createRecords("Consulta los productos");
             const products = payload.map(item => item.toObject())
-            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart, title: 'Productos', style: 'style.css', error: false })
+            return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart,canEdit, title: 'Productos', style: 'style.css', error: false })
         } else {
             await accessManager.createRecords("Get fallido - limit menor a 0");
             return res.render('home', { title: 'Productos', style: 'style.css', error: true })

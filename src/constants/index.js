@@ -3,3 +3,4 @@ export const productCollection = 'products';
 export const userCollection = 'users';
 export const messageCollection = 'messages';
 export const ticketCollection = 'tickets';
+export const userRoles = ['client','premium','admin'];

@@ -1,7 +1,7 @@
 export const onlyClient = async (req, res, next)=>{
     try {
         req.logger.debug('entra al middle onlyClient');
-        if(req.user?.role != 'client') return res.redirect('/profile');
+        if(req.user?.role != 'client' && req.user?.role !== 'premium') return res.redirect('/profile');
         next()
     } catch (error) {
         next(error);
@@ -19,10 +19,11 @@ export const publicAccess = (req, res, next) => {
 
 }
 
-export const adminAccess = async (req, res, next) => {
+export const exclusiveAccess = async (req, res, next) => {
     try {
-        req.logger.debug('entra al middle adminAccess');
-        if(req.user.role != 'admin') return res.redirect('/profile');
+        req.logger.debug('entra al middle exclusiveAccess');
+        req.logger.debug(req.user.role);
+        if(req.user.role !== 'admin' && req.user.role !== 'premium') return res.redirect('/profile');
         next();
     } catch (error) {
         next(error);
