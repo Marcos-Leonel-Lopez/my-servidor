@@ -15,7 +15,7 @@ router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: 
 
 router.get('/logout', sessionController.logout);
 
-router.post('/restartPassword', sessionController.restartPassword)
+router.post('/resetPassword', sessionController.restartPassword)
 
 router.post('/forgotPassword', sessionController.forgotPassword)
 

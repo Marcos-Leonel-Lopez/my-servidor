@@ -13,7 +13,8 @@ export const generateEmailToken = (mail,expireTime) =>{
 export const verifyEmailToken = (token) =>{
     try {
         const info = jwt.verify(token,config.jwt.private_key);
-        return info.email;
+        console.log(info);
+        return true
     } catch (error) {
         console.log(error.message)
         return false

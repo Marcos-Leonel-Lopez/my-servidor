@@ -79,7 +79,8 @@ export class SessionMongo {
     }
     restartPassword = async (mail, password, token) => {
         try {
-            console.log(mail, password, token);
+            console.log(mail, password, token, ' en .mongo ');
+            let validEmail= true;
             if (!mail || !password || !token) {
                 return {
                     status: 400,
@@ -89,7 +90,9 @@ export class SessionMongo {
                     }
                 }
             } 
-            if(!verifyEmailToken(token)){
+            validEmail = verifyEmailToken(token)
+            console.log('verificacion de token',validEmail);
+            if(!validEmail){
                 return {
                     status: 400,
                     message:{
@@ -130,7 +133,7 @@ export class SessionMongo {
     forgotPassword = async (mail) => {
         try {
             const user = await userModel.findOne({ mail: mail });
-            const token = generateEmailToken(user.mail,'1h')
+            const token = generateEmailToken(user.mail,3600)
             await sendRecoveryPass(user.mail, token);
             return {
                 status: 200,

@@ -41,7 +41,8 @@ router.get('/forgot-password', (req,res)=>{
     res.render('forgotPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
 })
 router.get('/resetPassword', (req, res) => {
-    res.render('resetPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
+    const token = req.query.token;    
+    res.render('resetPassword', {token:token, title: 'Reestablecer contraseña', style: 'style.css' })
 })
 
 

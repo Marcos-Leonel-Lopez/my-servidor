@@ -11,7 +11,6 @@ form.addEventListener('submit', e => {
         }
         delete data.id;
         console.log(data);
-        
         fetch('/api/products', {
             method: 'POST',
             body: JSON.stringify(data),

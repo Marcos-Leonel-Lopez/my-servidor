@@ -29,7 +29,7 @@ const PORT = config.server.port || 8080;
 const app = express();
 
 //.env
-console.log(config);
+//console.log(config);
 
 //servicio
 app.use(cookieParser());

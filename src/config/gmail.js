@@ -44,8 +44,4 @@ export const sendRecoveryPass = async (email,token) =>{
     })
 }
 
-
-
-
-
 export { transporter }
