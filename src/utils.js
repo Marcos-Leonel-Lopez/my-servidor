@@ -45,7 +45,6 @@ export const authToken = (req, res, next) =>{
     })
 }
 
-
 export const createHash = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 export const validatePass = (password, user) => bcrypt.compareSync(password, user.password);
 

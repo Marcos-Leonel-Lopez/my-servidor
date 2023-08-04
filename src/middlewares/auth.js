@@ -16,9 +16,7 @@ export const publicAccess = (req, res, next) => {
     } catch (error) {
         next(error);
     }
-
 }
-
 export const exclusiveAccess = async (req, res, next) => {
     try {
         req.logger.debug('entra al middle exclusiveAccess');

@@ -1836,3 +1836,9 @@ Fecha: 8/2/2023 - Hora: 3:39:22 PM - Accion: Consulta los productos
 Fecha: 8/2/2023 - Hora: 3:39:50 PM - Accion: Consulta los productos 
 Fecha: 8/2/2023 - Hora: 3:39:50 PM - Accion: Consulta los productos 
 Fecha: 8/2/2023 - Hora: 3:39:50 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:49:32 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:49:33 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:49:33 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
+Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
