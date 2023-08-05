@@ -85,6 +85,7 @@ export class CartMongo {
     addProductToCart = async (cid, pid) => {
         try {
             const user = await userModel.findOne({cart:cid});
+            console.log(user);
             if(user.role === 'premium'){
                 const product = await productModel.findById(pid)
                 console.log(user.id , product.owner,user.id == product.owner);

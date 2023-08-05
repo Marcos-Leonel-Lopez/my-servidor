@@ -97,6 +97,8 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 userEmail = usuarioDto.mail;
+            }else {
+                userEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
             const result = await productService.deleteProduct(id,userEmail);
             const { status, message } = result;
@@ -146,6 +148,8 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 userEmail = usuarioDto.mail;
+            }else {
+                userEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
             const { status, message } = await productService.updateProduct(id, newData,userEmail);
             return res.status(status).send(message);

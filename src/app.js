@@ -6,6 +6,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import cors from 'cors';
+import  swaggerUi  from 'swagger-ui-express';
 import { errorHandler } from './middlewares/errorHandler.js';
 
 import { config } from './config/config.js';
@@ -23,6 +24,8 @@ import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
 import { productService, ticketService } from './repository/index.repository.js';
 import { addLogger } from './utils/logger.js';
+import { swaggerSpecs } from './config/docConfig.js';
+
 
 const PORT = config.server.port || 8080;
 
@@ -125,6 +128,7 @@ app.use('/api/carts',cartsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/sessions',sessionsRouter);
 app.use('/api/users',usersRouter)
+app.use('/api/docs', swaggerUi.serve,swaggerUi.setup(swaggerSpecs))
 app.use(errorHandler);
 
 

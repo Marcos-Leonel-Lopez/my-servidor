@@ -1842,3 +1842,54 @@ Fecha: 8/3/2023 - Hora: 2:49:33 PM - Accion: Consulta los productos
 Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
 Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
 Fecha: 8/3/2023 - Hora: 2:50:15 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:37:23 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:25 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:26 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:27 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:27 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:28 AM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:37:46 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:37:54 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:47:39 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:09:19 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:24:55 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:25:41 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:30:08 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:42:50 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:42:57 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:43:52 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:45:13 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:45:38 AM - Accion: Consulta el producto id: 6462a878c0197e8a1165e487 
+Fecha: 8/4/2023 - Hora: 2:45:49 AM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 2:45:55 AM - Accion: Get fallido - limit erroneo 
+Fecha: 8/4/2023 - Hora: 2:45:59 AM - Accion: Consulta el producto id: 6462a878c0197e8a1165e487 
+Fecha: 8/4/2023 - Hora: 2:47:13 AM - Accion: Consulta el producto id: 64c53ffa8745156657c4e07e 
+Fecha: 8/4/2023 - Hora: 2:47:25 AM - Accion: Consulta el producto id: 6462a878c0197e8a1165e487 
+Fecha: 8/4/2023 - Hora: 1:19:16 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:19:17 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:19:17 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:21:36 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 1:21:50 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:35:41 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 1:35:42 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 5:20:09 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 5:51:10 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 5:52:33 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 5:55:08 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 10:37:22 PM - Accion: Post correcto - se agrego Mondongo 
+Fecha: 8/4/2023 - Hora: 10:39:22 PM - Accion: Post correcto - se agrego Mondongo 
+Fecha: 8/4/2023 - Hora: 10:46:59 PM - Accion: Edit fallido 
+Fecha: 8/4/2023 - Hora: 10:48:15 PM - Accion: Modifica el producto id: 64c541de597ff17293c7f9a8 
+Fecha: 8/4/2023 - Hora: 10:53:29 PM - Accion: Post correcto - se agrego Mondongo 
+Fecha: 8/4/2023 - Hora: 10:53:49 PM - Accion: Consulta el producto id: 64cdab9969924cd474451660 
+Fecha: 8/4/2023 - Hora: 10:54:48 PM - Accion: Elimina el producto id: 64cdab9969924cd474451660 
+Fecha: 8/4/2023 - Hora: 10:54:59 PM - Accion: Get fallido - id inexistente 
+Fecha: 8/4/2023 - Hora: 11:02:39 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 11:28:31 PM - Accion: Consulta los carritos 
+Fecha: 8/4/2023 - Hora: 11:29:52 PM - Accion: Consulta los productos 
+Fecha: 8/4/2023 - Hora: 11:49:30 PM - Accion: Consulta los carritos 
+Fecha: 8/5/2023 - Hora: 12:05:15 AM - Accion: Consulta los carritos 
+Fecha: 8/5/2023 - Hora: 12:12:37 AM - Accion: Consulta los carritos 
+Fecha: 8/5/2023 - Hora: 12:51:12 AM - Accion: Consulta los carritos 
+Fecha: 8/5/2023 - Hora: 12:52:54 AM - Accion: Consulta los carritos 
+Fecha: 8/5/2023 - Hora: 12:55:34 AM - Accion: Consulta los carritos 
