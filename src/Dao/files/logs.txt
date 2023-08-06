@@ -1893,3 +1893,9 @@ Fecha: 8/5/2023 - Hora: 12:12:37 AM - Accion: Consulta los carritos
 Fecha: 8/5/2023 - Hora: 12:51:12 AM - Accion: Consulta los carritos 
 Fecha: 8/5/2023 - Hora: 12:52:54 AM - Accion: Consulta los carritos 
 Fecha: 8/5/2023 - Hora: 12:55:34 AM - Accion: Consulta los carritos 
+Fecha: 8/6/2023 - Hora: 5:34:35 AM - Accion: Get fallido - id inexistente 
+Fecha: 8/6/2023 - Hora: 5:34:52 AM - Accion: Get fallido - id inexistente 
+Fecha: 8/6/2023 - Hora: 5:46:32 AM - Accion: Consulta los carritos 
+Fecha: 8/6/2023 - Hora: 5:52:13 AM - Accion: Consulta los carritos 
+Fecha: 8/6/2023 - Hora: 5:52:29 AM - Accion: Consulta los productos 
+Fecha: 8/6/2023 - Hora: 5:53:40 AM - Accion: Consulta los carritos 
