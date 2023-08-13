@@ -34,7 +34,6 @@ const initializePassport = () =>{
                 const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.message.payload._id };
                 // console.log(user);
                 req.logger.debug(user)
-                
                 const result = await userModel.create(user);
                 return done(null, result)
             }catch(err){

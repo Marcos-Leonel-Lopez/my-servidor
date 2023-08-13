@@ -23,7 +23,6 @@ export default class SessionController{
             role: `${req.user.role}`,
             cart: `${req.user.cart}`,
         };
-        
         return res.status(200).send({
             status: 'success',
             payload: req.user,
