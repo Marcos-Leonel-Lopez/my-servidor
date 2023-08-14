@@ -92,36 +92,5 @@ export default class SessionController{
             res.status(500).send(error.message);   
         }
     }
-    // getUsers = async (req, res) => {
-    //     try {
-    //         const { status, message } = await sessionService.getUsers();
-    //         res.status(status).send(message);
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send(error.message);
-    //     }
-    // };
-
-
-    // getUser = async (req,res)=>{
-    //     try {
-    //         const mail = req.params.mail;
-    //         const { status, message } = await sessionService.getUser(mail);
-    //         return res.status(status).send(message);
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send(error.message);            
-    //     }
-    // }
-    // deleteUser = async (req, res)=>{
-    //     try {
-    //         const sid = req.params.sid;
-    //         const { status, message } = await sessionService.deleteUser(sid);
-    //         res.status(status).send(message);
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send(error.message);            
-    //     }
-    // }
 
 }

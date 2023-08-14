@@ -1899,3 +1899,130 @@ Fecha: 8/6/2023 - Hora: 5:46:32 AM - Accion: Consulta los carritos
 Fecha: 8/6/2023 - Hora: 5:52:13 AM - Accion: Consulta los carritos 
 Fecha: 8/6/2023 - Hora: 5:52:29 AM - Accion: Consulta los productos 
 Fecha: 8/6/2023 - Hora: 5:53:40 AM - Accion: Consulta los carritos 
+Fecha: 8/13/2023 - Hora: 9:27:41 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:28:21 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:32:31 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:33:08 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:33:57 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:34:26 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 9:59:26 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 10:19:41 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 10:19:41 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 10:19:41 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 10:24:33 PM - Accion: Consulta los productos 
+Fecha: 8/13/2023 - Hora: 11:42:39 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/13/2023 - Hora: 11:45:18 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/13/2023 - Hora: 11:47:53 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 12:42:09 AM - Accion: Consulta los productos 
+Fecha: 8/14/2023 - Hora: 12:42:09 AM - Accion: Consulta los productos 
+Fecha: 8/14/2023 - Hora: 12:42:10 AM - Accion: Consulta los productos 
+Fecha: 8/14/2023 - Hora: 12:49:55 AM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 12:50:36 AM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 12:51:10 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 12:51:58 AM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 12:53:50 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:01:51 AM - Accion: Get fallido - id inexistente 
+Fecha: 8/14/2023 - Hora: 1:02:01 AM - Accion: Consulta el producto id: 6462a739c0197e8a1165e471 
+Fecha: 8/14/2023 - Hora: 1:20:58 AM - Accion: Elimina el producto id: 64d9a54e1afc5a6876c262dd 
+Fecha: 8/14/2023 - Hora: 1:22:20 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:22:43 AM - Accion: Elimina el producto id: 64d9abfc0b4b184b2afd6d3c 
+Fecha: 8/14/2023 - Hora: 1:24:49 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:25:22 AM - Accion: Elimina el producto id: 64d9ac917c3abb42e3f9c160 
+Fecha: 8/14/2023 - Hora: 1:26:27 AM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:26:28 AM - Accion: Elimina el producto id: 64d9acf35ccc7f9015362f11 
+Fecha: 8/14/2023 - Hora: 1:12:49 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:12:50 PM - Accion: Elimina el producto id: 64da5281f6442ca6a0d78618 
+Fecha: 8/14/2023 - Hora: 1:13:40 PM - Accion: Post correcto - se agrego Jalape;os en yogurt 
+Fecha: 8/14/2023 - Hora: 1:37:26 PM - Accion: Elimina el producto id: 64da52b454ec1b821ae2b218 
+Fecha: 8/14/2023 - Hora: 2:07:37 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 2:07:38 PM - Accion: Elimina el producto id: 64da5f595225293013e5b034 
+Fecha: 8/14/2023 - Hora: 2:12:40 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 2:12:41 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 2:12:41 PM - Accion: Elimina el producto id: 64da6089191c347f52c686c9 
+Fecha: 8/14/2023 - Hora: 2:13:23 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 2:13:23 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 2:13:24 PM - Accion: Elimina el producto id: 64da60b35e6a094537757c5f 
+Fecha: 8/14/2023 - Hora: 2:15:35 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 2:15:36 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 2:15:38 PM - Accion: Elimina el producto id: 64da6137fd9fb6e36752b334 
+Fecha: 8/14/2023 - Hora: 2:16:26 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 2:16:27 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 2:16:27 PM - Accion: Elimina el producto id: 64da616aebac50c7d6111081 
+Fecha: 8/14/2023 - Hora: 3:04:55 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:04:55 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:04:56 PM - Accion: Elimina el producto id: 64da6cc7ab5ec718f8f050fb 
+Fecha: 8/14/2023 - Hora: 3:16:55 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:16:56 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:16:57 PM - Accion: Elimina el producto id: 64da6f98a5367ca833220c2d 
+Fecha: 8/14/2023 - Hora: 3:28:14 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:28:15 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:28:15 PM - Accion: Elimina el producto id: 64da723e44e9359123293892 
+Fecha: 8/14/2023 - Hora: 3:44:41 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:44:41 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:44:42 PM - Accion: Elimina el producto id: 64da7619050d5d8b66e05bd7 
+Fecha: 8/14/2023 - Hora: 3:48:20 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:48:20 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:48:21 PM - Accion: Elimina el producto id: 64da76f40dff272d9ccd736e 
+Fecha: 8/14/2023 - Hora: 3:49:44 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:49:45 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:49:45 PM - Accion: Elimina el producto id: 64da7748d193c6b6505f82d3 
+Fecha: 8/14/2023 - Hora: 3:55:04 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:55:04 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:55:05 PM - Accion: Elimina el producto id: 64da78889d993588a473d9b6 
+Fecha: 8/14/2023 - Hora: 3:55:55 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:55:55 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:55:56 PM - Accion: Elimina el producto id: 64da78bb1059e8f69e54856f 
+Fecha: 8/14/2023 - Hora: 3:56:19 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 3:56:20 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 3:56:21 PM - Accion: Elimina el producto id: 64da78d4e1bf54afe3c225d9 
+Fecha: 8/14/2023 - Hora: 3:57:43 PM - Accion: Consulta los productos 
+Fecha: 8/14/2023 - Hora: 4:17:03 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:17:04 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:17:06 PM - Accion: Elimina el producto id: 64da7daf889c2dad54f2da6a 
+Fecha: 8/14/2023 - Hora: 4:34:56 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:34:56 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:34:59 PM - Accion: Elimina el producto id: 64da81e0572ccafdecd0a822 
+Fecha: 8/14/2023 - Hora: 4:38:12 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:38:13 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:38:15 PM - Accion: Elimina el producto id: 64da82a4f430f45ef1cf5f43 
+Fecha: 8/14/2023 - Hora: 4:39:28 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:39:28 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:39:31 PM - Accion: Elimina el producto id: 64da82f05fc2d357e129d1d5 
+Fecha: 8/14/2023 - Hora: 4:42:21 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:42:22 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:42:24 PM - Accion: Elimina el producto id: 64da839ef9f0bf6f4fe1b4cb 
+Fecha: 8/14/2023 - Hora: 4:43:49 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:43:49 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:43:52 PM - Accion: Elimina el producto id: 64da83f596e05d53a507108e 
+Fecha: 8/14/2023 - Hora: 4:46:04 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:46:04 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:46:07 PM - Accion: Elimina el producto id: 64da847c9c8ca377e1a1f1ac 
+Fecha: 8/14/2023 - Hora: 4:46:18 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:46:19 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:46:21 PM - Accion: Elimina el producto id: 64da848b02159eb68611a1ad 
+Fecha: 8/14/2023 - Hora: 4:48:00 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:48:00 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:48:03 PM - Accion: Elimina el producto id: 64da84f0dbc682b8e39eef6b 
+Fecha: 8/14/2023 - Hora: 4:48:54 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:48:54 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:48:57 PM - Accion: Elimina el producto id: 64da8526e3996eb8f9200836 
+Fecha: 8/14/2023 - Hora: 4:49:13 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:49:13 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:49:16 PM - Accion: Elimina el producto id: 64da8539ab3abba6d374dd66 
+Fecha: 8/14/2023 - Hora: 4:49:44 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:49:45 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:49:47 PM - Accion: Elimina el producto id: 64da8558e13a74a034193544 
+Fecha: 8/14/2023 - Hora: 4:51:31 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:51:32 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:51:46 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:51:46 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:51:49 PM - Accion: Elimina el producto id: 64da85c34cb29db111605acf 
+Fecha: 8/14/2023 - Hora: 4:52:16 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:52:17 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:52:19 PM - Accion: Elimina el producto id: 64da85f052bc84e0adf4325b 
+Fecha: 8/14/2023 - Hora: 4:53:43 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:53:43 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:53:46 PM - Accion: Elimina el producto id: 64da86470eaec33fa07c5af7 
+Fecha: 8/14/2023 - Hora: 4:54:44 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
+Fecha: 8/14/2023 - Hora: 4:54:44 PM - Accion: Post fallido - codigo se repite 
+Fecha: 8/14/2023 - Hora: 4:54:47 PM - Accion: Elimina el producto id: 64da86847a6725ef7a1d81ac 

@@ -120,10 +120,8 @@ export class ProductMongo {
     deleteProduct = async (pid, userEmail) => {
         try {
             const user = await userModel.findOne({ mail: userEmail });
-            console.log('primera verificacion', user.role);
             if (user.role === 'premium' || user.role === 'admin') {
                 const product = await productModel.findById(pid)
-                console.log('segunda verificacion', user.id, product.owner);
                 if (user.id == product.owner || user.role === 'admin') {
                     const payload = await productModel.deleteOne({ _id: pid });
                     if (payload.deletedCount == 1) {
@@ -275,10 +273,8 @@ export class ProductMongo {
     updateProduct = async (pid, newData, userEmail) => {
         try {
             const user = await userModel.findOne({ mail: userEmail });
-            console.log('primera verificacion', user.role);
             if (user.role === 'premium' || user.role === 'admin') {
                 const product = await productModel.findById(pid)
-                console.log('segunda verificacion', user.id, product.owner);
                 if (user.id == product.owner || user.role === 'admin') {
                     let editValues = await this.conditionData(newData); //acondiciona datos, elimina vacios y undefined
                     if (editValues.code) {

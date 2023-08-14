@@ -165,3 +165,5 @@ app.use(errorHandler);
 // app.get('/test',(req,res)=>{
 //     res.send(req.session.user)
 // })
+
+export {app}
