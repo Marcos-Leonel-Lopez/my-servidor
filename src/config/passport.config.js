@@ -5,6 +5,7 @@ import userModel from "../Dao/models/user.model.js";
 import {createHash, validatePass} from '../utils.js';
 import { cartService } from "../repository/index.repository.js";
 import { config } from "./config.js";
+import { date } from "../utils.js";
 
 
 const LocalStrategy = local.Strategy;
@@ -24,16 +25,14 @@ const initializePassport = () =>{
         async (req, username, password, done)=>{
             const newCart = await cartService.addCart();            
             const {first_name, last_name, mail, age} = req.body;
-            try{
+            const avatar = req.file.path
+            try{ 
                 const exist = await userModel.findOne({ mail:username });
                 if (exist) {
                     req.logger.debug('Usuario existente');
-                    // console.log('Usuario existente');
                     return done(null, false)
                 }
-                const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.message.payload._id };
-                // console.log(user);
-                req.logger.debug(user)
+                const user = {first_name, last_name, mail, age, password:createHash(password), cart:newCart.message.payload._id, avatar };
                 const result = await userModel.create(user);
                 return done(null, result)
             }catch(err){
@@ -47,13 +46,13 @@ const initializePassport = () =>{
         try{
             const user = await userModel.findOne({ mail:username });
             if (!user) {
-                req.logger.debug('Usuario existente');
-                // console.log('Usuario inexistente');
                 return done(null, false);
             }
             if(!validatePass(password, user)){
                 return done(null, false);
             }
+            user.last_connection = await date();
+            await user.save()
             return done(null, user)
         }catch(err){
             return done("error al intentar ingresar: "+ err)

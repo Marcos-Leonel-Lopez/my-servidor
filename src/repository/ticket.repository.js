@@ -20,9 +20,7 @@ export class TicketRepository{
     resolveTicket = async (tid, action)=>{
         return await this.dao.resolveTicket(tid, action);
     }
-    date = async () =>{
-        return await this.dao.date();
-    }
+    
     idFronFront = async (id)=>{
         console.log(id);
         return

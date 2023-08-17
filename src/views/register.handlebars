@@ -1,6 +1,6 @@
 <section class="formulario">
     <h1>Registro</h1>
-    <form id="regForm">
+    <form id="regForm" method="post" action="/api/sessions/register" enctype="multipart/form-data">
         <label for="name">Nombre: </label>
         <input type="text" name="first_name" id="name">
 
@@ -16,11 +16,11 @@
         <label for="password">Contraseña: </label>
         <input type="password" name="password" id="password">
 
-        <label for="avatar"></label>
-        <input type="file" name="avatar" id="avatar">
+        <label for="avatar">Avatar: </label>
+        <input type="file" name="avatar" id="avatar" placeholder="Imagen de perfil">
         
         <input class="btn-page" type="submit" value="Registrarme">
     </form>
     <p><a href="/login">Ya tengo cuenta</a></p>
 </section>
-<script src="/js/register.js"></script>
+{{!-- <script src="/js/register.js"></script> --}}

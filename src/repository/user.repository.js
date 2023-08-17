@@ -14,4 +14,7 @@ export class UserRepository{
     changeRole = async (uid) =>{
         return await this.dao.changeRole(uid);
     }
+    updateUserDocuments = async (uid,identificacion,ticketPagado) =>{
+        return await this.dao.updateUserDocuments(uid,identificacion,ticketPagado);
+    }
 }

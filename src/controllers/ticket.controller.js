@@ -1,4 +1,5 @@
 import { ticketService } from "../repository/index.repository.js";
+import { date } from "../utils.js";
 
 export default class TicketController {
     getTickets = async (req, res) => {
@@ -25,7 +26,7 @@ export default class TicketController {
         try {
             const newTicket = req.body;
             newTicket.code = uuidv4();
-            newTicket.purchase_datatime = await ticketService.date();
+            newTicket.purchase_datatime = await date();
             const { status, message } = await ticketService.createTicket(newTicket);
             res.status(status).send(message);
         } catch (error) {

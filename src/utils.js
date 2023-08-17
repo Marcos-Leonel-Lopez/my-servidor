@@ -20,9 +20,17 @@ export const verifyEmailToken = (token) =>{
         return false
     }
 }
-
-
-
+export const date = async () =>{
+    const fechaActual = new Date(Date.now());
+    const dia = fechaActual.getDate();
+    const mes = fechaActual.getMonth() + 1;
+    const año = fechaActual.getFullYear();
+    const hora = fechaActual.getHours();
+    const minutos = fechaActual.getMinutes();
+    const segundos = fechaActual.getSeconds();
+    const fechaHoraActual = `${año}/${mes}/${dia}_${hora}:${minutos}:${segundos}`;
+    return fechaHoraActual
+}
 
 export const authToken = (req, res, next) =>{
     const authHeader = req.headers.authorization;

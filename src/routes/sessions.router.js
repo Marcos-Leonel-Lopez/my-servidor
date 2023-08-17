@@ -1,17 +1,18 @@
 import { Router } from "express";
 import passport from "passport";
 import SessionController from "../controllers/session.controller.js";
+import { uploaderProfile } from "../middlewares/handleFiles.js";
 
 const sessionController = new SessionController();
 const router = Router();
 
-router.post('/register', passport.authenticate('register', { failureRedirect: '/failregister' }), sessionController.register)
+router.post('/register', uploaderProfile.single("avatar"), passport.authenticate('register', { failureRedirect: '/api/sessions/failregister' }), sessionController.register)
 
-router.post('/login', passport.authenticate('login', { failureRedirect: '/faillogin' }), sessionController.login);
+router.post('/login', passport.authenticate('login', { failureRedirect: '/api/sessions/faillogin' }), sessionController.login);
 
 router.get('/github', passport.authenticate('github',{scope:['user:email']}), async (req,res)=>{});
 
-router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: '/faillogin' }), sessionController.githubcallback)
+router.get('/githubcallback', passport.authenticate('github',{ failureRedirect: '/api/sessions/faillogin' }), sessionController.githubcallback)
 
 router.get('/logout', sessionController.logout);
 

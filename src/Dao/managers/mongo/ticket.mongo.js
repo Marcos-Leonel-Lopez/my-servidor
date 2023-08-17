@@ -1,6 +1,7 @@
 import ticketModel from "../../models/ticket.model.js";
 import { sendTiketCompleted } from "../../../config/gmail.js";
 import { v4 as uuidv4 } from 'uuid';
+import { date } from "../../../utils.js";
 
 
 export class TicketMongo {
@@ -58,7 +59,6 @@ export class TicketMongo {
     createTicket = async (ticket) => {
         try {
             ticket.code = uuidv4();
-            ticket.purchase_datetime = await this.date();
             const data = await this.correctData(ticket);
             if (data != "success") {
                 return {
@@ -210,18 +210,5 @@ export class TicketMongo {
             };
         }
     }
-
-    date = async () => {
-        const fechaActual = new Date(Date.now());
-        const dia = fechaActual.getDate();
-        const mes = fechaActual.getMonth() + 1;
-        const año = fechaActual.getFullYear();
-        const hora = fechaActual.getHours();
-        const minutos = fechaActual.getMinutes();
-        const segundos = fechaActual.getSeconds();
-        const fechaHoraActual = `${dia}/${mes}/${año} ${hora}:${minutos}:${segundos}`;
-        return fechaHoraActual
-    }
-
 
 }

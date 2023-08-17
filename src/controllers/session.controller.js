@@ -4,12 +4,13 @@ import { createHash, validatePass } from "../utils.js"
 
 export default class SessionController{
     register = async (req, res) => {
+        req.logger.info(req.user)
         return res.status(200).send({
             status: "success",
             message: 'Usuario Registrado'
         })
     }
-    login = async (req, res) => {        
+    login = async (req, res) => {
         if (!req.user) {
             return res.status(400).send({
                 status: 'error',
@@ -23,9 +24,10 @@ export default class SessionController{
             role: `${req.user.role}`,
             cart: `${req.user.cart}`,
         };
+
         return res.status(200).send({
             status: 'success',
-            payload: req.user,
+            payload: req.session.user,
             message: 'Primer logueo'
         });
     }
@@ -47,13 +49,15 @@ export default class SessionController{
                 status: 'error',
                 message: 'No se pudo cerrar sesion'
             })
+            req.logger.info('cerro sesion')
             res.redirect('/login')
         })
     };
 
     failregister = async (req, res) => {
+        req.logger.error('fallo registro');
         return res.status(400).send({
-            status: error,
+            status: 'error',
             message: 'fallo el registro'
         })
     
@@ -61,7 +65,7 @@ export default class SessionController{
     faillogin = async (req, res) => {
         req.logger.error('fallo ingreso');
         return res.status(400).send({
-            status: error,
+            status: 'error',
             message: 'fallo el ingreso'
         })
     

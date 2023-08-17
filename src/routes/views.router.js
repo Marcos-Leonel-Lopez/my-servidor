@@ -15,13 +15,13 @@ const router = Router();
 
 router.get('/', productController.root)
 
-router.get('/registerProduct',privateAccess, exclusiveAccess, productController.registerProduct)
+router.get('/registerProduct', privateAccess, exclusiveAccess, productController.registerProduct)
 
 router.get('/products', productController.getProductsPage)
 
 router.get('/realtimeproducts', productController.realtimeproducts)
 
-router.get('/chat',privateAccess ,onlyClient , productController.chat)
+router.get('/chat', privateAccess, onlyClient, productController.chat)
 
 router.get('/cart/:cid', onlyClient, cartController.getCartByIdRender)
 
@@ -37,16 +37,22 @@ router.get('/profile', privateAccess, (req, res) => {
     res.render('profile', { user: req.session.user, title: 'Mi Perfil', style: 'style.css' })
 })
 
-router.get('/forgot-password', (req,res)=>{
+router.get('/forgot-password', (req, res) => {
     res.render('forgotPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
 })
 router.get('/resetPassword', (req, res) => {
-    const token = req.query.token;    
-    res.render('resetPassword', {token:token, title: 'Reestablecer contraseña', style: 'style.css' })
+    const token = req.query.token;
+    res.render('resetPassword', { token: token, title: 'Reestablecer contraseña', style: 'style.css' })
+})
+router.get('/failregister', (req, res) => {
+    return res.status(400).send({
+        status: 'error',
+        message: 'error al intentar registrarse'
+    })
 })
 
 
-router.get('/loggerTest', (req, res)=>{
+router.get('/loggerTest', (req, res) => {
     req.logger.fatal("fatal!");
     req.logger.error("error!");
     req.logger.warning("warning!");

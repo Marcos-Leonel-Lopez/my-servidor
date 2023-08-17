@@ -2026,3 +2026,24 @@ Fecha: 8/14/2023 - Hora: 4:53:46 PM - Accion: Elimina el producto id: 64da86470e
 Fecha: 8/14/2023 - Hora: 4:54:44 PM - Accion: Post correcto - se agrego Jalapeños en yogurt 
 Fecha: 8/14/2023 - Hora: 4:54:44 PM - Accion: Post fallido - codigo se repite 
 Fecha: 8/14/2023 - Hora: 4:54:47 PM - Accion: Elimina el producto id: 64da86847a6725ef7a1d81ac 
+Fecha: 8/17/2023 - Hora: 10:34:36 AM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 10:34:37 AM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 10:34:37 AM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:35:34 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:35:35 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:35:35 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:41:20 PM - Accion: Post correcto - se agrego Jalape;os en yogurt nueva prueva 
+Fecha: 8/17/2023 - Hora: 12:41:29 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:57:52 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:57:52 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:57:52 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:20 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:22 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:28 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:30 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:31 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:58:31 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:59:24 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:59:24 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 12:59:24 PM - Accion: Consulta los productos 
+Fecha: 8/17/2023 - Hora: 3:53:50 PM - Accion: Consulta los productos 

@@ -41,5 +41,17 @@ export default class UserController{
             res.status(500).send(error.message);   
         }
     }
+    updateUserDocuments = async (req,res) =>{
+        try {
+            const uid = req.params.uid
+            const identificacion = req.files['identificacion']?.[0] || null;
+            const ticketPagado = req.files['ticketPagado']?.[0] || null;
+            const {status, message} = await userService.updateUserDocuments(uid,identificacion,ticketPagado);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);   
+        }
+    }
 
 }

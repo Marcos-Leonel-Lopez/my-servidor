@@ -118,4 +118,41 @@ export class UserMongo {
         }
 
     }
+    updateUserDocuments = async (uid,identificacion,ticketPagado) =>{
+        try {
+            const user = await userModel.findById(uid);
+            const docs = [];
+            if(identificacion){
+                docs.push({
+                    name:'identificacion',
+                    reference: identificacion.filename
+                })
+                user.status = 'completo'
+            }
+            if(ticketPagado){
+                docs.push({
+                    name:'ticketPagado',
+                    reference: ticketPagado.filename
+                })
+            }
+            user.documents = docs;
+            await user.save()
+            return {
+                status: 200,
+                message: {
+                    status: 'success',
+                    message: 'Documentos actualizados exitosamente',
+                    user
+                }
+            };
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error",
+                    error: 'error en carga de archivos'
+                }
+            };
+        }
+    }
 }
