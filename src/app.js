@@ -46,7 +46,10 @@ app.use(session({
     }),
     secret:config.server.secret_session,
     resave:true, // true or false?
-    saveUninitialized:true // true or false? 
+    saveUninitialized:true, // true or false? 
+    cookie: {
+        maxAge: 3600000, // tiempo de vida de la cookie
+      },
 }));
 initializePassport();
 app.use(passport.initialize());

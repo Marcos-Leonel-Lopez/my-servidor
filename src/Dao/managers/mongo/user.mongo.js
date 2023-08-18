@@ -85,28 +85,40 @@ export class UserMongo {
         try {
             const user = await userModel.findById(uid)
             const userRole = user.role;
-            if (userRole === 'client') {
-                user.role = 'premium';
-                await user.save()
-            } else if (userRole === 'premium') {
-                user.role = 'client';
-                await user.save()
-            } else {
+            const userStatus = user.status;
+            if(userStatus === 'completo'){
+                if (userRole === 'client') {
+                    user.role = 'premium';
+                    await user.save()
+                } else if (userRole === 'premium') {
+                    user.role = 'client';
+                    await user.save()
+                } else {
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: "No es posible cambiar el rol"
+                        }
+                    };
+                }
+                return {
+                    status: 200,
+                    message: {
+                        status: "success",
+                        user
+                    }
+                };
+            }else{
                 return {
                     status: 400,
                     message: {
                         status: "error",
-                        error: "No es posible cambiar el rol"
+                        error: "Su perfil no está completo"
                     }
                 };
             }
-            return {
-                status: 200,
-                message: {
-                    status: "success",
-                    user
-                }
-            };
+
         } catch (error) {
             return {
                 status: 500,
@@ -118,7 +130,7 @@ export class UserMongo {
         }
 
     }
-    updateUserDocuments = async (uid,identificacion,ticketPagado) =>{
+    updateUserDocuments = async (uid,identificacion,comprobanteDomicilio,estadoCuenta) =>{
         try {
             const user = await userModel.findById(uid);
             const docs = [];
@@ -127,13 +139,21 @@ export class UserMongo {
                     name:'identificacion',
                     reference: identificacion.filename
                 })
-                user.status = 'completo'
             }
-            if(ticketPagado){
+            if(comprobanteDomicilio){
                 docs.push({
-                    name:'ticketPagado',
-                    reference: ticketPagado.filename
+                    name:'comprobanteDomicilio',
+                    reference: comprobanteDomicilio.filename
                 })
+            }
+            if(estadoCuenta){
+                docs.push({
+                    name:'estadoCuenta',
+                    reference: estadoCuenta.filename
+                })
+            }
+            if(docs.length == 3){
+                user.status = 'completo'
             }
             user.documents = docs;
             await user.save()

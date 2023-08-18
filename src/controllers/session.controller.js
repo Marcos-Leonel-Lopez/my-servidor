@@ -1,5 +1,7 @@
+import userModel from "../Dao/models/user.model.js";
 import { sessionService } from "../repository/index.repository.js";
-import { createHash, validatePass } from "../utils.js"
+import { date } from "../utils.js"
+
 
 
 export default class SessionController{
@@ -43,15 +45,26 @@ export default class SessionController{
         res.redirect('/profile')
     }
 
-    logout = (req, res) => {
-        req.session.destroy(err => {
-            if (err) return res.status(500).send({
-                status: 'error',
-                message: 'No se pudo cerrar sesion'
+    logout = async (req, res) => {
+        try {
+            const user = await userModel.findById(req.user._id)
+            user.last_connection.logout = await date()
+            await user.save();
+            req.session.destroy(err => {
+                if (err) return res.status(500).send({
+                    status: 'error',
+                    message: 'No se pudo cerrar sesion'
+                })
+                req.logger.info('cerro sesion')
+                res.redirect('/login')
             })
-            req.logger.info('cerro sesion')
-            res.redirect('/login')
-        })
+        } catch (error) {
+            res.status(500).send({
+                status: 'error',
+                error: 'no hay sesion activa'
+            });
+        }
+        
     };
 
     failregister = async (req, res) => {

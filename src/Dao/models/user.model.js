@@ -43,8 +43,14 @@ const userSchema = new mongoose.Schema({
         default:[]
     },
     last_connection:{
-        type: String,
-        default: null
+        login:{
+            type: String,
+            default: null
+        },
+        logout:{
+            type: String,
+            default: null
+        }
     },
     status:{
         type: String,

@@ -51,7 +51,9 @@ const initializePassport = () =>{
             if(!validatePass(password, user)){
                 return done(null, false);
             }
-            user.last_connection = await date();
+            
+            
+            user.last_connection.login = await date();
             await user.save()
             return done(null, user)
         }catch(err){

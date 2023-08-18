@@ -200,7 +200,7 @@ export class ProductMongo {
     addProduct = async (newProduct, ownerEmail) => {
         try {
             let errors = [];
-            const keys = ["title", "description", "price", "thumbnail", "code", "stock", "category"];
+            const keys = ["title", "description", "price", "code", "stock", "category"];
             for (let i = 0; i < keys.length; i++) {
                 let key = keys[i];
                 if (!newProduct.hasOwnProperty(key) || newProduct[key] == null || newProduct[key] == undefined || newProduct[key] == "" || newProduct[key] == " ") {
@@ -286,7 +286,7 @@ export class ProductMongo {
                                 message: repeat
                             }
                         }
-                    }// detecta si el codigo se repite
+                    }
                         await accessManager.createRecords(`Modifica el producto id: ${pid}`);
                         const payload = await productModel.updateOne({ _id: pid }, { $set: editValues });
                         return {

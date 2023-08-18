@@ -38,7 +38,22 @@ const productSchema = new mongoose.Schema({
      owner:{
         type:mongoose.Schema.Types.ObjectId,
         ref:userCollection
-     }
+     },
+     thumbnail_docs:{
+        type:[
+            {
+                name:{
+                    type: String,
+                    required: true
+                },
+                reference:{
+                    type: String,
+                    required: true
+                }
+            }
+        ],
+        default:[]
+    }
 })
 productSchema.plugin(mongoosePaginate);
 const productModel = mongoose.model(productCollection, productSchema);

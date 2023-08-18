@@ -45,8 +45,9 @@ export default class UserController{
         try {
             const uid = req.params.uid
             const identificacion = req.files['identificacion']?.[0] || null;
-            const ticketPagado = req.files['ticketPagado']?.[0] || null;
-            const {status, message} = await userService.updateUserDocuments(uid,identificacion,ticketPagado);
+            const comprobanteDomicilio = req.files['comprobanteDomicilio']?.[0] || null;
+            const estadoCuenta = req.files['estadoCuenta']?.[0] || null;
+            const {status, message} = await userService.updateUserDocuments(uid,identificacion,comprobanteDomicilio,estadoCuenta);
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
