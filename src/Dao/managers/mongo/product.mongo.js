@@ -287,15 +287,15 @@ export class ProductMongo {
                             }
                         }
                     }
-                        await accessManager.createRecords(`Modifica el producto id: ${pid}`);
-                        const payload = await productModel.updateOne({ _id: pid }, { $set: editValues });
-                        return {
-                            status: 200,
-                            message: {
-                                status: "success",
-                                payload
-                            }
+                    await accessManager.createRecords(`Modifica el producto id: ${pid}`);
+                    const payload = await productModel.updateOne({ _id: pid }, { $set: editValues });
+                    return {
+                        status: 200,
+                        message: {
+                            status: "success",
+                            payload
                         }
+                    }
                 } else {
                     console.log(`No puedes editar producto con id:${pid}`);
                     await accessManager.createRecords(`Edit fallido`);
@@ -316,17 +316,16 @@ export class ProductMongo {
                         error: `No posees los permisos correspondientes`
                     }
                 }
-            }   
-        }
-     catch(error) {
-        return {
-            status: 400,
-            message: {
-                status: "error",
-                error: error.message
+            }
+        }catch (error) {
+            return {
+                status: 400,
+                message: {
+                    status: "error",
+                    error: error.message
+                }
             }
         }
-    }
     }
     conditionData = async (newData) => {
         let editValues = {};
@@ -401,6 +400,63 @@ export class ProductMongo {
                     error: error.message,
                 },
             };
+        }
+    };
+    updateProductDocuments = async (code, userEmail, img_1, img_2, img_3, img_4, img_5) => {
+        try {
+            const images = [img_1, img_2, img_3, img_4, img_5]
+            const docs = [];
+            const user = await userModel.findOne({ mail: userEmail })
+            if (user.role === 'premium' || user.role === 'admin') {
+                const product = await productModel.findOne({code:code})
+                if (user.id == product.owner || user.role === 'admin') {
+                    const existingImageCount = product.thumbnail_docs.length;
+                    images.forEach((img, index) => {
+                        if (img) {
+                            const imageNumber = existingImageCount + index + 1;
+                            docs.push({
+                                name: `img_${imageNumber}_${product.title}`,
+                                reference: img.filename
+                            })
+                        }
+                    })
+                    product.thumbnail_docs = [...product.thumbnail_docs, ...docs];
+                    await product.save()
+                    return {
+                        status: 200,
+                        message: {
+                            status: 'success',
+                            message: `${docs.length + 1} nueva/s imagen/es`,
+                            product
+                        }
+                    };
+                }else{
+                    return {
+                        status: 400,
+                        message: {
+                            status: "error",
+                            error: `Usted no puedes editar producto con id:${pid}`
+                        }
+                    } 
+                }
+            }
+            else{
+                return {
+                    status: 400,
+                    message: {
+                        status: "error",
+                        error: `No posees los permisos correspondientes`
+                    }
+                }
+            }
+        } catch (error) {
+            return {
+                status: 400,
+                message: {
+                    status: "error",
+                    error: error.message
+                }
+            }
         }
     }
 }

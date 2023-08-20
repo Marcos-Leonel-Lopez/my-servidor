@@ -33,4 +33,7 @@ export class ProductRepository{
     mockingproducts = async (cantidad,ownerEmail) =>{
         return await this.dao.mockingproducts(cantidad,ownerEmail)
     }
+    updateProductDocuments = async (code,userEmail,img_1,img_2,img_3,img_4,img_5) =>{
+        return await this.dao.updateProductDocuments(code,userEmail,img_1,img_2,img_3,img_4,img_5)
+    }
 }

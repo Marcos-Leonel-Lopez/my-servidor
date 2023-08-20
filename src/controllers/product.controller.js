@@ -176,5 +176,21 @@ export default class ProductController {
             res.status(500).send(error.message);
         }
     }
+    updateProductDocuments = async (req,res)=>{
+        try {
+            const code = req.params.code;
+            const userEmail = req.session.user.mail;
+            const img_1 = req.files['img_1']?.[0] || null;
+            const img_2 = req.files['img_2']?.[0] || null;
+            const img_3 = req.files['img_3']?.[0] || null;
+            const img_4 = req.files['img_4']?.[0] || null;
+            const img_5 = req.files['img_5']?.[0] || null;
+            const {status, message} = await productService.updateProductDocuments(code,userEmail,img_1,img_2,img_3,img_4,img_5);
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);               
+        }
+    }
 }
 
