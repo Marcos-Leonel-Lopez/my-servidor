@@ -25,7 +25,7 @@ const initializePassport = () =>{
         async (req, username, password, done)=>{
             const newCart = await cartService.addCart();            
             const {first_name, last_name, mail, age} = req.body;
-            const avatar = req.file.path
+            const avatar = req.file?.path            
             try{ 
                 const exist = await userModel.findOne({ mail:username });
                 if (exist) {
@@ -51,8 +51,6 @@ const initializePassport = () =>{
             if(!validatePass(password, user)){
                 return done(null, false);
             }
-            
-            
             user.last_connection.login = await date();
             await user.save()
             return done(null, user)
@@ -74,7 +72,6 @@ const initializePassport = () =>{
             // console.log(profile); //para ver como llega
             const exist = await userModel.findOne({ mail:email });
             console.log(exist);
-            
             if(!exist){
                 //req.logger.verbose('Usuario creado con github');
                 console.log('Usuario creado con github');

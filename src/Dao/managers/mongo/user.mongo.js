@@ -4,7 +4,8 @@ import { userRoles } from "../../../constants/index.js";
 export class UserMongo {
     getUsers = async () => {
         try {
-            const payload = await userModel.find();
+            const users = await userModel.find();
+            
             return {
                 status: 200,
                 message: {

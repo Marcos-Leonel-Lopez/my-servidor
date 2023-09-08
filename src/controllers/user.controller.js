@@ -1,6 +1,15 @@
 import {userService} from "../repository/index.repository.js"
 
 export default class UserController{
+    getUsers = async (req, res) => {
+        try {
+            const { status, message } = await userService.getUsers();
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
+    };
     getUser = async (req,res)=>{
         try {
             const uid = req.params.uid;
@@ -11,15 +20,6 @@ export default class UserController{
             res.status(500).send(error.message);            
         }
     }
-    getUsers = async (req, res) => {
-        try {
-            const { status, message } = await userService.getUsers();
-            res.status(status).send(message);
-        } catch (error) {
-            console.error(error);
-            res.status(500).send(error.message);
-        }
-    };
     deleteUser = async (req, res)=>{
         try {
             const uid = req.params.uid;
