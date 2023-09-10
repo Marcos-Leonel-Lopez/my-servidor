@@ -77,7 +77,6 @@ export class TicketMongo {
                     message: repeat
                 }
             }
-
             const newTicket = await ticketModel.create(ticket);
             return {
                 status: 200,
@@ -180,18 +179,8 @@ export class TicketMongo {
             ticket.message.ticket.status = action.action
             const result = ticket.message.ticket
             if (action.action == 'completed') {
-                await sendTiketCompleted(result)
-                // const emailTemplate =   `<section>
-                //                             <h1>Compra Realizada por ${ticket.message.ticket.purchaser}</h1>
-                //                             <h2>Monto a pagar: $${ticket.message.ticket.amount}</h2>
-                //                             <h2>Codigo de referencia : ${ticket.message.ticket.code}</h2>
-                //                         </section>`
-                // const contenido = await transporter.sendMail({
-                //     from: 'Ecomerce',
-                //     to: "marcosleonellopez@gmail.com",
-                //     subject: 'Compra exitosa',
-                //     html: emailTemplate
-                // })
+                //await sendTiketCompleted(result) // se deberia enviar con un email valido y no de prueba
+                console.log('el ticket paso a estar resuelto');    
             }
             return {
                 status: 200,
@@ -212,3 +201,6 @@ export class TicketMongo {
     }
 
 }
+
+
+interface de compra terminado

@@ -3,7 +3,9 @@ import { ticketCollection, userCollection } from '../../constants/index.js';
 
 const ticketSchema = new mongoose.Schema({
     code: String,
-    purchase_datatime: String,
+    purchase_datatime: {
+        type: String
+    },
     amount: Number,
     purchaser: {
         type: String

@@ -50,7 +50,11 @@ export default class ProductController {
         if (status == 200) {
             const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
             await accessManager.createRecords("Consulta los productos");
-            const products = payload.map(item => item.toObject())
+            const products = payload.map(item => {
+                const productObject = item.toObject();
+                productObject.userCart = userCart;
+                return productObject;
+            })
             return res.render('home', { products, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, category, stock, sort, userName, admin, userCart, canEdit, title: 'Productos', style: 'style.css', error: false })
         } else {
             await accessManager.createRecords("Get fallido - limit menor a 0");

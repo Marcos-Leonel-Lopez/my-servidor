@@ -1,3 +1,4 @@
+import { date } from "../../../utils.js";
 import cartModel from "../../models/cart.model.js";
 import productModel from "../../models/product.model.js";
 import userModel from "../../models/user.model.js";
@@ -267,9 +268,10 @@ export class CartMongo {
                     console.error('Error al obtener el producto', error);
                 }
             }
+            let time = await date();
             let ticket = {
                 code: '',
-                purchase_datetime: '',
+                purchase_datetime: time,
                 amount: amount,
                 purchaser: user[0].mail
             }
@@ -283,8 +285,6 @@ export class CartMongo {
                     noProcess: cart
                 }
             };
-
-            // const newTicket = await createTicket.TicketMongo(data)
 
         } catch (error) {
             return {

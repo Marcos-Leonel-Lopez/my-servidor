@@ -17,63 +17,80 @@
 }
 
 .formulario input,
-textarea, select {
+textarea,
+select {
     border: 0.1em solid black;
     display: flex;
     justify-content: start;
 }
 
-#limitForm{
+#limitForm {
     display: flex;
     align-items: baseline;
     margin: 1.5rem 0 0 1.5rem;
     padding: 0.5rem;
-    
+
 }
-#limitForm section{
+
+#limitForm section {
     border: 0.1rem solid black;
     padding: 0.5rem;
     border-radius: 0.5rem;
 }
 
 
-.title{
+.title {
     display: flex;
     align-items: baseline;
 }
-.categorias{
+
+.categorias {
     display: flex;
     list-style: none;
     margin: 0 1rem;
 }
 
-.categorias li{
+.categorias li {
     padding: 1rem;
 }
-.categorias li a , .btn-page{
-   text-decoration: none;
-   border: 0.1rem solid black;
-   border-radius: 0.5rem;
-   padding: 0.5rem;
-   color: black;
-}
 
-.btn-add{
+.categorias li a,
+.btn-page {
+    text-decoration: none;
     border: 0.1rem solid black;
-   border-radius: 0.5rem;
-   padding: 0.5rem;
-}
-.categorias li a:hover , .btn-page:hover{
-    background-color: rgb(234, 234, 234);
-    border:  double black;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: black;
 }
 
-.btn-page{
+.btn-add {
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    transition: box-shadow 0.2s;
+}
+.btn-add:hover {
+    background-color: rgb(234, 234, 234);
+    border: double black;
+}
+.btn-add:active{
+    outline: none;
+    background-color: rgb(175, 172, 172);
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.4);
+}
+.categorias li a:hover,
+.btn-page:hover {
+    background-color: rgb(234, 234, 234);
+    border: double black;
+}
+
+.btn-page {
     margin: 1rem;
     color: black;
 }
 
-table, #tablaCarrito{
+table,
+#tablaCarrito {
     margin: 1rem auto;
     border: 0.1rem solid black;
     border-collapse: collapse;
@@ -96,12 +113,13 @@ tbody tr:hover {
 
 }
 
-#panel{
+#panel {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-#perfil{
+
+#perfil {
     margin: auto;
     width: 50vw;
     display: flex;
@@ -111,12 +129,13 @@ tbody tr:hover {
     border: solid;
 }
 
-#perfil p{
+#perfil p {
     padding: 0.5rem;
     margin: 0.5rem;
     border: solid 0.1rem;
 }
-#bienvenida{
+
+#bienvenida {
     display: flex;
     flex-direction: column;
     border: solid 0.1rem;
@@ -125,20 +144,20 @@ tbody tr:hover {
     margin: 0.5rem;
 }
 
-#admin{
+#admin {
     color: black;
     font-weight: bold;
     background-color: rgba(255, 0, 0, 0.347);
 }
+
 /* #chat-container{
 
 } */
 
-#chatbox{
+#chatbox {
     border: 0.1rem solid black;
 }
 
-#messageLogs{
+#messageLogs {
     color: black;
 }
-

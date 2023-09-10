@@ -30,7 +30,6 @@ export default class CartController {
             const cid = req.params.cid;
             const { status, message } = await cartService.getCartById(cid);
             req.logger.debug(message.cart);
-            // console.log(message);
             const theCart = message.cart.products.map(item => item.toObject());
             return res.render('cart', { cid, theCart, title: 'Carrito', style: 'style.css' });
         } catch (error) {
@@ -38,6 +37,7 @@ export default class CartController {
             res.status(500).send(error.message);
         }
     };
+
     addCart = async (req, res) => {
         try {
             const { status, message } = await cartService.addCart();
@@ -52,11 +52,9 @@ export default class CartController {
         try {
             const cid = req.params.cid;
             const pid = req.params.pid;
-            console.log(`recibe ${cid} y ${pid} `);
-            
-            // const { status, message } = await cartService.addProductToCart(cid, pid);
-            // res.status(status).send(message);
-            res.status(200)
+            req.logger.info(`recibe cid:${cid} y pid:${pid} `);
+            const { status, message } = await cartService.addProductToCart(cid, pid);
+            res.status(status).send(message);
         } catch (error) {
             console.error(error);
             res.status(500).send(error.message);
