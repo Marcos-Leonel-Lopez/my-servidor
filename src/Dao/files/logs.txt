@@ -2243,4 +2243,15 @@ Fecha: 8/19/2023 - Hora: 9:56:38 PM - Accion: Post correcto - se agrego Jalape;o
 Fecha: 8/19/2023 - Hora: 10:12:09 PM - Accion: Consulta el producto id: 64e164c611ec6acfd932f3d9 
 Fecha: 8/22/2023 - Hora: 9:18:54 PM - Accion: Consulta los productos 
 Fecha: 8/22/2023 - Hora: 9:18:55 PM - Accion: Consulta los productos 
-Fecha: 8/22/2023 - Hora: 9:18:55 PM - Accion: Consulta los productos 
+Fecha: 8/22/2023 - Hora: 9:18:55 PM - Accion: Consulta los productos Fecha: 9/10/2023 - Hora: 1:59:52 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:00:08 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:00:08 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:00:08 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:01:11 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:01:13 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:11 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:13 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:42 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:45 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:45 AM - Accion: Consulta los productos 
+Fecha: 9/10/2023 - Hora: 2:03:45 AM - Accion: Consulta los productos 

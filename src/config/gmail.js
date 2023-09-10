@@ -44,4 +44,17 @@ export const sendRecoveryPass = async (email,token) =>{
     })
 }
 
+export const sendProductDelete = async () =>{
+    await transporter.sendMail({
+        from: 'Ecomerce',
+        to: email,
+        subject: 'Cuenta eliminada',
+        html:   `<section>
+                    <h1>Su cuenta fue eliminada por inactividad</h1>
+                    <h2>Sus productos tambien fueron eliminados de nuesta base de datos</h2>
+                </section>`
+    })
+}
+
+
 export { transporter }

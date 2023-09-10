@@ -21,15 +21,8 @@ export const verifyEmailToken = (token) =>{
     }
 }
 export const date = async () =>{
-    const fechaActual = new Date(Date.now());
-    const dia = fechaActual.getDate();
-    const mes = fechaActual.getMonth() + 1;
-    const año = fechaActual.getFullYear();
-    const hora = fechaActual.getHours();
-    const minutos = fechaActual.getMinutes();
-    const segundos = fechaActual.getSeconds();
-    const fechaHoraActual = `${año}/${mes}/${dia}_${hora}:${minutos}:${segundos}`;
-    return fechaHoraActual
+    const currentDate = new Date(Date.now());
+    return currentDate
 }
 
 export const authToken = (req, res, next) =>{

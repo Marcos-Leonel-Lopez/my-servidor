@@ -6,7 +6,7 @@ import { generateProductErrorParam } from "../services/productError/productError
 import { generateProductErrorInfo } from "../services/productError/productErrorInfo.js";
 import { EError } from "../enums/EError.js";
 import { addLogger } from "../utils/logger.js";
-import { updateOwner } from "../scripts/script.js";
+import { updateOwner , updateLC } from "../scripts/script.js";
 
 
 
@@ -17,10 +17,15 @@ const accessManager = new AccessManager();
 
 export default class ProductController {
     root = async (req, res) => {
-        //await updateOwner();
-        req.logger.info('actualizado')
         return res.redirect('/login');
     }
+    script = async (req, res) => {
+        //await updateOwner();
+        console.log('entra');
+        await updateLC();
+        req.logger.info('actualizado')
+        return res.redirect('/products');
+  }
     registerProduct = (req, res) => {
         res.render('registerProduct', { title: 'Registro de productos', style: 'style.css' });
     }

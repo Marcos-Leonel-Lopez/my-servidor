@@ -15,6 +15,8 @@ const router = Router();
 
 router.get('/', productController.root)
 
+router.get('/script', productController.script)
+
 router.get('/registerProduct', privateAccess, exclusiveAccess, productController.registerProduct)
 
 router.get('/products', productController.getProductsPage)
