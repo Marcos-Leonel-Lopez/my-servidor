@@ -53,10 +53,10 @@
         </ul>
         {{#if admin}}
         <ul class="categorias">
-             <li>
+            <li>
                 <a id="admin" href="/registerProduct">EDITAR</a>
             </li>
-        </ul>        
+        </ul>
         {{else}}
         {{#if userName}}
         <ul class="categorias">
@@ -146,6 +146,7 @@
         </section>
         {{else}}
         <table>
+            <caption>{{userCart}}</caption>
             <thead>
                 <tr>
                     <th>Id</th>
@@ -158,6 +159,7 @@
             </thead>
             <tbody>
                 {{#if products}}
+                
                 {{#each products}}
                 <tr>
                     <td>{{this._id}}</td>
@@ -166,8 +168,11 @@
                     <td>{{this.category}}</td>
                     <td>{{this.stock}}</td>
                     <td>{{this.code}}</td>
-                    <th><button class="btn-add" id="{{this._id}}" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add
-                            Cart</button></th>
+                    {{!-- <th><button class="btn-add" id="{{this._id}}" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add Cart</button></th> --}}
+
+                    <th><button class="btn-add" data-user-cart="{{userCart}}" data-product-id="{{this._id}}" {{#if this.status}}enabled{{else}}disabled{{/if}}>Add Cart</button></th>
+
+                    
                 </tr>
                 {{/each}}
                 {{else}}

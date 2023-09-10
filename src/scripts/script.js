@@ -4,7 +4,7 @@ import { date } from "../utils.js";
 
 export const updateOwner = async () =>{
     try {
-        const adminId = '64a1298cb19875eef3f115fc';
+        const adminId = '64e163c959dcd7d0aaeee043';
         const result = await productModel.updateMany({},{$set:{owner:adminId}})
         console.log(result);
     } catch (error) {

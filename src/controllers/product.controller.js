@@ -20,9 +20,8 @@ export default class ProductController {
         return res.redirect('/login');
     }
     script = async (req, res) => {
-        //await updateOwner();
-        console.log('entra');
-        await updateLC();
+        //await updateOwner(); a todos los productos como el owner, le impone el id del "juan perez"
+        await updateLC(); //actualiza el ultimo logueo de todos los usuarios a la hora actual
         req.logger.info('actualizado')
         return res.redirect('/products');
   }
@@ -45,7 +44,6 @@ export default class ProductController {
             userCart = usuarioDto.cart;
         }
         req.logger.debug(userRole + ' despues del dto');
-        // console.log();
         if (userRole === 'admin') admin = true;
         if (userRole === 'premium') canEdit = true;
         const { status, message } = result;

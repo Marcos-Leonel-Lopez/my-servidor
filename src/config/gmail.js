@@ -44,16 +44,30 @@ export const sendRecoveryPass = async (email,token) =>{
     })
 }
 
-export const sendProductDelete = async () =>{
-    await transporter.sendMail({
-        from: 'Ecomerce',
-        to: email,
-        subject: 'Cuenta eliminada',
-        html:   `<section>
-                    <h1>Su cuenta fue eliminada por inactividad</h1>
-                    <h2>Sus productos tambien fueron eliminados de nuesta base de datos</h2>
-                </section>`
-    })
+export const sendProductDelete = async (email) =>{
+    console.log(`gmail.js recibe ${email}`);
+    // await transporter.sendMail({
+    //     from: 'Ecomerce',
+    //     to: email,
+    //     subject: 'Cuenta eliminada',
+    //     html:   `<section>
+    //                 <h1>Su cuenta fue eliminada por inactividad</h1>
+    //                 <h2>Sus productos tambien fueron eliminados de nuesta base de datos</h2>
+    //             </section>`
+    // })
+    return
+}
+export const sendNotificationProductDelete = async (email,title) =>{
+    console.log(`gmail.js recibe ${email} y ${title}`);
+    // await transporter.sendMail({
+    //     from: 'Ecomerce',
+    //     to: email,
+    //     subject: 'Producto eliminado',
+    //     html:   `<section>
+    //                 <h1>El producto ${title} se elimino de nuestra base de datos</h1>
+    //             </section>`
+    // })
+    return
 }
 
 

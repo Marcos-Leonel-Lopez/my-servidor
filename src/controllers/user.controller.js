@@ -22,8 +22,7 @@ export default class UserController{
     }
     deleteUser = async (req, res)=>{
         try {
-            const uid = req.params.uid;
-            const { status, message } = await userService.deleteUser(uid);
+            const { status, message } = await userService.deleteUser();
             res.status(status).send(message);
         } catch (error) {
             console.error(error);

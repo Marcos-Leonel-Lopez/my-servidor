@@ -8,8 +8,8 @@ export class UserRepository{
     getUser = async (uid) =>{
         return await this.dao.getUser(uid);
     }
-    deleteUser = async (uid) =>{
-        return await this.dao.deleteUser(uid);
+    deleteUser = async () =>{
+        return await this.dao.deleteUser();
     }
     changeRole = async (uid) =>{
         return await this.dao.changeRole(uid);

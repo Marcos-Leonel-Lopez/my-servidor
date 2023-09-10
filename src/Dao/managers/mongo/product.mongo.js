@@ -2,6 +2,7 @@ import productModel from "../../models/product.model.js";
 import AccessManager from "../AccessManager.js";
 import { generateProduct } from "../../../utils.js";
 import userModel from "../../models/user.model.js";
+import { sendNotificationProductDelete } from "../../../config/gmail.js";
 
 
 const accessManager = new AccessManager();
@@ -124,7 +125,15 @@ export class ProductMongo {
                 const product = await productModel.findById(pid)
                 if (user.id == product.owner || user.role === 'admin') {
                     const payload = await productModel.deleteOne({ _id: pid });
+                    const name = product.title;
                     if (payload.deletedCount == 1) {
+                        if (user.role !== 'admin'){
+                            await sendNotificationProductDelete(user.mail,name)
+                            // envia mensaje
+                        }
+
+
+
                         await accessManager.createRecords(`Elimina el producto id: ${pid}`);
                         return {
                             status: 200,

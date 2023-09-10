@@ -52,8 +52,11 @@ export default class CartController {
         try {
             const cid = req.params.cid;
             const pid = req.params.pid;
-            const { status, message } = await cartService.addProductToCart(cid, pid);
-            res.status(status).send(message);
+            console.log(`recibe ${cid} y ${pid} `);
+            
+            // const { status, message } = await cartService.addProductToCart(cid, pid);
+            // res.status(status).send(message);
+            res.status(200)
         } catch (error) {
             console.error(error);
             res.status(500).send(error.message);

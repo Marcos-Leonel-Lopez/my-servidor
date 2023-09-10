@@ -1,11 +1,24 @@
 import userModel from "../../models/user.model.js";
-import { userRoles } from "../../../constants/index.js";
+import productModel from "../../models/product.model.js";
+import { sendProductDelete } from "../../../config/gmail.js";
+import { userRoles, mediaHora, dosDias } from "../../../constants/index.js";
+import { date } from "../../../utils.js";
+
+
+
 
 export class UserMongo {
     getUsers = async () => {
         try {
             const users = await userModel.find();
-            
+            const payload = users.map(user => {
+                return user = {
+                    name: `${user.first_name} ${user.last_name}`,
+                    email: `${user.mail}`,
+                    age: `${user.age}`,
+                    role: `${user.role}`
+                }
+            })
             return {
                 status: 200,
                 message: {
@@ -53,25 +66,52 @@ export class UserMongo {
         }
 
     }
-    deleteUser = async (uid) => {
+    deleteUser = async () => {
         try {
-            const payload = await userModel.deleteOne({ _id: uid });
-            if (payload.deletedCount === 1) {
+            const currentDate = await date();
+            const users = await userModel.find();
+            const deletedUserData = [];
+            for (const user of users) {
+                const lastLogin = new Date(user.last_connection.login);
+                const time_diff = currentDate - lastLogin;
+                if (time_diff >= mediaHora) { // mediaHora : 30 min o dosDias : 2 dias
+                    if(user.role === 'admin'){
+                        continue; // al admin y no se lo considera`
+                    }
+                    const productsToDelete = await productModel.find({ owner: user.id });
+                    const userData = {
+                        userId: user.id,
+                        userName: user.name,
+                        deletedProducts: []
+                    };
+                    for (const product of productsToDelete) {
+                        userData.deletedProducts.push({
+                            title: product.title,
+                            code: product.code
+                        });
+                        await productModel.deleteOne({ _id: product._id });
+                    }
+                    await sendProductDelete(user.mail);
+                    deletedUserData.push(userData);
+                    await userModel.deleteOne({ _id: user._id });
+                }
+            }
+            if (deletedUserData.length === 0) {
                 return {
                     status: 200,
                     message: {
                         status: "success",
-                        payload,
+                        info: "No se eliminaron usuarios."
                     }
                 };
             }
             return {
-                status: 400,
+                status: 200,
                 message: {
-                    status: "error",
-                    error: payload
+                    status: "success",
+                    usersAndProductsDelete: deletedUserData
                 }
-            };
+            }
         } catch (error) {
             return {
                 status: 500,
@@ -87,7 +127,7 @@ export class UserMongo {
             const user = await userModel.findById(uid)
             const userRole = user.role;
             const userStatus = user.status;
-            if(userStatus === 'completo'){
+            if (userStatus === 'completo') {
                 if (userRole === 'client') {
                     user.role = 'premium';
                     await user.save()
@@ -110,7 +150,7 @@ export class UserMongo {
                         user
                     }
                 };
-            }else{
+            } else {
                 return {
                     status: 400,
                     message: {
@@ -131,29 +171,29 @@ export class UserMongo {
         }
 
     }
-    updateUserDocuments = async (uid,identificacion,comprobanteDomicilio,estadoCuenta) =>{
+    updateUserDocuments = async (uid, identificacion, comprobanteDomicilio, estadoCuenta) => {
         try {
             const user = await userModel.findById(uid);
             const docs = [];
-            if(identificacion){
+            if (identificacion) {
                 docs.push({
-                    name:'identificacion',
+                    name: 'identificacion',
                     reference: identificacion.filename
                 })
             }
-            if(comprobanteDomicilio){
+            if (comprobanteDomicilio) {
                 docs.push({
-                    name:'comprobanteDomicilio',
+                    name: 'comprobanteDomicilio',
                     reference: comprobanteDomicilio.filename
                 })
             }
-            if(estadoCuenta){
+            if (estadoCuenta) {
                 docs.push({
-                    name:'estadoCuenta',
+                    name: 'estadoCuenta',
                     reference: estadoCuenta.filename
                 })
             }
-            if(docs.length == 3){
+            if (docs.length == 3) {
                 user.status = 'completo'
             }
             user.documents = docs;
