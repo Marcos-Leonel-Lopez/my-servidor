@@ -27,16 +27,17 @@
         </li>
     </ul>
 </section>
-
 <section>
     <table>
         <thead>
             <th>Id</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>Email</th>
             <th>Años</th>
+            <th>Email</th>
+            <th>Status</th>
             <th>Rol</th>
+
         </thead>
         <tbody>
             {{#if users}}
@@ -46,9 +47,23 @@
                 <td>{{this._id}}</td>
                 <td>{{this.first_name}}</td>
                 <td>{{this.last_name}}</td>
-                <td>{{this.mail}}</td>
                 <td>{{this.age}}</td>
-                <td>{{this.role}}</td>
+                <td>{{this.status}}</td>
+                <td>{{this.mail}}</td>
+                <td>{{this.role}}
+                    <ul class="categorias">
+                        <li>
+                            <a href="#" class="change-role-link" data-user-id="{{this._id}}">Cambiar Rol</a>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <ul class="categorias">
+                        <li>
+                            <a href="#" class="delete-user-link" data-user-id="{{this._id}}">Eliminar usuario</a>
+                        </li>
+                    </ul>
+                </td>
             </tr>
             {{/each}}
             {{else}}
@@ -59,30 +74,18 @@
                 <td> -- </td>
                 <td> -- </td>
                 <td> -- </td>
-                <th> -- </th>
             </tr>
             {{/if}}
-
-
         </tbody>
-
-
-
-
     </table>
-        <section>
-            {{#if hasPrevPage}}
-            <a class="btn-page" href={{prevLink}}>Anterior</a>
-            {{/if}}
-            {{#if hasNextPage}}
-            <a class="btn-page" href={{nextLink}}>Siguiente</a>
-            {{!-- <a class="btn-page"
-                href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
-            --}}
-            {{/if}}
-        </section>
-
-{{/if}}
-
-
+    <section>
+        {{#if hasPrevPage}}
+        <a class="btn-page" href={{prevLink}}>Anterior</a>
+        {{/if}}
+        {{#if hasNextPage}}
+        <a class="btn-page" href={{nextLink}}>Siguiente</a>
+        {{/if}}
+    </section>
+    {{/if}}
 </section>
+<script src="/js/panelAdmin.js"></script>

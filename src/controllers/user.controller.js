@@ -21,7 +21,7 @@ export default class UserController {
             res.status(500).send(error.message);
         }
     }
-    deleteUser = async (req, res) => {
+    deleteUserTime = async (req, res) => {
         try {
             const { status, message } = await userService.deleteUser();
             res.status(status).send(message);
@@ -33,7 +33,6 @@ export default class UserController {
     changeRole = async (req, res) => {
         try {
             const uid = req.params.uid;
-            console.log(uid);
             const { status, message } = await userService.changeRole(uid)
             res.status(status).send(message);
         } catch (error) {
@@ -55,15 +54,22 @@ export default class UserController {
         }
     }
     panelAdmin = async (req, res) => {
-        const { limit = 10, page = 1, role = 'all' } = req.query;
-        const { status, message } = await userService.panelAdmin(limit, page, role);
-        if (status === 200) {
-            const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
-            const users =  payload.map(item => item.toObject())
-            return res.render('panelAdmin',{users,hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, role, title: 'Panel de usuarios', style: 'style.css', error: false})
-        }else{
-            return res.render('panelAdmin', { title: 'Panel de usuarios', style: 'style.css', error: true })
+        try {
+            const { limit = 10, page = 1, role = 'all' } = req.query;
+            const { status, message } = await userService.panelAdmin(limit, page, role);
+            if (status === 200) {
+                const { payload, totalPages, hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink } = message;
+                const users =  payload.map(item => item.toObject())
+                
+                return res.render('panelAdmin',{users,hasPrevPage, hasNextPage, nextPage, prevPage, prevLink, nextLink, totalPages, limit, page, role, title: 'Panel de usuarios', style: 'style.css', error: false})
+            }else{
+                return res.render('panelAdmin', { title: 'Panel de usuarios', style: 'style.css', error: true })
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
         }
+
         
  
 
@@ -74,5 +80,15 @@ export default class UserController {
 
 
 
+    }
+    deleteUser = async (req, res) =>{
+        try {
+            const uid = req.params.uid;
+            const { status, message } = await userService.deleteUser(uid)
+            res.status(status).send(message);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error.message);
+        }
     }
 }

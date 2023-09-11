@@ -8,8 +8,8 @@ export class UserRepository{
     getUser = async (uid) =>{
         return await this.dao.getUser(uid);
     }
-    deleteUser = async () =>{
-        return await this.dao.deleteUser();
+    deleteUserTime = async () =>{
+        return await this.dao.deleteUserTime();
     }
     changeRole = async (uid) =>{
         return await this.dao.changeRole(uid);
@@ -20,5 +20,7 @@ export class UserRepository{
     panelAdmin = async (limit, page, role) =>{
         return await this.dao.panelAdmin(limit, page, role)
     }
-
+    deleteUser = async (uid) =>{
+        return await this.dao.deleteUser(uid)
+    }
 }

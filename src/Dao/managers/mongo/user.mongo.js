@@ -64,7 +64,7 @@ export class UserMongo {
         }
 
     }
-    deleteUser = async () => {
+    deleteUserTime = async () => {
         try {
             const currentDate = await date();
             const users = await userModel.find();
@@ -215,35 +215,85 @@ export class UserMongo {
         }
     }
     panelAdmin = async (limit, page, role) => {
-        if (limit <= 0) {
+        try {
+            if (limit <= 0) {
+                return {
+                    status: 400,
+                    message: {
+                        status: "error",
+                        error: `Limite debe ser mayor a 0(cero)`
+                    }
+                };
+            };
+            let filter = {};
+            if (role !== 'all') {
+                filter.role = role;
+            }
+            const data = await userModel.paginate(filter, { limit, page })
+            const prevLink = data.hasPrevPage ? `/panelAdmin?page=${data.prevPage}&limit=${limit}&role=${role}` : null;
+            const nextLink = data.hasNextPage ? `/panelAdmin?page=${data.nextPage}&limit=${limit}&role=${role}` : null;
+            return {
+                status: 200,
+                message: {
+                    status: "success",
+                    payload: data.docs,
+                    totalPages: data.totalPages,
+                    prevPage: data.prevPage,
+                    nextPage: data.nextPage,
+                    hasPrevPage: data.hasPrevPage,
+                    hasNextPage: data.hasNextPage,
+                    prevLink,
+                    nextLink
+                }
+            }
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error",
+                    error: 'error en carga de archivos'
+                }
+            };
+        }
+
+    }
+    deleteUser = async (uid) => {
+        try {
+            const {role} = await userModel.findById(uid);
+            if(role == 'admin'){
+                return {
+                    status: 400,
+                    message: {
+                        status: "error",
+                        error: `No se puede eliminar al Admin`
+                    }
+                }
+            }
+            const data = await userModel.deleteOne({ _id: uid })
+            if (data.deletedCount == 1) {
+                return {
+                    status: 200,
+                    message: {
+                        status: "success",
+                        data
+                    }
+                }
+            }
             return {
                 status: 400,
                 message: {
                     status: "error",
-                    error: `Limite debe ser mayor a 0(cero)`
+                    error: `El user con id:${id} no existe`
+                }
+            }
+        } catch (error) {
+            return {
+                status: 500,
+                message: {
+                    status: "error",
+                    error: error.message
                 }
             };
-        };
-        let filter = {};
-        if (role !== 'all') {
-            filter.role = role;
-        }
-        const data = await userModel.paginate(filter, { limit, page })
-        const prevLink = data.hasPrevPage ? `/panelAdmin?page=${data.prevPage}&limit=${limit}&role=${role}` : null;
-        const nextLink = data.hasNextPage ? `/panelAdmin?page=${data.nextPage}&limit=${limit}&role=${role}` : null;
-        return {
-            status: 200,
-            message: {
-                status: "success",
-                payload: data.docs,
-                totalPages: data.totalPages,
-                prevPage: data.prevPage,
-                nextPage: data.nextPage,
-                hasPrevPage: data.hasPrevPage,
-                hasNextPage: data.hasNextPage,
-                prevLink,
-                nextLink
-            }
         }
     }
 }

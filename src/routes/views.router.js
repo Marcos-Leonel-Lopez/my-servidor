@@ -26,7 +26,7 @@ router.get('/realtimeproducts', productController.realtimeproducts)
 
 router.get('/chat', privateAccess, onlyClient, productController.chat)
 
-router.get('/panelAdmin',  userController.panelAdmin)
+router.get('/panelAdmin', onlyAdmin,  userController.panelAdmin)
 
 router.get('/cart/:cid', onlyClient, cartController.getCartByIdRender)
 
