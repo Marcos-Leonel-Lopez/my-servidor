@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 import { userCollection, cartCollection } from '../../constants/index.js';
 
 const userSchema = new mongoose.Schema({
@@ -62,6 +63,6 @@ const userSchema = new mongoose.Schema({
         default:""
     }
 })
-
+userSchema.plugin(mongoosePaginate);
 const userModel = mongoose.model(userCollection, userSchema);
 export default userModel;

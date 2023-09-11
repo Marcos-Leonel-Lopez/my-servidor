@@ -5,8 +5,6 @@ import { userRoles, mediaHora, dosDias } from "../../../constants/index.js";
 import { date } from "../../../utils.js";
 
 
-
-
 export class UserMongo {
     getUsers = async () => {
         try {
@@ -75,7 +73,7 @@ export class UserMongo {
                 const lastLogin = new Date(user.last_connection.login);
                 const time_diff = currentDate - lastLogin;
                 if (time_diff >= mediaHora) { // mediaHora : 30 min o dosDias : 2 dias
-                    if(user.role === 'admin'){
+                    if (user.role === 'admin') {
                         continue; // al admin y no se lo considera`
                     }
                     const productsToDelete = await productModel.find({ owner: user.id });
@@ -214,6 +212,38 @@ export class UserMongo {
                     error: 'error en carga de archivos'
                 }
             };
+        }
+    }
+    panelAdmin = async (limit, page, role) => {
+        if (limit <= 0) {
+            return {
+                status: 400,
+                message: {
+                    status: "error",
+                    error: `Limite debe ser mayor a 0(cero)`
+                }
+            };
+        };
+        let filter = {};
+        if (role !== 'all') {
+            filter.role = role;
+        }
+        const data = await userModel.paginate(filter, { limit, page })
+        const prevLink = data.hasPrevPage ? `/panelAdmin?page=${data.prevPage}&limit=${limit}&role=${role}` : null;
+        const nextLink = data.hasNextPage ? `/panelAdmin?page=${data.nextPage}&limit=${limit}&role=${role}` : null;
+        return {
+            status: 200,
+            message: {
+                status: "success",
+                payload: data.docs,
+                totalPages: data.totalPages,
+                prevPage: data.prevPage,
+                nextPage: data.nextPage,
+                hasPrevPage: data.hasPrevPage,
+                hasNextPage: data.hasNextPage,
+                prevLink,
+                nextLink
+            }
         }
     }
 }

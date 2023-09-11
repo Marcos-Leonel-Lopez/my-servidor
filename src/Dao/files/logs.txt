@@ -2786,3 +2786,6 @@ Fecha: 9/10/2023 - Hora: 4:34:44 PM - Accion: Consulta los productos
 Fecha: 9/10/2023 - Hora: 4:34:44 PM - Accion: Consulta los productos 
 Fecha: 9/10/2023 - Hora: 4:34:44 PM - Accion: Consulta los productos 
 Fecha: 9/10/2023 - Hora: 4:34:59 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 4:15:02 AM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 4:15:02 AM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 4:15:02 AM - Accion: Consulta los productos 

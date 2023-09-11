@@ -51,14 +51,14 @@
                     Ascendente</a>
             </li>
         </ul>
-        {{#if admin}}
+            {{#if admin}}
         <ul class="categorias">
             <li>
                 <a id="admin" href="/registerProduct">EDITAR</a>
             </li>
         </ul>
-        {{else}}
-        {{#if userName}}
+            {{else}}
+                {{#if userName}}
         <ul class="categorias">
             <li>
                 <a href="/cart/{{userCart}}">Ir al carrito</a>
@@ -66,21 +66,21 @@
             <li>
                 <a href="/chat">Ir al chat</a>
             </li>
-            {{#if canEdit}}
+                    {{#if canEdit}}
             <li>
                 <a id="admin" href="/registerProduct">EDITAR</a>
             </li>
-            {{/if}}
+                    {{/if}}
         </ul>
-        {{else}}
+                {{else}}
         <ul class="categorias">
             <li>
                 <a href="/loggerTest">loggerTest</a>
             </li>
         </ul>
-        {{/if}}
+                {{/if}}
 
-        {{/if}}
+            {{/if}}
 
         {{/if}}
     </section>
@@ -95,7 +95,7 @@
 
             </ul>
         </section>
-        {{#if admin}}
+            {{#if admin}}
         <table>
             <thead>
                 <tr>

@@ -2,14 +2,15 @@ import { Router } from "express";
 import AccessManager from "../Dao/managers/AccessManager.js";
 import ProductController from "../controllers/product.controller.js";
 import CartController from "../controllers/cart.controller.js";
+import UserController from "../controllers/user.controller.js";
 import userModel from "../Dao/models/user.model.js";
 import { config } from "../config/config.js";
-import { onlyClient, publicAccess, exclusiveAccess, privateAccess } from "../middlewares/auth.js";
+import { onlyClient, publicAccess, exclusiveAccess, privateAccess , onlyAdmin} from "../middlewares/auth.js";
 
 const accessManager = new AccessManager();
 const productController = new ProductController();
 const cartController = new CartController();
-
+const userController = new UserController();
 
 const router = Router();
 
@@ -24,6 +25,8 @@ router.get('/products', productController.getProductsPage)
 router.get('/realtimeproducts', productController.realtimeproducts)
 
 router.get('/chat', privateAccess, onlyClient, productController.chat)
+
+router.get('/panelAdmin',  userController.panelAdmin)
 
 router.get('/cart/:cid', onlyClient, cartController.getCartByIdRender)
 

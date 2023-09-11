@@ -1,0 +1,88 @@
+<section>
+
+    {{#if error}}
+    <h1>Error</h1>
+    <p>El limit debe ser mayor a 0</p>
+    {{else}}
+    <form id="limitForm" method="get" action="/panelAdmin">
+        <section>
+            <label for="limitInput">Limit:</label>
+            <input type="number" id="limitInput" name="limit" value="{{limit}}" min="1">
+        </section>
+
+        <input class="btn-add" type="submit" value="Submit">
+    </form>
+    <ul class="categorias">
+        <li>
+            <a href="/panelAdmin?page={{page}}&limit={{limit}}&role=client">Clientes comunes</a>
+        </li>
+        <li>
+            <a href="/panelAdmin?page={{page}}&limit={{limit}}&role=premium">Clientes premium</a>
+        </li>
+    </ul>
+    <ul class="categorias title">
+        <li><a href="/panelAdmin">Reset</a></li>
+        <li>
+            <h4>Paginas totales: {{totalPages}}</h4>
+        </li>
+    </ul>
+</section>
+
+<section>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Años</th>
+            <th>Rol</th>
+        </thead>
+        <tbody>
+            {{#if users}}
+            {{#each users}}
+
+            <tr>
+                <td>{{this._id}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.mail}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.role}}</td>
+            </tr>
+            {{/each}}
+            {{else}}
+            <tr>
+                <td> -- </td>
+                <td> -- </td>
+                <td> -- </td>
+                <td> -- </td>
+                <td> -- </td>
+                <td> -- </td>
+                <th> -- </th>
+            </tr>
+            {{/if}}
+
+
+        </tbody>
+
+
+
+
+    </table>
+        <section>
+            {{#if hasPrevPage}}
+            <a class="btn-page" href={{prevLink}}>Anterior</a>
+            {{/if}}
+            {{#if hasNextPage}}
+            <a class="btn-page" href={{nextLink}}>Siguiente</a>
+            {{!-- <a class="btn-page"
+                href="/products?page={{nextPage}}&limit={{limit}}&category={{category}}">Siguiente</a>
+            --}}
+            {{/if}}
+        </section>
+
+{{/if}}
+
+
+</section>

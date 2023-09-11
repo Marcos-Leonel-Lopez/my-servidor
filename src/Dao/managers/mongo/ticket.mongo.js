@@ -201,6 +201,3 @@ export class TicketMongo {
     }
 
 }
-
-
-interface de compra terminado
