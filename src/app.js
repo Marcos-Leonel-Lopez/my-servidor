@@ -6,7 +6,7 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import passport from 'passport';
 import cors from 'cors';
-import  swaggerUi  from 'swagger-ui-express';
+import swaggerUi from 'swagger-ui-express';
 import { errorHandler } from './middlewares/errorHandler.js';
 
 import { config } from './config/config.js';
@@ -16,13 +16,10 @@ import cartsRouter from './routes/carts.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import ticketsRouter from './routes/ticket.router.js';
 import viewsRouter from './routes/views.router.js';
-import cookieRouter from './routes/cookie.router.js';
 import usersRouter from './routes/users.router.js'
 import ProductController from './controllers/product.controller.js';
-import { TicketRepository } from './repository/ticket.repository.js';
 import MessageManager from './Dao/managers/MessaggeManager.js';
 import initializePassport from './config/passport.config.js';
-import { productService, ticketService } from './repository/index.repository.js';
 import { addLogger } from './utils/logger.js';
 import { swaggerSpecs } from './config/docConfig.js';
 
@@ -41,15 +38,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 app.use(session({
     store: new MongoStore({
-        mongoUrl:config.mongo.url,
-        ttl:360
+        mongoUrl: config.mongo.url,
+        ttl: 360
     }),
-    secret:config.server.secret_session,
-    resave:true, // true or false?
-    saveUninitialized:true, // true or false? 
+    secret: config.server.secret_session,
+    resave: true, // true or false?
+    saveUninitialized: true, // true or false? 
     cookie: {
         maxAge: 3600000, // tiempo de vida de la cookie
-      },
+    },
 }));
 initializePassport();
 app.use(passport.initialize());
@@ -73,65 +70,65 @@ const messageManager = new MessageManager();
 const io = new Server(server);
 
 // productos en tiempo real
- io.on('connection', async client => {
-     const result = await productController.getProductsRealTime();
-     const products = result.map(item => item.toObject())
-     io.emit('productList', products);
+io.on('connection', async client => {
+    const result = await productController.getProductsRealTime();
+    const products = result.map(item => item.toObject())
+    io.emit('productList', products);
 
-//     client.on('newProduct', async (data, callback) => {
-//         // req.logger.verbose('Datos recibidos en el back:', data);
-//         console.log('Datos recibidos en el back:', data);
-//         await productService.addProductRealTime(data,'marcosleonellopez@gmail.com'); //email hardcodeado
-//         const result = await productController.getProductsRealTime();
-//         const products = result.map(item => item.toObject()) 
-//         io.emit('productList', products);
-//         callback();
-//     })
-//     client.on('delete', async data => {
-//         // req.logger.verbose('Se eliminara id: ' + data);
-//          console.log('Se eliminara id: ' + data);
-//         await productService.deleteProduct(data);
-//         const result = await productController.getProductsRealTime();
-//         const products = result.map(item => item.toObject()) 
-//         io.emit('productList', products);
-//     })
-//     //chat
-//     client.on('message', async data => {
-//         await messageManager.newMessage(data);
-//         const messagesBefore = await messageManager.getMessages()
-//         const messages = messagesBefore.map(item => item.toObject())
-//         io.emit('messageLogs', messages)
-//     })
-//     client.on('authenticated', data => {
-//         client.broadcast.emit('newUserConnected', data);
-//     })
-//     client.on('takeProduct', async data_id =>{
-//         const result = await productService.getProductById(data_id);
-//         const product = result.message.payload.map(item => item.toObject());
-//         client.emit('productDetails',product);
-//     })
-//     client.on('editProduct', async (data,id) =>{
-//         await productService.updateProduct(id, data);
-//         const result = await productController.getProductsRealTime();
-//         const products = result.map(item => item.toObject())
-//         io.emit('productList', products);
-//     })
-    
-//         client.on('idproduct', async (data) => {
-//             await ticketService.idFronFront(data)
-//         })
-    
+    //     client.on('newProduct', async (data, callback) => {
+    //         // req.logger.verbose('Datos recibidos en el back:', data);
+    //         console.log('Datos recibidos en el back:', data);
+    //         await productService.addProductRealTime(data,'marcosleonellopez@gmail.com'); //email hardcodeado
+    //         const result = await productController.getProductsRealTime();
+    //         const products = result.map(item => item.toObject()) 
+    //         io.emit('productList', products);
+    //         callback();
+    //     })
+    //     client.on('delete', async data => {
+    //         // req.logger.verbose('Se eliminara id: ' + data);
+    //          console.log('Se eliminara id: ' + data);
+    //         await productService.deleteProduct(data);
+    //         const result = await productController.getProductsRealTime();
+    //         const products = result.map(item => item.toObject()) 
+    //         io.emit('productList', products);
+    //     })
+    //     //chat
+    client.on('message', async data => {
+        await messageManager.newMessage(data);
+        const messagesBefore = await messageManager.getMessages()
+        const messages = messagesBefore.map(item => item.toObject())
+        io.emit('messageLogs', messages)
+    })
+    //     client.on('authenticated', data => {
+    //         client.broadcast.emit('newUserConnected', data);
+    //     })
+    //     client.on('takeProduct', async data_id =>{
+    //         const result = await productService.getProductById(data_id);
+    //         const product = result.message.payload.map(item => item.toObject());
+    //         client.emit('productDetails',product);
+    //     })
+    //     client.on('editProduct', async (data,id) =>{
+    //         await productService.updateProduct(id, data);
+    //         const result = await productController.getProductsRealTime();
+    //         const products = result.map(item => item.toObject())
+    //         io.emit('productList', products);
+    //     })
+
+    //         client.on('idproduct', async (data) => {
+    //             await ticketService.idFronFront(data)
+    //         })
+
 })
 
 //rutas
 app.use(addLogger)
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
-app.use('/api/carts',cartsRouter);
+app.use('/api/carts', cartsRouter);
 app.use('/api/tickets', ticketsRouter);
-app.use('/api/sessions',sessionsRouter);
-app.use('/api/users',usersRouter)
-app.use('/api/docs', swaggerUi.serve,swaggerUi.setup(swaggerSpecs))
+app.use('/api/sessions', sessionsRouter);
+app.use('/api/users', usersRouter)
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
 app.use(errorHandler);
 
 
@@ -169,4 +166,4 @@ app.use(errorHandler);
 //     res.send(req.session.user)
 // })
 
-export {app}
+export { app }

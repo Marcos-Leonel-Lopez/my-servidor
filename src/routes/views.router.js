@@ -15,33 +15,22 @@ const userController = new UserController();
 const router = Router();
 
 router.get('/', productController.root)
-
 router.get('/script', productController.script)
-
 router.get('/registerProduct', privateAccess, exclusiveAccess, productController.registerProduct)
-
 router.get('/products', productController.getProductsPage)
-
 router.get('/realtimeproducts', productController.realtimeproducts)
-
 router.get('/chat', privateAccess, onlyClient, productController.chat)
-
 router.get('/panelAdmin', onlyAdmin,  userController.panelAdmin)
-
 router.get('/cart/:cid', onlyClient, cartController.getCartByIdRender)
-
 router.get('/register', publicAccess, (req, res) => {
     res.render('register', { title: 'Registro de Usuario', style: 'style.css' })
 })
-
 router.get('/login', publicAccess, async (req, res) => {
     res.render('login', { title: 'Login', style: 'style.css' })
 })
-
 router.get('/profile', privateAccess, (req, res) => {
     res.render('profile', { user: req.session.user, title: 'Mi Perfil', style: 'style.css' })
 })
-
 router.get('/forgot-password', (req, res) => {
     res.render('forgotPassword', { title: 'Reestablecer contraseña', style: 'style.css' })
 })

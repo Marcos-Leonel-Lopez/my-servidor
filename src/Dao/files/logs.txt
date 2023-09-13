@@ -2799,3 +2799,14 @@ Fecha: 9/11/2023 - Hora: 3:39:45 PM - Accion: Consulta los productos
 Fecha: 9/11/2023 - Hora: 3:40:15 PM - Accion: Consulta los productos 
 Fecha: 9/11/2023 - Hora: 3:40:15 PM - Accion: Consulta los productos 
 Fecha: 9/11/2023 - Hora: 3:40:15 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:42 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:42 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:42 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:53 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:53 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:53 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:51:55 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 3:59:57 PM - Accion: Consulta los carritos 
+Fecha: 9/11/2023 - Hora: 4:25:31 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 4:25:32 PM - Accion: Consulta los productos 
+Fecha: 9/11/2023 - Hora: 4:25:32 PM - Accion: Consulta los productos 
