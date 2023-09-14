@@ -2810,3 +2810,4 @@ Fecha: 9/11/2023 - Hora: 3:59:57 PM - Accion: Consulta los carritos
 Fecha: 9/11/2023 - Hora: 4:25:31 PM - Accion: Consulta los productos 
 Fecha: 9/11/2023 - Hora: 4:25:32 PM - Accion: Consulta los productos 
 Fecha: 9/11/2023 - Hora: 4:25:32 PM - Accion: Consulta los productos 
+Fecha: 9/14/2023 - Hora: 11:23:06 AM - Accion: Post correcto - se agrego Jalape;os en yogurt nueva prueva 
