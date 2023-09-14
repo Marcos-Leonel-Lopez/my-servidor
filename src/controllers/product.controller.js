@@ -6,7 +6,7 @@ import { generateProductErrorParam } from "../services/productError/productError
 import { generateProductErrorInfo } from "../services/productError/productErrorInfo.js";
 import { EError } from "../enums/EError.js";
 import { addLogger } from "../utils/logger.js";
-import { updateOwner , updateLC } from "../scripts/script.js";
+import { updateOwner, updateLC } from "../scripts/script.js";
 
 
 
@@ -24,7 +24,7 @@ export default class ProductController {
         await updateLC(); //actualiza el ultimo logueo de todos los usuarios a la hora actual
         req.logger.info('actualizado')
         return res.redirect('/products');
-  }
+    }
     registerProduct = (req, res) => {
         res.render('registerProduct', { title: 'Registro de productos', style: 'style.css' });
     }
@@ -104,10 +104,8 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 userEmail = usuarioDto.mail;
-            }else {
-                userEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
-            const result = await productService.deleteProduct(id,userEmail);
+            const result = await productService.deleteProduct(id, userEmail);
             const { status, message } = result;
             return res.status(status).send(message);
         } catch (error) {
@@ -125,8 +123,6 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 ownerEmail = usuarioDto.mail;
-            } else {
-                ownerEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
             req.logger.info(ownerEmail);
             const { status, message } = await productService.addProduct(newProduct, ownerEmail);
@@ -155,10 +151,8 @@ export default class ProductController {
             if (person) {
                 const usuarioDto = new UserDto(person);
                 userEmail = usuarioDto.mail;
-            }else {
-                userEmail = 'marcosleonellopez@gmail.com'// "bypass" para postman
             }
-            const { status, message } = await productService.updateProduct(id, newData,userEmail);
+            const { status, message } = await productService.updateProduct(id, newData, userEmail);
             return res.status(status).send(message);
         } catch (error) {
             res.status(500).send(error.message);
@@ -183,7 +177,7 @@ export default class ProductController {
             res.status(500).send(error.message);
         }
     }
-    updateProductDocuments = async (req,res)=>{
+    updateProductDocuments = async (req, res) => {
         try {
             const code = req.params.code;
             const userEmail = req.session.user.mail;
@@ -192,11 +186,11 @@ export default class ProductController {
             const img_3 = req.files['img_3']?.[0] || null;
             const img_4 = req.files['img_4']?.[0] || null;
             const img_5 = req.files['img_5']?.[0] || null;
-            const {status, message} = await productService.updateProductDocuments(code,userEmail,img_1,img_2,img_3,img_4,img_5);
+            const { status, message } = await productService.updateProductDocuments(code, userEmail, img_1, img_2, img_3, img_4, img_5);
             res.status(status).send(message);
         } catch (error) {
             console.error(error);
-            res.status(500).send(error.message);               
+            res.status(500).send(error.message);
         }
     }
 }
