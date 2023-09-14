@@ -96,18 +96,6 @@ export default class CartController {
         }
     };
 
-    // resolveCart = async (req, res) =>{
-    //     try {
-    //         const cid = req.params.cid
-    //         const resolve = req.body;
-    //         const { status, message } = await cartService.deleteAllProductsFromCart(cid);
-    //         res.status(200).send({message:'resolveCart'});
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).send(error.message);
-    //     }
-    // }
-
     createOrder = async (req, res) =>{
         try {
             const cid = req.params.cid;

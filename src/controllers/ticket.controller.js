@@ -71,15 +71,4 @@ export default class TicketController {
 
     }
 
-    takeIDFront = async (req, res) => {
-        try {
-
-        } catch (error) {
-
-        }
-    }
-
-
-
-
 }
